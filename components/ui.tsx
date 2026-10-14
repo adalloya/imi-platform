@@ -35,19 +35,49 @@ export function SectionHeader({
   );
 }
 
-export function PageHero({ eyebrow, title, subtitle, image }: { eyebrow?: string; title: string; subtitle?: string; image?: string }) {
+export function PageHero({
+  eyebrow,
+  title,
+  subtitle,
+  image,
+  badgeLogo,
+  badgeAlt,
+  unitTag,
+}: {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  image?: string;
+  badgeLogo?: string;
+  badgeAlt?: string;
+  unitTag?: string;
+}) {
   return (
-    <section className="relative overflow-hidden bg-ink-900 text-white">
+    <section className="relative overflow-hidden bg-ink-950 text-white">
       {image && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={image} alt="" className="absolute inset-0 size-full object-cover opacity-25" loading="eager" />
       )}
-      <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-brand-900/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/90 to-brand-900/60" />
       <div className="grid-lines absolute inset-0" />
-      <div className="container-x relative py-14 sm:py-20">
-        {eyebrow && <p className="text-xs font-semibold tracking-[0.14em] text-brand-200 uppercase">{eyebrow}</p>}
-        <h1 className="mt-2 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-base text-ink-300 sm:text-lg">{subtitle}</p>}
+      <div className="container-x relative py-12 sm:py-16 lg:py-20">
+        {badgeLogo && (
+          <div className="mb-5 inline-flex items-center gap-3.5 rounded-xl bg-white/95 p-2.5 sm:p-3 shadow-lg backdrop-blur">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={badgeLogo} alt={badgeAlt || "Unidad IMI"} className="h-12 w-12 sm:h-14 sm:w-14 object-contain" />
+            <div className="pr-3 text-left">
+              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-ink-500">
+                {unitTag || "Unidad Estratégica IMI"}
+              </span>
+              <span className="block text-xs sm:text-sm font-extrabold text-brand-900">
+                {badgeAlt || "Instrumentación y Metrología Industrial"}
+              </span>
+            </div>
+          </div>
+        )}
+        {eyebrow && <p className="text-xs font-semibold tracking-[0.14em] text-brand-200 uppercase font-mono">{eyebrow}</p>}
+        <h1 className="mt-2 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">{title}</h1>
+        {subtitle && <p className="mt-4 max-w-2xl text-base text-ink-300 sm:text-lg leading-relaxed">{subtitle}</p>}
       </div>
     </section>
   );

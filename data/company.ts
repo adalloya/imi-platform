@@ -45,6 +45,13 @@ export const images = {
   instruments: `${WP}/2018/05/instruments.png`,
   logoAc: `${WP}/2021/02/LogoAc.png`,
   logoMM: `${WP}/2021/02/LogoMM.png`,
+  // Activos locales oficiales de Unidades de Negocio
+  logoAcademy: "/images/logo-academy.png",
+  unitAcademy: "/images/unit-academy.jpg",
+  logoMaintenance: "/images/logo-maintenance.png",
+  unitMaintenance: "/images/unit-maintenance.jpg",
+  logoInstruments: "/images/logo-instruments.png",
+  unitInstruments: "/images/unit-instruments.jpg",
   // Placeholders corporativos externos (Unsplash, alta calidad industrial)
   plant:
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
@@ -53,6 +60,85 @@ export const images = {
   engineer:
     "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=80",
 };
+
+export type BusinessUnit = {
+  id: "instruments" | "maintenance" | "academy";
+  shortName: string;
+  fullName: string;
+  badge: string;
+  tagline: string;
+  description: string;
+  logo: string;
+  image: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+  highlights: string[];
+};
+
+export const businessUnits: BusinessUnit[] = [
+  {
+    id: "instruments",
+    shortName: "Instruments & Equipment",
+    fullName: "IMI Instruments & Equipment",
+    badge: "Venta · Renta · Equipamiento",
+    tagline: "Suministro y Renta de Instrumentación de Proceso",
+    description: "Venta y renta de calibradores de procesos multifunción, bombas de presión neumáticas e hidráulicas, manómetros de proceso con sellos químicos y refaccionamiento crítico con entrega inmediata.",
+    logo: "/images/logo-instruments.png",
+    image: "/images/unit-instruments.jpg",
+    primaryHref: "/tienda",
+    primaryLabel: "Explorar Catálogo y Renta",
+    secondaryHref: "/descargas",
+    secondaryLabel: "Fichas Técnicas & Catálogos",
+    highlights: [
+      "Venta de instrumentación y equipo de medición industrial",
+      "Renta de calibradores y patrones trazables inmediatos",
+      "Manómetros y sellos de diafragma marca IMI",
+      "Asesoría técnica para especificación y reemplazo",
+    ],
+  },
+  {
+    id: "maintenance",
+    shortName: "Metrology & Maintenance",
+    fullName: "IMI Metrology & Maintenance",
+    badge: "Laboratorio Acreditado · ISO/IEC 17025",
+    tagline: "Laboratorio Acreditado y Mantenimiento a Válvulas PSV",
+    description: "Laboratorio acreditado ante la EMA en presión y flujo, mantenimiento integral a válvulas de seguridad (PSV) bajo NOM-093-SCFI, calibración in-situ con unidades móviles y soporte en paros de planta.",
+    logo: "/images/logo-maintenance.png",
+    image: "/images/unit-maintenance.jpg",
+    primaryHref: "/laboratorio",
+    primaryLabel: "Servicios de Laboratorio y Campo",
+    secondaryHref: "/servicios",
+    secondaryLabel: "Mantenimiento a Válvulas PSV",
+    highlights: [
+      "Calibración acreditada EMA (NMX-EC-17025-IMNC-2018)",
+      "Mantenimiento, ajuste y prueba de Válvulas PSV",
+      "Calibración in-situ con patrones trazables CENAM/NIST",
+      "Soporte 24/7 y cuadrillas técnicas para paros de planta",
+    ],
+  },
+  {
+    id: "academy",
+    shortName: "IMI Academy",
+    fullName: "IMI Academy México",
+    badge: "Capacitación Técnica · Desde 2010",
+    tagline: "Capacitación y Certificación Técnica Especializada",
+    description: "Centro de formación y especialización técnica desde 2010 con bancos de pruebas y equipo industrial real. Registro oficial ante la STPS con emisión de constancias DC-3 y alineación CONOCER EC0217.",
+    logo: "/images/logo-academy.png",
+    image: "/images/unit-academy.jpg",
+    primaryHref: "/academy",
+    primaryLabel: "Ver Catálogo de Cursos",
+    secondaryHref: "/contacto",
+    secondaryLabel: "Solicitar Plan In-Company",
+    highlights: [
+      "Cursos teórico-prácticos con equipo industrial real",
+      "Constancia de habilidades DC-3 oficial ante la STPS",
+      "Alineación a estándares de competencia CONOCER",
+      "Modalidades en aulas IMI, In-Company o en línea",
+    ],
+  },
+];
 
 export type Accreditation = {
   id: string;

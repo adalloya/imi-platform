@@ -16,7 +16,15 @@ export default async function Page({ params }: P) {
   const t = getDictionary(locale);
   return (
     <>
-      <PageHero eyebrow="Soluciones Integrales para Procesos Industriales" title={t.services.title} subtitle={t.services.subtitle} image={images.fieldCalibration} />
+      <PageHero
+        eyebrow="Soluciones Integrales para Procesos Industriales"
+        title={t.services.title}
+        subtitle={t.services.subtitle}
+        image={images.unitMaintenance}
+        badgeLogo={images.logoMaintenance}
+        badgeAlt="IMI Metrology & Maintenance"
+        unitTag="Servicios en Campo & Taller"
+      />
       <div className="container-x space-y-14 py-14 lg:py-20">
         <ServiceGroupSection group="lab" locale={locale} t={t} />
         <ServiceGroupSection group="calibration" locale={locale} t={t} />

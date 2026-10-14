@@ -19,7 +19,10 @@ export default async function Page({ params }: P) {
         eyebrow="Equipos de Medición, Calibración y Control"
         title={t.store.title}
         subtitle={t.store.subtitle}
-        image={images.equipmentSale}
+        image={images.unitInstruments}
+        badgeLogo={images.logoInstruments}
+        badgeAlt="IMI Instruments & Equipment"
+        unitTag="Suministro, Venta y Renta"
       />
       <div className="container-x py-12 lg:py-16">
         <StoreCatalog />

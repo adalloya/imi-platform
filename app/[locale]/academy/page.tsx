@@ -18,19 +18,27 @@ export default async function Page({ params }: P) {
   return (
     <>
       <section className="relative overflow-hidden bg-ink-950 text-white">
-        <Image src={images.course} alt="" fill priority className="object-cover opacity-25" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-brand-900/60" />
+        <Image src={images.unitAcademy} alt="Aula de Capacitación IMI Academy" fill priority className="object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/90 to-brand-900/60" />
         <div className="grid-lines absolute inset-0" />
-        <div className="container-x relative py-14 sm:py-20">
-          <div className="mb-4 inline-block rounded bg-white p-2.5 shadow-sm">
+        <div className="container-x relative py-12 sm:py-16 lg:py-20">
+          <div className="mb-5 inline-flex items-center gap-4 rounded-2xl bg-white p-3 shadow-xl border border-white/20">
             <Image
-              src={images.logoAc}
-              alt="Logotipo Oficial IMI Academy"
-              width={220}
-              height={70}
+              src={images.logoAcademy}
+              alt="Logotipo Oficial IMI Academy México 2010"
+              width={72}
+              height={72}
               priority
-              className="h-12 sm:h-14 w-auto object-contain"
+              className="size-14 sm:size-16 object-contain"
             />
+            <div className="pr-3 text-left">
+              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-ink-500">
+                División de Educación Técnica
+              </span>
+              <span className="block text-sm sm:text-base font-extrabold text-brand-900">
+                IMI Academy · Fundada en 2010
+              </span>
+            </div>
           </div>
           <p className="text-xs font-mono font-bold tracking-widest text-brand-200 uppercase">
             Capacitación Técnica y Certificaciones · STPS IMI150311QL2-0013 · CONOCER EC0217

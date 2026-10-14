@@ -18,7 +18,15 @@ export default async function Page({ params }: P) {
   const steps = [t.lab.s1, t.lab.s2, t.lab.s3, t.lab.s4];
   return (
     <>
-      <PageHero eyebrow="NMX-EC-17025-IMNC-2018" title={t.lab.title} subtitle={t.lab.subtitle} image={images.labCalibration} />
+      <PageHero
+        eyebrow="Laboratorio Acreditado · NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)"
+        title={t.lab.title}
+        subtitle={t.lab.subtitle}
+        image={images.unitMaintenance}
+        badgeLogo={images.logoMaintenance}
+        badgeAlt="IMI Metrology & Maintenance"
+        unitTag="División de Metrología e Inspección"
+      />
       <div className="container-x py-14 lg:py-20">
         <ServiceGroupSection group="lab" locale={locale} t={t} />
 
