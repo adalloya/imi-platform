@@ -1,0 +1,233 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { MessageSquare, Send, Sparkles, User, ExternalLink, RefreshCw, CheckCircle2 } from "lucide-react";
+import { images } from "@/data/company";
+
+type Msg = {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+  whatsappUrl?: string;
+};
+
+const STARTER_PROMPTS = [
+  "Cotizar Calibración de Flujo (Coriolis / Vórtex)",
+  "Mantenimiento Válvulas PSV NOM-093-SCFI-2020",
+  "Certificaciones IMI Academy con Formato STPS DC-3",
+  "Renta de Calibrador de Presión Multifunción",
+];
+
+export default function ImiConsultantPage() {
+  const [messages, setMessages] = useState<Msg[]>([
+    {
+      id: "welcome",
+      role: "assistant",
+      content:
+        "Estimado colega, soy el **Ingeniero Senior y Consultor Técnico de IMI**. Estoy a su disposición para resolver cualquier especificación técnica sobre calibración acreditada ISO/IEC 17025, inspección de válvulas de seguridad PSV bajo NOM-093, renta de instrumentos o capacitaciones oficiales STPS con formato DC-3.\n\n¿En qué requerimiento o proyecto de planta puedo asistirle el día de hoy?",
+      whatsappUrl: "https://wa.me/528331550189?text=Hola%20IMI,%20deseo%20asesoría%20con%20un%20ingeniero%20especialista",
+    },
+  ]);
+
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, loading]);
+
+  async function handleSend(textToSend?: string) {
+    const text = (textToSend || input).trim();
+    if (!text || loading) return;
+
+    const userMsg: Msg = { id: String(Date.now()), role: "user", content: text };
+    const updated = [...messages, userMsg];
+    setMessages(updated);
+    if (!textToSend) setInput("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/consultant/imi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: updated.map((m) => ({ role: m.role, content: m.content })),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Error en servidor");
+      const data = await res.json();
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: String(Date.now() + 1),
+          role: "assistant",
+          content: data.reply || "Un ingeniero de IMI puede atenderle vía WhatsApp al +52 833 155 0189.",
+          whatsappUrl: data.whatsappUrl,
+        },
+      ]);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: String(Date.now() + 1),
+          role: "assistant",
+          content:
+            "Estimado cliente, tenemos línea técnica activa 24/7. Puede conectarse directamente con nuestro ingeniero de servicio vía WhatsApp para cotización formal inmediata.",
+          whatsappUrl: "https://wa.me/528331550189",
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="flex h-screen w-full flex-col bg-ink-50 text-ink-900 font-sans antialiased">
+      {/* HEADER CORPORATIVO IMI */}
+      <header className="flex shrink-0 items-center justify-between border-b border-ink-200 bg-white px-4 py-3 shadow-sm sm:px-6">
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={images.logo}
+              alt="Logotipo IMI"
+              className="h-9 w-auto max-w-[140px] sm:max-w-[170px] object-contain"
+            />
+          </div>
+          <div className="border-l border-ink-200 pl-3">
+            <div className="flex items-center gap-1.5">
+              <span className="flex size-2 rounded-full bg-emerald-500 animate-pulse" />
+              <h1 className="text-xs sm:text-sm font-bold text-ink-900">
+                Consultor Técnico Senior · IMI
+              </h1>
+            </div>
+            <p className="text-[11px] text-ink-500 font-mono">
+              Laboratorio Acreditado NMX-EC-17025-IMNC-2018
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <a
+            href="https://wa.me/528331550189?text=Hola%20IMI,%20requiero%20atención%20con%20ingeniero%20de%20guardia"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary min-h-9 px-3 text-xs font-bold"
+          >
+            WhatsApp Directo
+          </a>
+        </div>
+      </header>
+
+      {/* ÁREA DE MENSAJES */}
+      <main className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+        {messages.map((m) => {
+          const isUser = m.role === "user";
+          return (
+            <div
+              key={m.id}
+              className={`flex gap-3 max-w-3xl ${isUser ? "ml-auto justify-end" : "mr-auto justify-start"}`}
+            >
+              {!isUser && (
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-700 text-white font-bold text-xs shadow-sm">
+                  IMI
+                </div>
+              )}
+
+              <div
+                className={`rounded-2xl p-4 text-sm leading-relaxed shadow-sm ${
+                  isUser
+                    ? "bg-brand-600 text-white rounded-br-none"
+                    : "bg-white text-ink-800 border border-ink-200 rounded-bl-none"
+                }`}
+              >
+                <div className="whitespace-pre-wrap">{m.content}</div>
+
+                {!isUser && m.whatsappUrl && (
+                  <div className="mt-3 pt-3 border-t border-ink-100 flex flex-wrap gap-2">
+                    <a
+                      href={m.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                    >
+                      <ExternalLink className="size-3.5" /> Continuar Cotización en WhatsApp
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              {isUser && (
+                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-ink-200 text-ink-700 font-bold text-xs">
+                  <User className="size-4" />
+                </div>
+              )}
+            </div>
+          );
+        })}
+
+        {loading && (
+          <div className="flex items-center gap-3 text-xs text-ink-500 font-mono">
+            <div className="flex size-8 items-center justify-center rounded-lg bg-brand-700 text-white font-bold text-xs">
+              IMI
+            </div>
+            <div className="flex items-center gap-1.5 rounded-lg bg-white border border-ink-200 px-3 py-2 shadow-sm">
+              <RefreshCw className="size-3.5 animate-spin text-brand-600" />
+              <span>Analizando especificaciones técnicas...</span>
+            </div>
+          </div>
+        )}
+
+        <div ref={scrollRef} />
+      </main>
+
+      {/* SUGERENCIAS RÁPIDAS (PROMPTS TÉCNICOS) */}
+      <div className="bg-white/80 border-t border-ink-200 px-4 py-2 sm:px-6">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+          {STARTER_PROMPTS.map((prompt) => (
+            <button
+              key={prompt}
+              onClick={() => handleSend(prompt)}
+              className="shrink-0 rounded-full border border-ink-200 bg-white px-3 py-1 text-xs font-medium text-ink-700 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition-colors cursor-pointer"
+            >
+              {prompt}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* FORMULARIO DE ENVÍO */}
+      <footer className="border-t border-ink-200 bg-white p-3 sm:p-4">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSend();
+          }}
+          className="mx-auto flex max-w-4xl items-center gap-2"
+        >
+          <input
+            className="field flex-1 text-sm py-2.5 px-4"
+            placeholder="Pregunte sobre calibración de flujo, válvulas PSV, cursos DC-3 o precios..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            disabled={loading}
+          />
+          <button
+            type="submit"
+            disabled={loading || !input.trim()}
+            className="btn btn-primary shrink-0 min-h-11 px-5 font-bold"
+          >
+            <Send className="size-4" /> Enviar
+          </button>
+        </form>
+        <p className="mt-2 text-center text-[10px] text-ink-400 font-mono">
+          Instrumentación y Metrología Industrial S.R.L. de C.V. · STPS IMI150311QL2-0013 · CONOCER EC0217
+        </p>
+      </footer>
+    </div>
+  );
+}
