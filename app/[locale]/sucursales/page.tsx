@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { MapPin, Phone, Mail, Navigation } from "lucide-react";
-import { CoverageMap } from "@/components/CoverageMap";
 import { PageHero } from "@/components/ui";
 import { CtaBand } from "@/components/sections";
 import { company, images } from "@/data/company";
@@ -31,21 +30,6 @@ export default async function Page({ params }: P) {
       />
 
       <div className="container-x py-12 lg:py-16 space-y-16">
-        {/* MAPA INTERACTIVO NORTEAMÉRICA (MÉXICO Y EE. UU.) */}
-        <section id="mapa">
-          <div className="mb-6">
-            <span className="text-xs font-mono font-bold tracking-wider text-brand-700 uppercase">
-              Mapa Interactivo de Infraestructura
-            </span>
-            <h2 className="text-2xl font-extrabold text-ink-900 sm:text-3xl mt-1">
-              Red Operativa en México, Estados Unidos y Sudamérica
-            </h2>
-            <p className="text-sm text-ink-600 mt-2 max-w-3xl leading-relaxed">
-              Consulte la ubicación geográfica de nuestro Laboratorio Central en Altamira, sucursales en puertos y refinerías, y hubs estratégicos en Houston y Lima para soporte metrológico inmediato.
-            </p>
-          </div>
-          <CoverageMap />
-        </section>
 
         {/* INSTALACIONES PRINCIPALES */}
         <section>

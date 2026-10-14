@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, FlaskConical, GraduationCap, MapPin, ShoppingCart, Wrench, Calculator, Cloud } from "lucide-react";
 import { AccreditationGrid, CtaBand } from "@/components/sections";
-import { CoverageMap } from "@/components/CoverageMap";
 import { RoleSelector } from "@/components/RoleSelector";
 import { SectionHeader } from "@/components/ui";
 import { courses } from "@/data/academy";
@@ -165,9 +164,23 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* COVERAGE */}
       <section className="container-x py-16 lg:py-24">
         <SectionHeader eyebrow={t.nav.locations} title={t.locations.title} subtitle={t.locations.subtitle} />
-        <div className="mt-8">
-          <CoverageMap />
+        <div className="mt-8 flex flex-wrap gap-2">
+          {locations.map((loc) => (
+            <span
+              key={loc.id}
+              className={`inline-flex min-h-10 items-center rounded-md border px-3 text-sm font-medium ${
+                loc.type === "hq"
+                  ? "border-brand-600 bg-brand-50 text-brand-700 font-semibold"
+                  : "border-ink-200 text-ink-700"
+              }`}
+            >
+              {loc.name}
+            </span>
+          ))}
         </div>
+        <p className="mt-6 text-sm text-ink-500">
+          {company.email} · Cel. {company.mobile} · Tel. {company.phone}
+        </p>
       </section>
 
       <CtaBand t={t} locale={locale} />
