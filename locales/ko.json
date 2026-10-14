@@ -152,7 +152,7 @@
   "portal": {
     "title": "IMI Cloud Sync",
     "subtitle": "고객 포털: 장비 이력, ISO/IEC 17025 소급성 교정성적서 및 만료 알림.",
-    "demo": "샘플 데이터를 사용한 데모 화면입니다.",
+    "demo": "산업 데모 체험 모드",
     "search": "TAG, 장비 또는 일련번호로 검색",
     "tag": "TAG",
     "asset": "장비",

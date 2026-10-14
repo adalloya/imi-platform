@@ -16,7 +16,7 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero
-        eyebrow="Lead Magnet & Field Engineering"
+        eyebrow="Ingeniería y Diagnóstico de Campo"
         title={t.toolbox.title}
         subtitle={t.toolbox.subtitle}
         image={images.fieldCalibration}

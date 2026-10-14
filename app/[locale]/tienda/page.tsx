@@ -16,7 +16,7 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero
-        eyebrow="IMI Industrial Store"
+        eyebrow="Equipos de Medición, Calibración y Control"
         title={t.store.title}
         subtitle={t.store.subtitle}
         image={images.equipmentSale}

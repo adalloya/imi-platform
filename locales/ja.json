@@ -152,7 +152,7 @@
   "portal": {
     "title": "IMI Cloud Sync",
     "subtitle": "顧客ポータル：機器履歴、ISO/IEC 17025 トレーサブル校正証明書、期限アラート。",
-    "demo": "サンプルデータによるデモ画面です。",
+    "demo": "産業デモ体験モード",
     "search": "TAG、機器名、シリアル番号で検索",
     "tag": "TAG",
     "asset": "機器",

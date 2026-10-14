@@ -20,7 +20,7 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero
-        eyebrow="Atención Inmediata"
+        eyebrow="Respuesta Técnica y Comercial Inmediata"
         title={t.contact.title}
         subtitle={t.contact.subtitle}
         image={images.workshop}
@@ -33,7 +33,7 @@ export default async function Page({ params }: P) {
               {t.common.requestQuote}
             </h2>
             <p className="mt-2 text-sm text-ink-500">
-              Complete los datos del requerimiento técnico. El sistema generará una solicitud directa para WhatsApp Business.
+              Ingrese las especificaciones de sus instrumentos, válvulas o requerimientos en planta. Un ingeniero especialista le responderá de inmediato con propuesta técnico-económica formal vía WhatsApp Business.
             </p>
             <div className="mt-6">
               <ContactForm />

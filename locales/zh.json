@@ -152,7 +152,7 @@
   "portal": {
     "title": "IMI Cloud Sync",
     "subtitle": "客户门户：设备履历、ISO/IEC 17025 可溯源证书与到期提醒。",
-    "demo": "演示界面，使用示例数据。",
+    "demo": "工业演示体验模式",
     "search": "按位号 (TAG)、设备或序列号搜索",
     "tag": "位号",
     "asset": "设备",

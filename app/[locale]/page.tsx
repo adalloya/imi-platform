@@ -32,20 +32,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <div className="grid-lines absolute inset-0" />
         <div className="container-x relative pt-16 pb-36 sm:pt-24 lg:pt-32 lg:pb-44">
           <p className="text-xs sm:text-sm font-bold tracking-widest text-brand-200 uppercase font-mono">
-            Laboratorio de Calibración Acreditado · NMX-EC-17025-IMNC-2018
+            {t.hero.eyebrow}
           </p>
           <h1 className="mt-3 max-w-4xl text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.08]">
-            Metrología, Calibración de Instrumentos y Válvulas de Seguridad
+            {t.hero.title}
           </h1>
           <p className="mt-4 max-w-2xl text-base text-ink-300 sm:text-lg leading-relaxed">
-            Servicios integrales de calibración en laboratorio y campo, inspección de válvulas PSV bajo NOM-093 y capacitación técnica con registro STPS.
+            {t.hero.subtitle}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href={h("/contacto")} className="btn btn-primary px-8 text-base font-bold">
-              Cotización Express
+              {t.hero.ctaPrimary}
             </Link>
             <Link href={h("/servicios")} className="btn btn-ghost-dark px-8 text-base">
-              Explorar Servicios
+              {t.hero.ctaSecondary}
             </Link>
           </div>
           <dl className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-white/10 pt-6">

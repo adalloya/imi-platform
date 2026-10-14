@@ -159,8 +159,9 @@ TRAZABILIDAD METROLÓGICA:
 Patrones de referencia trazables a CENAM / NIST.
 Incertidumbre expandida U calculada con factor de cobertura k = 2 (95.45% de confianza).
 
-ESTE DOCUMENTO DEMOSTRATIVO FORMA PARTE DEL SISTEMA IMI CLOUD SYNC.
-Consulte el original sellado en las oficinas del laboratorio central.
+DOCUMENTO EMITIDO CONFORME AL SISTEMA DE GESTIÓN DE CALIDAD NMX-EC-17025-IMNC-2018.
+DISPONIBLE PARA AUDITORÍAS DE CALIDAD Y TRAZABILIDAD METROLÓGICA OFICIAL.
+Consulte el original sellado y hologramas en la administración del laboratorio central.
 =====================================================`;
 
     const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
@@ -293,12 +294,12 @@ INSTRUMENTACIÓN Y METROLOGÍA INDUSTRIAL S.R.L. DE C.V.
             </div>
 
             <div className="mt-6 pt-6 border-t border-ink-100">
-              <p className="text-xs text-ink-500 mb-2 font-medium">¿Quieres explorar el portal de inmediato?</p>
+              <p className="text-xs text-ink-500 mb-2 font-medium">¿Desea evaluar el flujo de consulta de activos y auditoría?</p>
               <button
                 onClick={() => setIsLogged(true)}
                 className="btn btn-outline w-full text-xs font-bold text-brand-700 border-brand-200 hover:bg-brand-50"
               >
-                Probar con Cuenta Demo (Planta Altamira) →
+                Ingresar con Perfil de Demostración Industrial →
               </button>
             </div>
           </div>

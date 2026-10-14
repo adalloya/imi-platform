@@ -72,7 +72,7 @@ export function RoleSelector() {
       <div role="tabpanel" className="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_1.4fr] md:items-center">
         <div>
           <span className="text-xs font-mono font-semibold uppercase tracking-wider text-brand-600">
-            Perfil B2B Seleccionado
+            Especialidad Técnica Seleccionada
           </span>
           <h3 className="mt-1.5 text-xl font-extrabold text-ink-900 sm:text-2xl">{active.title}</h3>
           <p className="mt-2 text-sm text-ink-600 leading-relaxed">{active.desc}</p>

@@ -49,5 +49,5 @@ export const products: Product[] = [
   { id: "valvula-psv", category: "other", name: "Válvula de seguridad PSV", image: images.calibration, sale: true, rent: false,
     desc: { es: "Válvulas de seguridad y alivio, con calibración NOM-093.", en: "Safety and relief valves, NOM-093 calibrated." } },
   { id: "cualquier-instrumento", category: "any", name: "Cualquier instrumento de medición y control", image: images.sale, sale: true, rent: true,
-    desc: { es: "¿No lo encuentras? Lo conseguimos: venta y renta de cualquier instrumento.", en: "Can't find it? We source it: sale and rental of any instrument." } },
+    desc: { es: "Suministro bajo especificación técnica para cualquier marca, rango y protocolo. Gestionamos venta y renta inmediata con certificado de calibración incluido.", en: "Custom procurement per technical datasheet for any brand, range and protocol. Sale and rental with calibration certificate included." } },
 ];

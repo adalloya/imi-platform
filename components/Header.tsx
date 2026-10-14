@@ -29,7 +29,7 @@ export function Header() {
     { p: "/tienda", l: t.nav.store },
     { p: "/toolbox", l: t.nav.toolbox },
     { p: "/portal", l: t.nav.portal },
-    { p: "/descargas", l: "PDFs" },
+    { p: "/descargas", l: "Descargas" },
     { p: "/sucursales", l: t.nav.locations },
   ];
 
