@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "IMI | Industrial Instrumentation & Metrology · ISO/IEC 17025 Calibration Laboratory",
+    "description": "NMX-EC-17025-IMNC-2018 calibration laboratory, NOM-093-SCFI PSV calibration, IMI Academy (STPS, CONOCER EC0217), instrument sales and rentals, and technical staffing."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "lab": "Laboratory",
+    "academy": "IMI Academy",
+    "store": "Store",
+    "toolbox": "Toolbox",
+    "portal": "Cloud Sync",
+    "locations": "Locations",
+    "contact": "Contact",
+    "quote": "Get a Quote",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language"
+  },
+  "common": {
+    "requestQuote": "Request a quote",
+    "sendWhatsapp": "Send via WhatsApp",
+    "learnMore": "View details",
+    "addToCart": "Add",
+    "added": "Added",
+    "sale": "Sale",
+    "rent": "Rental",
+    "hours": "hours",
+    "modality": "Format",
+    "endorsement": "Accreditation",
+    "topics": "Syllabus",
+    "enroll": "Enroll",
+    "viewAll": "View all",
+    "call": "Call",
+    "email": "Email",
+    "directions": "Directions",
+    "name": "Name",
+    "company": "Company",
+    "phone": "Phone",
+    "city": "City / Plant",
+    "message": "Message",
+    "participants": "Participants",
+    "service": "Service",
+    "privacy": "Your data is not stored: it is sent directly to IMI's WhatsApp Business."
+  },
+  "modality": {
+    "presencial": "In-person",
+    "online": "Online",
+    "in-plant": "On-site"
+  },
+  "hero": {
+    "eyebrow": "NMX-EC-17025-IMNC-2018 calibration laboratory",
+    "title": "Traceable precision for industries that can't afford to stop",
+    "subtitle": "Calibration, maintenance, certified training and instrumentation equipment for power, petrochemical, manufacturing and offshore operations.",
+    "ctaPrimary": "Express quote",
+    "ctaSecondary": "Explore services",
+    "stat1": "Service points",
+    "stat2": "Courses & certifications",
+    "stat3": "Countries covered"
+  },
+  "roles": {
+    "title": "What is your role?",
+    "subtitle": "Go straight to the tools designed for your function.",
+    "operative": {
+      "tab": "Engineer / Technician",
+      "title": "Plant & field operations",
+      "desc": "Calculation tools, your equipment certificates and immediate support during shutdowns.",
+      "l1": "Instrument Tech Toolbox",
+      "l2": "My certificates",
+      "l3": "Calibration services",
+      "l4": "SOS Plant Down"
+    },
+    "corporate": {
+      "tab": "Manager / Procurement",
+      "title": "Maintenance & sourcing",
+      "desc": "EMA/NOM regulatory compliance, asset control and consolidated quoting.",
+      "l1": "Accreditations & standards",
+      "l2": "Asset portal",
+      "l3": "Express Cart quoting",
+      "l4": "Technical staffing"
+    },
+    "hr": {
+      "tab": "Human Resources",
+      "title": "Training & certification",
+      "desc": "STPS-registered courses, CONOCER competency standard, syllabi and official calendar.",
+      "l1": "IMI Academy catalog",
+      "l2": "Certification calendar",
+      "l3": "Certifications",
+      "l4": "Request on-site course"
+    }
+  },
+  "accred": {
+    "title": "Accreditations & official registrations",
+    "subtitle": "Verifiable compliance with Mexican authorities and international standards."
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Metrology laboratory, field calibration, maintenance and specialized technical personnel.",
+    "cta": "Request this service"
+  },
+  "lab": {
+    "title": "Metrology Laboratory",
+    "subtitle": "Traceable calibration per NMX-EC-17025-IMNC-2018 with certificates including measurement uncertainty.",
+    "process": "Calibration process",
+    "s1": "Intake & identification",
+    "s2": "Calibration against traceable standards",
+    "s3": "Certificate issuance",
+    "s4": "Delivery & due-date alert"
+  },
+  "academy": {
+    "title": "IMI Academy",
+    "subtitle": "Technical training registered with STPS IMI150311QL2-0013 and CONOCER competency standard EC0217.",
+    "all": "All",
+    "certification": "Certifications",
+    "basic": "Core courses",
+    "specialized": "Specialized courses",
+    "calendar": "Upcoming schedule",
+    "date": "Date",
+    "course": "Course",
+    "location": "Venue"
+  },
+  "store": {
+    "title": "Equipment & Store",
+    "subtitle": "Sale and rental of test and calibration equipment and measurement & control instruments.",
+    "all": "All",
+    "cart": "Requisition",
+    "empty": "Add equipment to build your requisition.",
+    "qty": "Qty",
+    "mode": "Mode",
+    "weeks": "Rental weeks",
+    "send": "Send requisition via WhatsApp",
+    "remove": "Remove",
+    "clear": "Clear"
+  },
+  "toolbox": {
+    "title": "Instrument Tech Toolbox",
+    "subtitle": "Free technical calculators for the field. They work offline once loaded.",
+    "pressure": "Pressure conversion",
+    "current": "4-20 mA scaling",
+    "temperature": "Temperature conversion",
+    "value": "Value",
+    "from": "From",
+    "lrv": "Lower range value (LRV)",
+    "urv": "Upper range value (URV)",
+    "ma": "Current (mA)",
+    "percent": "% of span",
+    "eu": "Engineering units",
+    "outOfRange": "Outside NAMUR NE43 range (3.8 – 20.5 mA)",
+    "unit": "Unit"
+  },
+  "portal": {
+    "title": "IMI Cloud Sync",
+    "subtitle": "Customer portal: equipment history, traceable ISO/IEC 17025 certificates and due-date alerts.",
+    "demo": "Demo view with sample data.",
+    "search": "Search by TAG, equipment or serial number",
+    "tag": "TAG",
+    "asset": "Equipment",
+    "serial": "Serial",
+    "lastCal": "Last calibration",
+    "due": "Due",
+    "status": "Status",
+    "ok": "Valid",
+    "dueSoon": "Due soon",
+    "expired": "Expired",
+    "download": "Certificate",
+    "schedule": "Schedule recalibration",
+    "kpiTotal": "Assets",
+    "kpiSoon": "Due in 30 days",
+    "kpiExpired": "Expired"
+  },
+  "locations": {
+    "title": "Locations & coverage",
+    "subtitle": "Laboratory, offices and points of sale in Mexico, Peru and the United States.",
+    "hq": "Laboratory & offices",
+    "branch": "Branch",
+    "pos": "Points of sale"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Immediate response via WhatsApp Business."
+  },
+  "sos": {
+    "button": "SOS Plant Down",
+    "title": "IMI SOS Plant Down",
+    "desc": "Immediate connection with the on-call engineer via WhatsApp.",
+    "plant": "Plant / Company",
+    "location": "Location",
+    "equipment": "Affected equipment (TAG)",
+    "issue": "Failure description",
+    "send": "Contact on-call engineer"
+  },
+  "cta": {
+    "title": "Ready to secure your plant's traceability?",
+    "subtitle": "An IMI engineer will reply on WhatsApp within minutes."
+  },
+  "footer": {
+    "tagline": "Industrial instrumentation, metrology and training with certified traceability.",
+    "rights": "All rights reserved."
+  }
+}

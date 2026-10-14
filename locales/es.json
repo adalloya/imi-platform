@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "IMI | Instrumentación y Metrología Industrial · Laboratorio de Calibración ISO/IEC 17025",
+    "description": "Laboratorio de calibración NMX-EC-17025-IMNC-2018, calibración de válvulas PSV NOM-093-SCFI, IMI Academy (STPS, CONOCER EC0217), venta y renta de instrumentos y staffing técnico."
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "lab": "Laboratorio",
+    "academy": "IMI Academy",
+    "store": "Tienda",
+    "toolbox": "Toolbox",
+    "portal": "Cloud Sync",
+    "locations": "Sucursales",
+    "contact": "Contacto",
+    "quote": "Cotizar",
+    "menu": "Menú",
+    "close": "Cerrar",
+    "language": "Idioma"
+  },
+  "common": {
+    "requestQuote": "Solicitar cotización",
+    "sendWhatsapp": "Enviar por WhatsApp",
+    "learnMore": "Ver detalle",
+    "addToCart": "Agregar",
+    "added": "Agregado",
+    "sale": "Venta",
+    "rent": "Renta",
+    "hours": "horas",
+    "modality": "Modalidad",
+    "endorsement": "Aval",
+    "topics": "Temario",
+    "enroll": "Inscribirme",
+    "viewAll": "Ver todo",
+    "call": "Llamar",
+    "email": "Correo",
+    "directions": "Cómo llegar",
+    "name": "Nombre",
+    "company": "Empresa",
+    "phone": "Teléfono",
+    "city": "Ciudad / Planta",
+    "message": "Mensaje",
+    "participants": "Participantes",
+    "service": "Servicio",
+    "privacy": "Tus datos no se almacenan: se envían directamente a WhatsApp Business de IMI."
+  },
+  "modality": {
+    "presencial": "Presencial",
+    "online": "En línea",
+    "in-plant": "En planta"
+  },
+  "hero": {
+    "eyebrow": "Laboratorio acreditable NMX-EC-17025-IMNC-2018",
+    "title": "Precisión trazable para la industria que no puede detenerse",
+    "subtitle": "Calibración, mantenimiento, capacitación certificada y equipo de instrumentación para plantas de energía, petroquímica, manufactura y costa afuera.",
+    "ctaPrimary": "Cotización express",
+    "ctaSecondary": "Explorar servicios",
+    "stat1": "Puntos de servicio",
+    "stat2": "Cursos y certificaciones",
+    "stat3": "Países con cobertura"
+  },
+  "roles": {
+    "title": "¿Cuál es su perfil?",
+    "subtitle": "Acceda directamente a las herramientas diseñadas para su función.",
+    "operative": {
+      "tab": "Ingeniero / Técnico",
+      "title": "Operación de planta y campo",
+      "desc": "Herramientas de cálculo, certificados de sus equipos y soporte inmediato ante paros.",
+      "l1": "Toolbox del instrumentista",
+      "l2": "Mis certificados",
+      "l3": "Servicios de calibración",
+      "l4": "SOS Paro de planta"
+    },
+    "corporate": {
+      "tab": "Gerente / Compras",
+      "title": "Mantenimiento y abastecimiento",
+      "desc": "Cumplimiento normativo EMA/NOM, control de activos y cotización consolidada.",
+      "l1": "Acreditaciones y normas",
+      "l2": "Portal de activos",
+      "l3": "Cotizador Express Cart",
+      "l4": "Subcontratación de personal"
+    },
+    "hr": {
+      "tab": "Capital Humano",
+      "title": "Capacitación y certificación",
+      "desc": "Cursos con registro STPS y estándar CONOCER, temarios y calendario oficial.",
+      "l1": "Catálogo IMI Academy",
+      "l2": "Calendario de certificación",
+      "l3": "Certificaciones",
+      "l4": "Solicitar curso en planta"
+    }
+  },
+  "accred": {
+    "title": "Acreditaciones y registros oficiales",
+    "subtitle": "Cumplimiento verificable ante autoridades mexicanas y estándares internacionales."
+  },
+  "services": {
+    "title": "Servicios",
+    "subtitle": "Laboratorio de metrología, calibración en campo, mantenimiento y personal técnico especializado.",
+    "cta": "Solicitar este servicio"
+  },
+  "lab": {
+    "title": "Laboratorio de Metrología",
+    "subtitle": "Calibración trazable conforme a NMX-EC-17025-IMNC-2018 con certificados que incluyen incertidumbre de medición.",
+    "process": "Proceso de calibración",
+    "s1": "Recepción e identificación",
+    "s2": "Calibración con patrones trazables",
+    "s3": "Emisión de certificado",
+    "s4": "Entrega y alerta de vencimiento"
+  },
+  "academy": {
+    "title": "IMI Academy",
+    "subtitle": "Formación técnica con registro STPS IMI150311QL2-0013 y estándar de competencia CONOCER EC0217.",
+    "all": "Todos",
+    "certification": "Certificaciones",
+    "basic": "Cursos básicos",
+    "specialized": "Cursos especializados",
+    "calendar": "Calendario de próximas fechas",
+    "date": "Fecha",
+    "course": "Curso",
+    "location": "Sede"
+  },
+  "store": {
+    "title": "Equipos y Tienda",
+    "subtitle": "Venta y renta de equipo de prueba, calibración e instrumentos de medición y control.",
+    "all": "Todos",
+    "cart": "Requerimiento",
+    "empty": "Agregue equipos para armar su requerimiento.",
+    "qty": "Cant.",
+    "mode": "Modalidad",
+    "weeks": "Semanas de renta",
+    "send": "Enviar requerimiento por WhatsApp",
+    "remove": "Quitar",
+    "clear": "Vaciar"
+  },
+  "toolbox": {
+    "title": "Toolbox del Instrumentista",
+    "subtitle": "Calculadoras técnicas gratuitas para campo. Funcionan sin conexión una vez cargadas.",
+    "pressure": "Conversión de presión",
+    "current": "Escalamiento 4-20 mA",
+    "temperature": "Conversión de temperatura",
+    "value": "Valor",
+    "from": "De",
+    "lrv": "Rango inferior (LRV)",
+    "urv": "Rango superior (URV)",
+    "ma": "Corriente (mA)",
+    "percent": "% de rango",
+    "eu": "Unidades de ingeniería",
+    "outOfRange": "Fuera de rango NAMUR NE43 (3.8 – 20.5 mA)",
+    "unit": "Unidad"
+  },
+  "portal": {
+    "title": "IMI Cloud Sync",
+    "subtitle": "Portal de clientes: historial de equipos, certificados trazables ISO/IEC 17025 y alertas de vencimiento.",
+    "demo": "Vista demostrativa con datos de ejemplo.",
+    "search": "Buscar por TAG, equipo o número de serie",
+    "tag": "TAG",
+    "asset": "Equipo",
+    "serial": "Serie",
+    "lastCal": "Última calibración",
+    "due": "Vence",
+    "status": "Estado",
+    "ok": "Vigente",
+    "dueSoon": "Por vencer",
+    "expired": "Vencido",
+    "download": "Certificado",
+    "schedule": "Programar recalibración",
+    "kpiTotal": "Activos",
+    "kpiSoon": "Por vencer (30 días)",
+    "kpiExpired": "Vencidos"
+  },
+  "locations": {
+    "title": "Sucursales y cobertura",
+    "subtitle": "Laboratorio, oficinas y puntos de venta en México, Perú y Estados Unidos.",
+    "hq": "Laboratorio y oficinas",
+    "branch": "Sucursal",
+    "pos": "Puntos de venta"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Respuesta inmediata por WhatsApp Business."
+  },
+  "sos": {
+    "button": "SOS Paro de planta",
+    "title": "IMI SOS Plant Down",
+    "desc": "Conexión inmediata con el ingeniero de guardia vía WhatsApp.",
+    "plant": "Planta / Empresa",
+    "location": "Ubicación",
+    "equipment": "Equipo afectado (TAG)",
+    "issue": "Descripción de la falla",
+    "send": "Contactar ingeniero de guardia"
+  },
+  "cta": {
+    "title": "¿Listo para asegurar la trazabilidad de su planta?",
+    "subtitle": "Un ingeniero de IMI le responde por WhatsApp en minutos."
+  },
+  "footer": {
+    "tagline": "Instrumentación, metrología y capacitación industrial con trazabilidad certificada.",
+    "rights": "Todos los derechos reservados."
+  }
+}

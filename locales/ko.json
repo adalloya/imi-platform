@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "IMI | 산업 계측 및 메트롤로지 · ISO/IEC 17025 교정 시험소",
+    "description": "NMX-EC-17025-IMNC-2018 교정 시험소, NOM-093-SCFI 안전밸브(PSV) 교정, IMI 아카데미(STPS, CONOCER EC0217), 계측기 판매·렌탈 및 기술 인력 파견."
+  },
+  "nav": {
+    "home": "홈",
+    "services": "서비스",
+    "lab": "시험소",
+    "academy": "IMI 아카데미",
+    "store": "스토어",
+    "toolbox": "툴박스",
+    "portal": "Cloud Sync",
+    "locations": "지점",
+    "contact": "문의",
+    "quote": "견적 요청",
+    "menu": "메뉴",
+    "close": "닫기",
+    "language": "언어"
+  },
+  "common": {
+    "requestQuote": "견적 요청",
+    "sendWhatsapp": "WhatsApp으로 보내기",
+    "learnMore": "자세히 보기",
+    "addToCart": "추가",
+    "added": "추가됨",
+    "sale": "판매",
+    "rent": "렌탈",
+    "hours": "시간",
+    "modality": "형식",
+    "endorsement": "인증",
+    "topics": "커리큘럼",
+    "enroll": "수강 신청",
+    "viewAll": "전체 보기",
+    "call": "전화",
+    "email": "이메일",
+    "directions": "길찾기",
+    "name": "이름",
+    "company": "회사",
+    "phone": "전화번호",
+    "city": "도시 / 공장",
+    "message": "메시지",
+    "participants": "참가 인원",
+    "service": "서비스",
+    "privacy": "입력하신 정보는 저장되지 않으며 IMI WhatsApp Business로 직접 전송됩니다."
+  },
+  "modality": {
+    "presencial": "대면",
+    "online": "온라인",
+    "in-plant": "현장(공장 내)"
+  },
+  "hero": {
+    "eyebrow": "NMX-EC-17025-IMNC-2018 교정 시험소",
+    "title": "멈출 수 없는 산업을 위한 소급성 있는 정밀도",
+    "subtitle": "발전, 석유화학, 제조 및 해양 플랜트를 위한 교정, 유지보수, 공인 교육 및 계측 장비.",
+    "ctaPrimary": "빠른 견적",
+    "ctaSecondary": "서비스 보기",
+    "stat1": "서비스 거점",
+    "stat2": "교육 및 인증 과정",
+    "stat3": "서비스 국가"
+  },
+  "roles": {
+    "title": "귀하의 역할은 무엇입니까?",
+    "subtitle": "직무에 맞게 설계된 도구로 바로 이동하십시오.",
+    "operative": {
+      "tab": "엔지니어 / 기술자",
+      "title": "플랜트 및 현장 운영",
+      "desc": "계산 도구, 장비 교정성적서, 설비 정지 시 즉각 지원.",
+      "l1": "계측 기술자 툴박스",
+      "l2": "내 교정성적서",
+      "l3": "교정 서비스",
+      "l4": "SOS 플랜트 정지"
+    },
+    "corporate": {
+      "tab": "관리자 / 구매",
+      "title": "유지보수 및 조달",
+      "desc": "EMA/NOM 규정 준수, 자산 관리 및 통합 견적.",
+      "l1": "인증 및 규격",
+      "l2": "자산 포털",
+      "l3": "Express Cart 견적",
+      "l4": "기술 인력 파견"
+    },
+    "hr": {
+      "tab": "인사 / 교육",
+      "title": "교육 및 인증",
+      "desc": "STPS 등록 과정, CONOCER 역량 표준, 커리큘럼 및 공식 일정.",
+      "l1": "IMI 아카데미 카탈로그",
+      "l2": "인증 일정",
+      "l3": "인증 과정",
+      "l4": "현장 교육 요청"
+    }
+  },
+  "accred": {
+    "title": "인증 및 공식 등록",
+    "subtitle": "멕시코 당국 및 국제 표준에 대한 검증 가능한 준수."
+  },
+  "services": {
+    "title": "서비스",
+    "subtitle": "계측 시험소, 현장 교정, 유지보수 및 전문 기술 인력.",
+    "cta": "이 서비스 요청"
+  },
+  "lab": {
+    "title": "계측 시험소",
+    "subtitle": "NMX-EC-17025-IMNC-2018에 따른 소급성 있는 교정, 측정 불확도가 포함된 성적서 발행.",
+    "process": "교정 절차",
+    "s1": "접수 및 식별",
+    "s2": "소급성 있는 표준기로 교정",
+    "s3": "교정성적서 발행",
+    "s4": "인도 및 만료 알림"
+  },
+  "academy": {
+    "title": "IMI 아카데미",
+    "subtitle": "STPS 등록번호 IMI150311QL2-0013 및 CONOCER 역량 표준 EC0217 기반 기술 교육.",
+    "all": "전체",
+    "certification": "인증 과정",
+    "basic": "기초 과정",
+    "specialized": "전문 과정",
+    "calendar": "향후 일정",
+    "date": "날짜",
+    "course": "과정",
+    "location": "장소"
+  },
+  "store": {
+    "title": "장비 및 스토어",
+    "subtitle": "시험·교정 장비 및 측정·제어 계측기의 판매 및 렌탈.",
+    "all": "전체",
+    "cart": "요청 목록",
+    "empty": "장비를 추가하여 요청 목록을 작성하십시오.",
+    "qty": "수량",
+    "mode": "방식",
+    "weeks": "렌탈 기간(주)",
+    "send": "WhatsApp으로 요청 보내기",
+    "remove": "삭제",
+    "clear": "비우기"
+  },
+  "toolbox": {
+    "title": "계측 기술자 툴박스",
+    "subtitle": "현장용 무료 기술 계산기. 한 번 로드하면 오프라인에서도 작동합니다.",
+    "pressure": "압력 단위 변환",
+    "current": "4-20 mA 스케일링",
+    "temperature": "온도 단위 변환",
+    "value": "값",
+    "from": "변환 전 단위",
+    "lrv": "하한값 (LRV)",
+    "urv": "상한값 (URV)",
+    "ma": "전류 (mA)",
+    "percent": "스팬 %",
+    "eu": "공학 단위",
+    "outOfRange": "NAMUR NE43 범위(3.8 – 20.5 mA) 벗어남",
+    "unit": "단위"
+  },
+  "portal": {
+    "title": "IMI Cloud Sync",
+    "subtitle": "고객 포털: 장비 이력, ISO/IEC 17025 소급성 교정성적서 및 만료 알림.",
+    "demo": "샘플 데이터를 사용한 데모 화면입니다.",
+    "search": "TAG, 장비 또는 일련번호로 검색",
+    "tag": "TAG",
+    "asset": "장비",
+    "serial": "일련번호",
+    "lastCal": "최근 교정일",
+    "due": "만료일",
+    "status": "상태",
+    "ok": "유효",
+    "dueSoon": "만료 임박",
+    "expired": "만료",
+    "download": "성적서",
+    "schedule": "재교정 예약",
+    "kpiTotal": "자산",
+    "kpiSoon": "30일 내 만료",
+    "kpiExpired": "만료됨"
+  },
+  "locations": {
+    "title": "지점 및 서비스 지역",
+    "subtitle": "멕시코, 페루, 미국의 시험소, 사무소 및 판매 거점.",
+    "hq": "시험소 및 사무소",
+    "branch": "지점",
+    "pos": "판매 거점"
+  },
+  "contact": {
+    "title": "문의",
+    "subtitle": "WhatsApp Business를 통한 즉시 응답."
+  },
+  "sos": {
+    "button": "SOS 플랜트 정지",
+    "title": "IMI SOS Plant Down",
+    "desc": "WhatsApp을 통해 당직 엔지니어와 즉시 연결됩니다.",
+    "plant": "공장 / 회사",
+    "location": "위치",
+    "equipment": "고장 장비 (TAG)",
+    "issue": "고장 내용",
+    "send": "당직 엔지니어 연결"
+  },
+  "cta": {
+    "title": "귀사 플랜트의 소급성을 확보할 준비가 되셨습니까?",
+    "subtitle": "IMI 엔지니어가 몇 분 내로 WhatsApp으로 답변드립니다."
+  },
+  "footer": {
+    "tagline": "공인된 소급성을 갖춘 산업 계측, 메트롤로지 및 교육.",
+    "rights": "All rights reserved."
+  }
+}

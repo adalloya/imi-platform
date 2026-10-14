@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "IMI | 工業計装・計量 · ISO/IEC 17025 校正試験所",
+    "description": "NMX-EC-17025-IMNC-2018 校正試験所、NOM-093-SCFI 安全弁（PSV）校正、IMI アカデミー（STPS、CONOCER EC0217）、計器の販売・レンタル、技術者派遣。"
+  },
+  "nav": {
+    "home": "ホーム",
+    "services": "サービス",
+    "lab": "試験所",
+    "academy": "IMI アカデミー",
+    "store": "ストア",
+    "toolbox": "ツールボックス",
+    "portal": "Cloud Sync",
+    "locations": "拠点",
+    "contact": "お問い合わせ",
+    "quote": "見積依頼",
+    "menu": "メニュー",
+    "close": "閉じる",
+    "language": "言語"
+  },
+  "common": {
+    "requestQuote": "見積を依頼",
+    "sendWhatsapp": "WhatsApp で送信",
+    "learnMore": "詳細を見る",
+    "addToCart": "追加",
+    "added": "追加済み",
+    "sale": "販売",
+    "rent": "レンタル",
+    "hours": "時間",
+    "modality": "形式",
+    "endorsement": "認定",
+    "topics": "カリキュラム",
+    "enroll": "申し込む",
+    "viewAll": "すべて表示",
+    "call": "電話",
+    "email": "メール",
+    "directions": "経路",
+    "name": "氏名",
+    "company": "会社名",
+    "phone": "電話番号",
+    "city": "都市 / 工場",
+    "message": "メッセージ",
+    "participants": "参加人数",
+    "service": "サービス",
+    "privacy": "入力データは保存されず、IMI の WhatsApp Business へ直接送信されます。"
+  },
+  "modality": {
+    "presencial": "対面",
+    "online": "オンライン",
+    "in-plant": "工場内出張"
+  },
+  "hero": {
+    "eyebrow": "NMX-EC-17025-IMNC-2018 校正試験所",
+    "title": "止められない産業のための、トレーサブルな精度",
+    "subtitle": "発電、石油化学、製造、オフショア向けの校正・保守・認定研修・計装機器。",
+    "ctaPrimary": "クイック見積",
+    "ctaSecondary": "サービスを見る",
+    "stat1": "サービス拠点",
+    "stat2": "講座・認定",
+    "stat3": "対応国"
+  },
+  "roles": {
+    "title": "ご担当の役割を選択してください",
+    "subtitle": "職務に合わせたツールへ直接アクセスできます。",
+    "operative": {
+      "tab": "エンジニア / 技術者",
+      "title": "プラント・現場運用",
+      "desc": "計算ツール、機器の校正証明書、設備停止時の即時サポート。",
+      "l1": "計装技術者ツールボックス",
+      "l2": "校正証明書",
+      "l3": "校正サービス",
+      "l4": "SOS プラント停止"
+    },
+    "corporate": {
+      "tab": "管理者 / 購買",
+      "title": "保全・調達",
+      "desc": "EMA/NOM 法規制対応、資産管理、一括見積。",
+      "l1": "認定・規格",
+      "l2": "資産ポータル",
+      "l3": "Express Cart 見積",
+      "l4": "技術者派遣"
+    },
+    "hr": {
+      "tab": "人事 / 教育",
+      "title": "研修・認定",
+      "desc": "STPS 登録講座、CONOCER 能力基準、カリキュラムと公式日程。",
+      "l1": "IMI アカデミー講座一覧",
+      "l2": "認定日程",
+      "l3": "認定プログラム",
+      "l4": "出張研修を依頼"
+    }
+  },
+  "accred": {
+    "title": "認定・公式登録",
+    "subtitle": "メキシコ当局および国際規格への検証可能な適合。"
+  },
+  "services": {
+    "title": "サービス",
+    "subtitle": "計量試験所、現場校正、保守、専門技術者。",
+    "cta": "このサービスを依頼"
+  },
+  "lab": {
+    "title": "計量試験所",
+    "subtitle": "NMX-EC-17025-IMNC-2018 に基づくトレーサブルな校正。測定不確かさを記載した証明書を発行。",
+    "process": "校正プロセス",
+    "s1": "受付・識別",
+    "s2": "トレーサブルな標準器による校正",
+    "s3": "校正証明書の発行",
+    "s4": "納品・期限アラート"
+  },
+  "academy": {
+    "title": "IMI アカデミー",
+    "subtitle": "STPS 登録番号 IMI150311QL2-0013 および CONOCER 能力基準 EC0217 に基づく技術研修。",
+    "all": "すべて",
+    "certification": "認定プログラム",
+    "basic": "基礎講座",
+    "specialized": "専門講座",
+    "calendar": "今後の日程",
+    "date": "日付",
+    "course": "講座",
+    "location": "会場"
+  },
+  "store": {
+    "title": "機器・ストア",
+    "subtitle": "試験・校正機器および計測・制御機器の販売とレンタル。",
+    "all": "すべて",
+    "cart": "依頼リスト",
+    "empty": "機器を追加して依頼リストを作成してください。",
+    "qty": "数量",
+    "mode": "形態",
+    "weeks": "レンタル期間（週）",
+    "send": "WhatsApp で依頼を送信",
+    "remove": "削除",
+    "clear": "クリア"
+  },
+  "toolbox": {
+    "title": "計装技術者ツールボックス",
+    "subtitle": "現場向け無料技術計算ツール。一度読み込めばオフラインでも動作します。",
+    "pressure": "圧力換算",
+    "current": "4-20 mA スケーリング",
+    "temperature": "温度換算",
+    "value": "値",
+    "from": "変換元",
+    "lrv": "レンジ下限値 (LRV)",
+    "urv": "レンジ上限値 (URV)",
+    "ma": "電流 (mA)",
+    "percent": "スパン %",
+    "eu": "工業単位",
+    "outOfRange": "NAMUR NE43 範囲外（3.8 – 20.5 mA）",
+    "unit": "単位"
+  },
+  "portal": {
+    "title": "IMI Cloud Sync",
+    "subtitle": "顧客ポータル：機器履歴、ISO/IEC 17025 トレーサブル校正証明書、期限アラート。",
+    "demo": "サンプルデータによるデモ画面です。",
+    "search": "TAG、機器名、シリアル番号で検索",
+    "tag": "TAG",
+    "asset": "機器",
+    "serial": "シリアル",
+    "lastCal": "前回校正日",
+    "due": "期限",
+    "status": "状態",
+    "ok": "有効",
+    "dueSoon": "期限間近",
+    "expired": "期限切れ",
+    "download": "証明書",
+    "schedule": "再校正を予約",
+    "kpiTotal": "資産",
+    "kpiSoon": "30日以内に期限",
+    "kpiExpired": "期限切れ"
+  },
+  "locations": {
+    "title": "拠点・対応エリア",
+    "subtitle": "メキシコ、ペルー、米国の試験所・事務所・販売拠点。",
+    "hq": "試験所・事務所",
+    "branch": "支店",
+    "pos": "販売拠点"
+  },
+  "contact": {
+    "title": "お問い合わせ",
+    "subtitle": "WhatsApp Business で迅速に対応します。"
+  },
+  "sos": {
+    "button": "SOS プラント停止",
+    "title": "IMI SOS Plant Down",
+    "desc": "WhatsApp で当番エンジニアに即時接続します。",
+    "plant": "工場 / 会社",
+    "location": "所在地",
+    "equipment": "対象機器 (TAG)",
+    "issue": "故障内容",
+    "send": "当番エンジニアに連絡"
+  },
+  "cta": {
+    "title": "プラントのトレーサビリティを確保しませんか？",
+    "subtitle": "IMI のエンジニアが数分以内に WhatsApp で回答します。"
+  },
+  "footer": {
+    "tagline": "認定トレーサビリティを備えた工業計装・計量・研修。",
+    "rights": "All rights reserved."
+  }
+}

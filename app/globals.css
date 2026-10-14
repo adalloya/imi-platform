@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* IMI Design System: identidad industrial sobria */
+@theme {
+  --color-brand-50: #eef5fd;
+  --color-brand-100: #d6e7fa;
+  --color-brand-200: #a9cdf3;
+  --color-brand-500: #0a6ad6;
+  --color-brand-600: #0256b2;
+  --color-brand-700: #01468f;
+  --color-brand-800: #033670;
+  --color-brand-900: #062748;
+
+  --color-ink-50: #f6f7f9;
+  --color-ink-100: #eceef2;
+  --color-ink-200: #d5d9e0;
+  --color-ink-300: #b0b7c3;
+  --color-ink-400: #7d8796;
+  --color-ink-500: #5a6474;
+  --color-ink-600: #434c5a;
+  --color-ink-700: #2f3641;
+  --color-ink-800: #1f242c;
+  --color-ink-900: #14181e;
+  --color-ink-950: #0c0f13;
+
+  --color-safety-500: #f26b1d;
+  --color-safety-600: #d95a10;
+
+  --font-sans: var(--font-inter), "Noto Sans KR", "Noto Sans JP", "Noto Sans SC",
+    "PingFang SC", "Hiragino Sans", "Apple SD Gothic Neo", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white text-ink-800 antialiased;
+}
+
+/* Componentes base */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-700;
+  }
+  .btn-safety {
+    @apply bg-safety-500 text-white hover:bg-safety-600;
+  }
+  .btn-outline {
+    @apply border border-ink-300 bg-white text-ink-800 hover:border-brand-600 hover:text-brand-700;
+  }
+  .btn-ghost-dark {
+    @apply border border-white/25 text-white hover:bg-white/10;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.14em] text-brand-600 uppercase;
+  }
+  .h-section {
+    @apply text-2xl font-bold tracking-tight text-ink-900 sm:text-3xl lg:text-4xl;
+  }
+  .card {
+    @apply rounded-lg border border-ink-200 bg-white transition-shadow hover:shadow-[0_8px_24px_-12px_rgba(6,39,72,0.25)];
+  }
+  .field {
+    @apply block min-h-12 w-full rounded-md border border-ink-300 bg-white px-3 text-base text-ink-900 placeholder:text-ink-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-100 focus:outline-none;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700;
+  }
+  .chip {
+    @apply inline-flex items-center rounded border border-ink-200 bg-ink-50 px-2 py-0.5 text-xs font-medium text-ink-600;
+  }
+}
+
+.grid-lines {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

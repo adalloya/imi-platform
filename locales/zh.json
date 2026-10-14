@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "title": "IMI | 工业仪表与计量 · ISO/IEC 17025 校准实验室",
+    "description": "NMX-EC-17025-IMNC-2018 校准实验室、NOM-093-SCFI 安全阀 (PSV) 校准、IMI 学院 (STPS、CONOCER EC0217)、仪器销售与租赁及技术人员外包。"
+  },
+  "nav": {
+    "home": "首页",
+    "services": "服务",
+    "lab": "实验室",
+    "academy": "IMI 学院",
+    "store": "商城",
+    "toolbox": "工具箱",
+    "portal": "Cloud Sync",
+    "locations": "网点",
+    "contact": "联系我们",
+    "quote": "询价",
+    "menu": "菜单",
+    "close": "关闭",
+    "language": "语言"
+  },
+  "common": {
+    "requestQuote": "申请报价",
+    "sendWhatsapp": "通过 WhatsApp 发送",
+    "learnMore": "查看详情",
+    "addToCart": "添加",
+    "added": "已添加",
+    "sale": "销售",
+    "rent": "租赁",
+    "hours": "小时",
+    "modality": "形式",
+    "endorsement": "资质",
+    "topics": "课程大纲",
+    "enroll": "报名",
+    "viewAll": "查看全部",
+    "call": "致电",
+    "email": "邮箱",
+    "directions": "导航",
+    "name": "姓名",
+    "company": "公司",
+    "phone": "电话",
+    "city": "城市 / 工厂",
+    "message": "留言",
+    "participants": "参训人数",
+    "service": "服务",
+    "privacy": "您的信息不会被存储，将直接发送至 IMI 的 WhatsApp Business。"
+  },
+  "modality": {
+    "presencial": "面授",
+    "online": "线上",
+    "in-plant": "厂内培训"
+  },
+  "hero": {
+    "eyebrow": "NMX-EC-17025-IMNC-2018 校准实验室",
+    "title": "为不能停产的工业提供可溯源的精度",
+    "subtitle": "为电力、石化、制造及海上平台提供校准、维护、认证培训与仪表设备。",
+    "ctaPrimary": "快速报价",
+    "ctaSecondary": "浏览服务",
+    "stat1": "服务网点",
+    "stat2": "课程与认证",
+    "stat3": "覆盖国家"
+  },
+  "roles": {
+    "title": "您的角色是？",
+    "subtitle": "直达为您的岗位设计的工具。",
+    "operative": {
+      "tab": "工程师 / 技术员",
+      "title": "工厂与现场运维",
+      "desc": "计算工具、设备校准证书及停车时的即时支持。",
+      "l1": "仪表工具箱",
+      "l2": "我的证书",
+      "l3": "校准服务",
+      "l4": "SOS 工厂停车"
+    },
+    "corporate": {
+      "tab": "经理 / 采购",
+      "title": "维护与采购",
+      "desc": "EMA/NOM 合规、资产管理与合并报价。",
+      "l1": "资质与标准",
+      "l2": "资产门户",
+      "l3": "Express Cart 报价",
+      "l4": "技术人员外包"
+    },
+    "hr": {
+      "tab": "人力资源",
+      "title": "培训与认证",
+      "desc": "STPS 注册课程、CONOCER 能力标准、课程大纲与官方日程。",
+      "l1": "IMI 学院课程目录",
+      "l2": "认证日程",
+      "l3": "认证项目",
+      "l4": "申请厂内培训"
+    }
+  },
+  "accred": {
+    "title": "资质与官方注册",
+    "subtitle": "符合墨西哥主管机构及国际标准，可供核查。"
+  },
+  "services": {
+    "title": "服务",
+    "subtitle": "计量实验室、现场校准、维护及专业技术人员。",
+    "cta": "申请此服务"
+  },
+  "lab": {
+    "title": "计量实验室",
+    "subtitle": "依据 NMX-EC-17025-IMNC-2018 进行可溯源校准，证书包含测量不确定度。",
+    "process": "校准流程",
+    "s1": "接收与标识",
+    "s2": "使用可溯源标准器校准",
+    "s3": "出具校准证书",
+    "s4": "交付与到期提醒"
+  },
+  "academy": {
+    "title": "IMI 学院",
+    "subtitle": "STPS 注册号 IMI150311QL2-0013 及 CONOCER 能力标准 EC0217 认可的技术培训。",
+    "all": "全部",
+    "certification": "认证项目",
+    "basic": "基础课程",
+    "specialized": "专业课程",
+    "calendar": "近期开课日程",
+    "date": "日期",
+    "course": "课程",
+    "location": "地点"
+  },
+  "store": {
+    "title": "设备与商城",
+    "subtitle": "测试与校准设备及测量与控制仪器的销售和租赁。",
+    "all": "全部",
+    "cart": "需求清单",
+    "empty": "添加设备以生成需求清单。",
+    "qty": "数量",
+    "mode": "方式",
+    "weeks": "租赁周数",
+    "send": "通过 WhatsApp 发送需求",
+    "remove": "移除",
+    "clear": "清空"
+  },
+  "toolbox": {
+    "title": "仪表工程师工具箱",
+    "subtitle": "免费的现场技术计算器，加载后可离线使用。",
+    "pressure": "压力单位换算",
+    "current": "4-20 mA 量程换算",
+    "temperature": "温度单位换算",
+    "value": "数值",
+    "from": "原单位",
+    "lrv": "量程下限 (LRV)",
+    "urv": "量程上限 (URV)",
+    "ma": "电流 (mA)",
+    "percent": "量程百分比",
+    "eu": "工程单位",
+    "outOfRange": "超出 NAMUR NE43 范围 (3.8 – 20.5 mA)",
+    "unit": "单位"
+  },
+  "portal": {
+    "title": "IMI Cloud Sync",
+    "subtitle": "客户门户：设备履历、ISO/IEC 17025 可溯源证书与到期提醒。",
+    "demo": "演示界面，使用示例数据。",
+    "search": "按位号 (TAG)、设备或序列号搜索",
+    "tag": "位号",
+    "asset": "设备",
+    "serial": "序列号",
+    "lastCal": "上次校准",
+    "due": "到期",
+    "status": "状态",
+    "ok": "有效",
+    "dueSoon": "即将到期",
+    "expired": "已过期",
+    "download": "证书",
+    "schedule": "预约复校",
+    "kpiTotal": "资产",
+    "kpiSoon": "30 天内到期",
+    "kpiExpired": "已过期"
+  },
+  "locations": {
+    "title": "网点与覆盖范围",
+    "subtitle": "在墨西哥、秘鲁和美国设有实验室、办公室和销售网点。",
+    "hq": "实验室与办公室",
+    "branch": "分公司",
+    "pos": "销售网点"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "通过 WhatsApp Business 即时回复。"
+  },
+  "sos": {
+    "button": "SOS 工厂停车",
+    "title": "IMI SOS Plant Down",
+    "desc": "通过 WhatsApp 即时联系值班工程师。",
+    "plant": "工厂 / 公司",
+    "location": "位置",
+    "equipment": "故障设备 (位号)",
+    "issue": "故障描述",
+    "send": "联系值班工程师"
+  },
+  "cta": {
+    "title": "准备好保障工厂的计量溯源了吗？",
+    "subtitle": "IMI 工程师将在几分钟内通过 WhatsApp 回复您。"
+  },
+  "footer": {
+    "tagline": "具备认证溯源能力的工业仪表、计量与培训。",
+    "rights": "版权所有。"
+  }
+}

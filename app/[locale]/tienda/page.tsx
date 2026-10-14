@@ -1,0 +1,29 @@
+import type { Metadata } from "next";
+import { StoreCatalog } from "@/components/StoreCatalog";
+import { PageHero } from "@/components/ui";
+import { images } from "@/data/company";
+import { getDictionary } from "@/lib/i18n";
+
+type P = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: P): Promise<Metadata> {
+  const t = getDictionary((await params).locale);
+  return { title: t.store.title, description: t.store.subtitle };
+}
+
+export default async function Page({ params }: P) {
+  const t = getDictionary((await params).locale);
+  return (
+    <>
+      <PageHero
+        eyebrow="IMI Industrial Store"
+        title={t.store.title}
+        subtitle={t.store.subtitle}
+        image={images.equipmentSale}
+      />
+      <div className="container-x py-12 lg:py-16">
+        <StoreCatalog />
+      </div>
+    </>
+  );
+}

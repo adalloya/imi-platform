@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "www.imindustrial.mx", pathname: "/wp-content/uploads/**" },
+      { protocol: "https", hostname: "images.unsplash.com" },
+    ],
+  },
+  async redirects() {
+    return [{ source: "/", destination: "/es", permanent: false }];
+  },
   turbopack: {
     rules: {
       "*.css": {
