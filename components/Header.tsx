@@ -29,6 +29,7 @@ export function Header() {
     { p: "/tienda", l: t.nav.store },
     { p: "/toolbox", l: t.nav.toolbox },
     { p: "/portal", l: t.nav.portal },
+    { p: "/descargas", l: "PDFs" },
     { p: "/sucursales", l: t.nav.locations },
   ];
 
@@ -46,7 +47,12 @@ export function Header() {
               <Mail className="size-3.5" /> {company.email}
             </a>
           </div>
-          <span className="font-mono tracking-wide">STPS IMI150311QL2-0013 · CONOCER EC0217 · NMX-EC-17025-IMNC-2018</span>
+          <div className="flex items-center gap-4">
+            <span className="font-mono tracking-wide">STPS IMI150311QL2-0013 · CONOCER EC0217</span>
+            <Link href={href("/admin")} className="hover:text-white flex items-center gap-1 text-[11px] bg-white/10 hover:bg-white/20 px-2 py-0.5 rounded font-semibold text-white">
+              Super Admin
+            </Link>
+          </div>
         </div>
       </div>
 

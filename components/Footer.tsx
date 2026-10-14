@@ -58,7 +58,9 @@ export function Footer({ locale, t }: { locale: Locale; t: Dictionary }) {
             <Link href={href("/servicios")} className="hover:text-white">{t.nav.services}</Link>
             <Link href={href("/academy")} className="hover:text-white">{t.nav.academy}</Link>
             <Link href={href("/tienda")} className="hover:text-white">{t.nav.store}</Link>
+            <Link href={href("/descargas")} className="hover:text-white font-semibold text-brand-200">Recursos PDF</Link>
             <Link href={href("/contacto")} className="hover:text-white">{t.nav.contact}</Link>
+            <Link href={href("/admin")} className="hover:text-white text-xs opacity-70">Super Admin</Link>
           </nav>
         </div>
       </div>

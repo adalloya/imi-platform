@@ -104,6 +104,41 @@ git push -u origin main
 
 ---
 
+## 🛠️ Panel Super Admin (Actualización Autónoma Sin Programador)
+
+La plataforma incluye un panel de administración completo accesible desde la ruta:
+👉 **`/es/admin`** (Clave de acceso predeterminada: `imi2026`)
+
+### Módulos del Super Admin:
+1. **Empresa & Contacto:** Modifica en tiempo real el número de WhatsApp receptor de leads (`+52 833 155 0189`), teléfonos de oficina, conmutador, correo y enlaces de logotipos sin tocar código.
+2. **IMI Academy:** Agrega, edita o retira cursos y diplomados. Define horas, modalidades, temarios completos y programa próximas fechas en el calendario oficial.
+3. **Servicios & Laboratorio:** Administra capacidades de metrología, mantenimiento de válvulas de control y perfiles de subcontratación de personal.
+4. **Tienda & Equipos:** Da de alta instrumentos de medición, asigna fotografías por URL, descripción técnica y define disponibilidad para Venta, Renta o ambas.
+5. **Sucursales & Cobertura:** Gestiona matrices, laboratorios y los 10 puntos de venta en México, Perú y EE. UU.
+6. **Recursos & PDFs:** Administra los 7 brochures y acreditaciones oficiales en PDF extraídos de la web original de IMI, con opción de registrar nuevos enlaces descargables.
+7. **Tutoriales Paso a Paso:** Cada módulo incluye su sección interactiva de ayuda con:
+   - *¿Qué es y para qué sirve?*
+   - *Paso a paso para usarlo sin conocimientos técnicos.*
+   - *Consejos y buenas prácticas.*
+8. **Respaldo & Restauración:** Exporta e importa respaldos completos en formato `.json` con un solo clic o restablece a valores de fábrica originales.
+
+---
+
+## 📑 Documentos y Recursos Oficiales en PDF
+
+El sistema enlaza y organiza los 7 documentos oficiales extraídos de `imindustrial.mx`:
+1. **Brochure Corporativo General IMI:** `https://www.imindustrial.mx/wp-content/uploads/2021/02/Brochure-IMI.pdf`
+2. **Brochure Válvulas de Seguridad PSV:** `https://www.imindustrial.mx/wp-content/uploads/2021/02/Brochure-PSV.pdf`
+3. **Acreditación EMA ISO/IEC 17025:** `https://www.imindustrial.mx/wp-content/uploads/EMA-NMX-EC-17025-IMNC-2018-ISOIEC.pdf`
+4. **Anexo Técnico EMA Anexo A (Alcances):** `https://www.imindustrial.mx/wp-content/uploads/EMA-anexo-A.pdf`
+5. **Acreditación Calibración de Flujo EMA:** `https://www.imindustrial.mx/wp-content/uploads/EMA-certificado-de-acreditacion-flujo.pdf`
+6. **Solicitud Oficial de Inscripción STPS:** `https://www.imindustrial.mx/wp-content/uploads/2020/08/SOLICITUD-DE-INSCRIPCIÓN-1.1.pdf`
+7. **Certificado Oficial de Registro Institucional:** `https://www.imindustrial.mx/wp-content/uploads/2018/07/Certificado-OFICIAL.pdf`
+
+Disponibles para el público en la sección: **`/es/descargas`**.
+
+---
+
 ## 📂 Estructura del Proyecto
 
 ```
@@ -111,7 +146,9 @@ imi-platform/
 ├── app/
 │   ├── [locale]/             # Rutas localizadas (es, en, ko, ja, zh)
 │   │   ├── academy/          # Catálogo completo IMI Academy y calendario
+│   │   ├── admin/            # Super Admin CMS con tutoriales y editores
 │   │   ├── contacto/         # Formulario de cotización directa a WhatsApp
+│   │   ├── descargas/        # Centro de descargas y folletos oficiales PDF
 │   │   ├── laboratorio/      # Laboratorio NMX-EC-17025-IMNC-2018
 │   │   ├── portal/           # IMI Cloud Sync (Portal de Activos y Certificados)
 │   │   ├── servicios/        # Metrología, Calibración y Staffing
@@ -123,19 +160,18 @@ imi-platform/
 │   ├── globals.css           # Tokens y temas Tailwind CSS
 │   ├── robots.ts             # Directivas de indexación para motores de búsqueda
 │   └── sitemap.ts            # Mapa de sitio automatizado multilingüe
-├── components/               # Componentes UI modulares (Header, Cart, Forms, etc.)
-├── data/                     # Toda la información migrada íntegramente
+├── components/
+│   ├── CmsProvider.tsx       # Estado reactivo y persistencia local del CMS
+│   ├── SuperAdmin.tsx        # Panel de administración interactivo con tutoriales
+│   ├── Header.tsx            # Navegación, selector de idioma y carrito
+│   └── ...                   # Componentes modulares
+├── data/
 │   ├── academy.ts            # Cursos, certificaciones, horas, temarios y calendario
 │   ├── company.ts            # Datos corporativos, registros STPS, CONOCER, NOMs, imágenes
+│   ├── documents.ts          # Directorio de los 7 PDFs oficiales originales
 │   ├── locations.ts          # Matriz Altamira, sucursales y puntos de venta
 │   ├── products.ts           # Catálogo de instrumentos en venta y renta
 │   └── services.ts           # Servicios de metrología, mantenimiento y staffing
-├── lib/
-│   ├── i18n.ts               # Lógica y diccionarios de internacionalización
-│   ├── site.ts               # Constante de URL del sitio
-│   └── whatsapp.ts           # Constructor de enlaces API wa.me estructurados
-├── locales/                  # Archivos de traducción (es.json, en.json, ko.json, ja.json, zh.json)
-└── next.config.ts            # Configuración de dominios remotos de imágenes y redirecciones
 ```
 
 ---

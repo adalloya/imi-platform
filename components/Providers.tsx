@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { Dictionary, Locale } from "@/lib/i18n";
+import { CmsProvider } from "./CmsProvider";
 
 /* ───────── i18n ───────── */
 type I18nCtx = { locale: Locale; t: Dictionary };
@@ -98,8 +99,10 @@ export function Providers({
   );
 
   return (
-    <I18nContext.Provider value={{ locale, t: dict }}>
-      <CartContext.Provider value={cart}>{children}</CartContext.Provider>
-    </I18nContext.Provider>
+    <CmsProvider>
+      <I18nContext.Provider value={{ locale, t: dict }}>
+        <CartContext.Provider value={cart}>{children}</CartContext.Provider>
+      </I18nContext.Provider>
+    </CmsProvider>
   );
 }
