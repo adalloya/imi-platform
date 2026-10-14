@@ -69,7 +69,7 @@
       "l1": "Calculadoras de Instrumentación",
       "l2": "Expediente Digital de Certificados",
       "l3": "Calibración In-Situ y Laboratorio",
-      "l4": "SOS Paro de Planta (Atención 24/7)"
+      "l4": "Contactar a un Experto (Atención 24/7)"
     },
     "corporate": {
       "tab": "Gerencia & Compras Técnicas",
@@ -181,14 +181,14 @@
     "subtitle": "Conecte directamente con nuestros ingenieros de servicio. Respuesta técnica y cotización formal en minutos vía WhatsApp Business."
   },
   "sos": {
-    "button": "SOS Paro de Planta",
-    "title": "IMI SOS Plant Down · Asistencia de Emergencia 24/7",
-    "desc": "Línea de máxima prioridad: conexión directa con el ingeniero especialista de guardia de IMI para atender paros imprevistos de instrumentación y válvulas de proceso.",
+    "button": "Contactar a un Experto",
+    "title": "Asistencia Técnica Directa · Contactar a un Experto",
+    "desc": "Conexión directa con ingenieros especialistas en metrología, calibración y válvulas de proceso para resolver consultas técnicas inmediatas o emergencias operativas en planta.",
     "plant": "Complejo / Planta Industrial",
     "location": "Ciudad / Ubicación",
-    "equipment": "TAG o Equipo Afectado",
-    "issue": "Descripción de la Falla y Síntomas",
-    "send": "Contactar Ingeniero de Guardia Ahora"
+    "equipment": "TAG o Equipo en Consulta",
+    "issue": "Descripción de la Consulta o Falla",
+    "send": "Hablar con un Ingeniero Especialista"
   },
   "cta": {
     "title": "¿Requiere asegurar la trazabilidad y certidumbre operativa de su planta?",

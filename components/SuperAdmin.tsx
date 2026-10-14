@@ -1060,10 +1060,15 @@ function LocationsModule({
     onAddLocation({
       id,
       name: newLoc.name,
+      shortName: newLoc.name.split(",")[0].trim(),
       type: newLoc.type,
       address: newLoc.address || undefined,
       phone: newLoc.phone || undefined,
       country: newLoc.country,
+      lat: newLoc.country === "US" ? 29.76 : 23.63,
+      lng: newLoc.country === "US" ? -95.36 : -102.55,
+      region: newLoc.country === "MX" ? "México" : newLoc.country === "US" ? "Estados Unidos" : "Perú",
+      specialty: "Atención Técnica & Enlace Comercial",
     });
     setNewLoc({ name: "", type: "pos", address: "", phone: "", country: "MX" });
     setShowAdd(false);

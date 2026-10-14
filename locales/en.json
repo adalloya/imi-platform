@@ -69,7 +69,7 @@
       "l1": "Instrumentation Calculators",
       "l2": "Digital Certificate Vault",
       "l3": "In-Situ & Lab Calibration",
-      "l4": "SOS Plant Down (24/7 Hotline)"
+      "l4": "Contact an Expert (24/7 Support)"
     },
     "corporate": {
       "tab": "Management & Procurement",
@@ -181,14 +181,14 @@
     "subtitle": "Connect directly with our service engineers. Technical guidance and formal quotes delivered within minutes via WhatsApp Business."
   },
   "sos": {
-    "button": "SOS Plant Down",
-    "title": "IMI SOS Plant Down · 24/7 Emergency Dispatch",
-    "desc": "Maximum priority line: direct connection with IMI's on-call specialist engineer to resolve critical instrumentation and safety valve failures.",
+    "button": "Contact an Expert",
+    "title": "Direct Technical Support · Contact an Expert",
+    "desc": "Direct connection with specialist engineers in metrology, calibration, and process valves to resolve immediate technical inquiries or plant operational issues.",
     "plant": "Plant / Industrial Complex",
     "location": "City / Location",
-    "equipment": "Affected TAG or Instrument",
-    "issue": "Failure Description & Symptoms",
-    "send": "Contact On-Call Engineer Now"
+    "equipment": "TAG or Instrument in Query",
+    "issue": "Description of Technical Request or Issue",
+    "send": "Speak with a Specialist Engineer"
   },
   "cta": {
     "title": "Need to secure your plant's metrological traceability?",
