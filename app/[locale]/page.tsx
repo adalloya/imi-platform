@@ -30,15 +30,23 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <Image src={images.hero1} alt="" fill priority sizes="100vw" className="object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/90 to-brand-900/50" />
         <div className="grid-lines absolute inset-0" />
-        <div className="container-x relative pt-14 pb-36 sm:pt-20 lg:pt-28 lg:pb-44">
-          <p className="inline-flex items-center gap-2 rounded border border-white/15 bg-white/5 px-3 py-1.5 font-mono text-xs text-brand-100">
-            <span className="size-1.5 rounded-full bg-safety-500" /> {t.hero.eyebrow}
+        <div className="container-x relative pt-16 pb-36 sm:pt-24 lg:pt-32 lg:pb-44">
+          <p className="text-xs sm:text-sm font-bold tracking-widest text-brand-200 uppercase font-mono">
+            Laboratorio de Calibración Acreditado · NMX-EC-17025-IMNC-2018
           </p>
-          <h1 className="mt-5 max-w-4xl text-4xl leading-[1.08] font-bold tracking-tight sm:text-5xl lg:text-6xl">{t.hero.title}</h1>
-          <p className="mt-5 max-w-2xl text-base text-ink-300 sm:text-lg">{t.hero.subtitle}</p>
+          <h1 className="mt-3 max-w-4xl text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.08]">
+            Metrología, Calibración de Instrumentos y Válvulas de Seguridad
+          </h1>
+          <p className="mt-4 max-w-2xl text-base text-ink-300 sm:text-lg leading-relaxed">
+            Servicios integrales de calibración en laboratorio y campo, inspección de válvulas PSV bajo NOM-093 y capacitación técnica con registro STPS.
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href={h("/contacto")} className="btn btn-safety px-7 text-base">{t.hero.ctaPrimary} <ArrowRight className="size-4" /></Link>
-            <Link href={h("/servicios")} className="btn btn-ghost-dark px-7 text-base">{t.hero.ctaSecondary}</Link>
+            <Link href={h("/contacto")} className="btn btn-primary px-8 text-base font-bold">
+              Cotización Express
+            </Link>
+            <Link href={h("/servicios")} className="btn btn-ghost-dark px-8 text-base">
+              Explorar Servicios
+            </Link>
           </div>
           <dl className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-white/10 pt-6">
             {[
@@ -67,7 +75,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* ACCREDITATIONS */}
       <section id="acreditaciones" className="container-x scroll-mt-28 py-16 lg:py-24">
-        <SectionHeader eyebrow="Compliance" title={t.accred.title} subtitle={t.accred.subtitle} />
+        <SectionHeader eyebrow="Acreditaciones & Normatividad" title={t.accred.title} subtitle={t.accred.subtitle} />
         <div className="mt-8"><AccreditationGrid locale={locale} /></div>
         <div className="mt-6 overflow-hidden rounded-lg border border-ink-200 bg-white p-4">
           <Image src={images.certStrip} alt={t.accred.title} width={1200} height={160} className="mx-auto h-auto w-full max-w-4xl" />
@@ -77,27 +85,26 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* PILLARS */}
       <section className="bg-ink-50 py-16 lg:py-24">
         <div className="container-x">
-          <SectionHeader eyebrow="IMI" title={t.services.title} subtitle={t.services.subtitle} />
+          <SectionHeader eyebrow="Unidades Operativas" title={t.services.title} subtitle={t.services.subtitle} />
           <div className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
             {pillars.map((p) => (
               <Link key={p.title} href={p.href} className="group relative aspect-[3/4] overflow-hidden rounded-lg bg-ink-900">
                 <Image src={p.img} alt={p.title} fill sizes="(max-width:1024px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <p.icon className="size-6 text-white" />
-                  <p className="mt-2 flex items-center justify-between text-base font-bold text-white sm:text-lg">
-                    {p.title} <ArrowRight className="size-4 opacity-0 transition-opacity group-hover:opacity-100" />
+                  <p className="text-base font-bold text-white sm:text-lg">
+                    {p.title}
                   </p>
                 </div>
               </Link>
             ))}
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
             {serviceGroups.map((g) => (
-              <Link key={g.id} href={h(`/servicios#${g.id}`)} className="card group flex items-center justify-between p-5">
+              <Link key={g.id} href={h(`/servicios#${g.id}`)} className="card group flex items-center justify-between p-5 hover:border-brand-600">
                 <span className="font-semibold text-ink-900">{tr(g.name, locale)}</span>
-                <ArrowRight className="size-4 text-ink-400 group-hover:text-brand-600" />
+                <span className="font-mono text-ink-400 group-hover:text-brand-600 text-sm">→</span>
               </Link>
             ))}
           </div>
@@ -106,22 +113,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* KILLER TOOLS */}
       <section className="container-x py-16 lg:py-24">
-        <div className="grid gap-4 md:grid-cols-2">
-          <Link href={h("/toolbox")} className="card group flex gap-5 p-6">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-brand-600 text-white"><Calculator className="size-6" /></span>
-            <div>
-              <h2 className="text-lg font-bold text-ink-900">{t.toolbox.title}</h2>
-              <p className="mt-1 text-sm text-ink-500">{t.toolbox.subtitle}</p>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">{t.common.viewAll} <ArrowRight className="size-4" /></span>
-            </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <Link href={h("/toolbox")} className="card group p-6 hover:border-brand-600">
+            <span className="text-xs font-mono font-bold uppercase text-brand-600">Cálculo en Campo</span>
+            <h2 className="text-xl font-bold text-ink-900 mt-1">{t.toolbox.title}</h2>
+            <p className="mt-2 text-sm text-ink-500 leading-relaxed">{t.toolbox.subtitle}</p>
+            <span className="mt-4 inline-flex items-center text-sm font-semibold text-brand-700">
+              Abrir Calculadoras de Instrumentación →
+            </span>
           </Link>
-          <Link href={h("/portal")} className="card group flex gap-5 p-6">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-ink-900 text-white"><Cloud className="size-6" /></span>
-            <div>
-              <h2 className="text-lg font-bold text-ink-900">{t.portal.title}</h2>
-              <p className="mt-1 text-sm text-ink-500">{t.portal.subtitle}</p>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700">{t.common.viewAll} <ArrowRight className="size-4" /></span>
-            </div>
+          <Link href={h("/portal")} className="card group p-6 hover:border-brand-600">
+            <span className="text-xs font-mono font-bold uppercase text-brand-600">Portal de Clientes</span>
+            <h2 className="text-xl font-bold text-ink-900 mt-1">{t.portal.title}</h2>
+            <p className="mt-2 text-sm text-ink-500 leading-relaxed">{t.portal.subtitle}</p>
+            <span className="mt-4 inline-flex items-center text-sm font-semibold text-brand-700">
+              Acceder al Centro de Servicios →
+            </span>
           </Link>
         </div>
       </section>
@@ -130,17 +137,23 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <section className="bg-ink-900 py-16 text-white lg:py-24">
         <div className="container-x grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-xs font-semibold tracking-[0.14em] text-brand-200 uppercase">STPS · CONOCER</p>
+            <div className="mb-4 inline-block rounded bg-white p-2.5">
+              <Image src={images.logoAc} alt="Logotipo IMI Academy" width={180} height={60} className="h-10 w-auto object-contain" />
+            </div>
+            <p className="text-xs font-semibold tracking-wider text-brand-200 uppercase font-mono">STPS · CONOCER EC0217</p>
             <h2 className="mt-2 text-3xl font-bold tracking-tight lg:text-4xl">{t.academy.title}</h2>
-            <p className="mt-3 text-ink-300">{t.academy.subtitle}</p>
-            <ul className="mt-6 space-y-2">
+            <p className="mt-3 text-ink-300 leading-relaxed">{t.academy.subtitle}</p>
+            <ul className="mt-6 space-y-2.5">
               {courses.filter((c) => c.category === "certification").map((c) => (
-                <li key={c.id} className="flex items-start gap-3 border-b border-white/10 pb-2 text-sm">
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-safety-500" />{tr(c.name, locale)}
+                <li key={c.id} className="border-b border-white/10 pb-2 text-sm text-ink-200">
+                  <span className="font-semibold text-white">{tr(c.name, locale)}</span>
+                  <span className="block text-xs text-ink-400 mt-0.5">{c.hours} hrs · Presencial / En línea</span>
                 </li>
               ))}
             </ul>
-            <Link href={h("/academy")} className="btn btn-primary mt-8">{t.common.viewAll} <ArrowRight className="size-4" /></Link>
+            <Link href={h("/academy")} className="btn btn-primary mt-8">
+              Ver Catálogo Completo de Cursos
+            </Link>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
             <Image src={images.course} alt={t.academy.title} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
@@ -153,8 +166,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <SectionHeader eyebrow={t.nav.locations} title={t.locations.title} subtitle={t.locations.subtitle} />
         <div className="mt-8 flex flex-wrap gap-2">
           {locations.map((loc) => (
-            <span key={loc.id} className={`inline-flex min-h-10 items-center gap-1.5 rounded-md border px-3 text-sm ${loc.type === "hq" ? "border-brand-600 bg-brand-50 font-semibold text-brand-700" : "border-ink-200 text-ink-700"}`}>
-              <MapPin className="size-3.5" /> {loc.name}
+            <span key={loc.id} className={`inline-flex min-h-10 items-center rounded-md border px-3 text-sm font-medium ${loc.type === "hq" ? "border-brand-600 bg-brand-50 text-brand-700 font-semibold" : "border-ink-200 text-ink-700"}`}>
+              {loc.name}
             </span>
           ))}
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Award, CalendarDays, Clock, MapPin } from "lucide-react";
 import { calendar, courses, type Course, type CourseCategory } from "@/data/academy";
 import { tr } from "@/lib/i18n";
 import { LeadForm } from "./LeadForm";
@@ -67,8 +66,8 @@ export function AcademyCatalog() {
                     <span className="absolute top-3 left-3 flex size-8 items-center justify-center rounded bg-brand-600 font-mono text-sm font-bold text-white">{c.order}</span>
                   )}
                   {g === "certification" && (
-                    <span className="absolute top-3 right-3 flex items-center gap-1 rounded bg-white/95 px-2 py-1 text-xs font-semibold text-brand-700">
-                      <Award className="size-3.5" /> {t.academy.certification}
+                    <span className="absolute top-3 right-3 rounded bg-white/95 px-2 py-1 text-xs font-bold text-brand-700 shadow-sm">
+                      {t.academy.certification}
                     </span>
                   )}
                 </div>
@@ -76,7 +75,7 @@ export function AcademyCatalog() {
                   <h3 className="font-bold leading-snug text-ink-900">{tr(c.name, locale)}</h3>
                   <p className="mt-2 line-clamp-3 text-sm text-ink-500">{tr(c.summary, locale)}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    <span className="chip"><Clock className="mr-1 size-3" />{c.hours} {t.common.hours}</span>
+                    <span className="chip font-mono font-semibold">{c.hours} {t.common.hours}</span>
                     {c.modality.map((m) => <span key={m} className="chip">{t.modality[m]}</span>)}
                   </div>
                   <div className="mt-auto pt-5">
@@ -92,25 +91,25 @@ export function AcademyCatalog() {
       ))}
 
       <section id="calendario" className="mt-16 scroll-mt-28">
-        <h2 className="flex items-center gap-2 text-xl font-bold text-ink-900">
-          <CalendarDays className="size-5 text-brand-600" /> {t.academy.calendar}
+        <h2 className="text-xl font-bold text-ink-900">
+          {t.academy.calendar}
         </h2>
         <div className="mt-5 overflow-hidden rounded-lg border border-ink-200">
           <ul className="divide-y divide-ink-100">
             {calendar.map((ev) => {
               const c = courses.find((x) => x.id === ev.courseId)!;
               return (
-                <li key={ev.courseId + ev.date} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+                <li key={ev.courseId + ev.date} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between bg-white hover:bg-ink-50">
                   <div className="flex items-center gap-4">
-                    <div className="w-24 shrink-0 rounded bg-brand-50 px-2 py-2 text-center font-mono text-xs font-semibold text-brand-700">
+                    <div className="w-28 shrink-0 rounded bg-brand-50 px-2 py-1.5 text-center font-mono text-xs font-bold text-brand-700 border border-brand-200">
                       {fmt.format(new Date(ev.date + "T12:00:00"))}
                     </div>
                     <div>
-                      <p className="font-semibold text-ink-900">{tr(c.name, locale)}</p>
-                      <p className="flex items-center gap-1 text-sm text-ink-500"><MapPin className="size-3.5" />{ev.city}</p>
+                      <p className="font-bold text-ink-900">{tr(c.name, locale)}</p>
+                      <p className="text-sm text-ink-500 font-medium">Sede: {ev.city}</p>
                     </div>
                   </div>
-                  <button onClick={() => setSelected(c)} className="btn btn-primary sm:w-auto">{t.common.enroll}</button>
+                  <button onClick={() => setSelected(c)} className="btn btn-primary sm:w-auto text-xs">{t.common.enroll}</button>
                 </li>
               );
             })}

@@ -56,9 +56,16 @@ export function Header() {
         </div>
       </div>
 
-      <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
-        <Link href={href("")} className="flex shrink-0 items-center" aria-label="IMI Inicio">
-          <Image src={images.logo} alt={company.legalName} width={180} height={56} priority className="h-10 w-auto lg:h-12" />
+      <div className="container-x flex h-20 items-center justify-between gap-6 lg:h-24">
+        <Link href={href("")} className="flex shrink-0 items-center py-1.5" aria-label="IMI Inicio">
+          <Image
+            src={images.logo}
+            alt={company.legalName}
+            width={320}
+            height={90}
+            priority
+            className="h-12 w-auto sm:h-14 lg:h-18 max-w-[240px] sm:max-w-[300px] object-contain"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 xl:flex" aria-label="Principal">
@@ -68,7 +75,7 @@ export function Header() {
               <Link
                 key={n.p}
                 href={href(n.p)}
-                className={`rounded px-3 py-2 text-sm font-medium transition-colors ${active ? "text-brand-700" : "text-ink-600 hover:text-brand-700"}`}
+                className={`rounded px-3 py-2 text-sm font-semibold transition-colors ${active ? "text-brand-700 font-bold" : "text-ink-700 hover:text-brand-700"}`}
               >
                 {n.l}
               </Link>
@@ -113,7 +120,7 @@ export function Header() {
           >
             <ShoppingCart className="size-5" />
             {count > 0 && (
-              <span className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-safety-500 text-[11px] font-bold text-white">
+              <span className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-brand-700 text-[11px] font-bold text-white">
                 {count}
               </span>
             )}

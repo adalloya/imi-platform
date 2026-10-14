@@ -23,8 +23,8 @@
   --color-ink-900: #14181e;
   --color-ink-950: #0c0f13;
 
-  --color-safety-500: #f26b1d;
-  --color-safety-600: #d95a10;
+  --color-safety-500: #0256b2;
+  --color-safety-600: #01468f;
 
   --font-sans: var(--font-inter), "Noto Sans KR", "Noto Sans JP", "Noto Sans SC",
     "PingFang SC", "Hiragino Sans", "Apple SD Gothic Neo", system-ui, sans-serif;
@@ -45,19 +45,19 @@ body {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
   .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500 disabled:opacity-50;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 disabled:opacity-50 cursor-pointer;
   }
   .btn-primary {
-    @apply bg-brand-600 text-white hover:bg-brand-700;
+    @apply bg-brand-600 text-white hover:bg-brand-700 shadow-sm;
   }
   .btn-safety {
-    @apply bg-safety-500 text-white hover:bg-safety-600;
+    @apply bg-brand-700 text-white hover:bg-brand-800 shadow-sm;
   }
   .btn-outline {
     @apply border border-ink-300 bg-white text-ink-800 hover:border-brand-600 hover:text-brand-700;
   }
   .btn-ghost-dark {
-    @apply border border-white/25 text-white hover:bg-white/10;
+    @apply border border-white/30 text-white hover:bg-white/10;
   }
   .eyebrow {
     @apply text-xs font-semibold tracking-[0.14em] text-brand-600 uppercase;

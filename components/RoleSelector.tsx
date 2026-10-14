@@ -50,7 +50,6 @@ export function RoleSelector() {
     <div className="overflow-hidden rounded-xl border border-ink-200 bg-white shadow-[0_20px_50px_-24px_rgba(6,39,72,0.35)]">
       <div role="tablist" aria-label={t.roles.title} className="grid grid-cols-3 border-b border-ink-200 bg-ink-50">
         {(Object.keys(roles) as RoleKey[]).map((k) => {
-          const I = roles[k].icon;
           const on = k === role;
           return (
             <button
@@ -59,38 +58,45 @@ export function RoleSelector() {
               role="tab"
               aria-selected={on}
               onClick={() => setRole(k)}
-              className={`flex min-h-16 flex-col items-center justify-center gap-1 border-b-2 px-2 py-3 text-xs font-semibold transition-colors sm:flex-row sm:gap-2 sm:text-sm ${on ? "border-brand-600 bg-white text-brand-700" : "border-transparent text-ink-500 hover:text-ink-800"}`}
+              className={`flex min-h-14 items-center justify-center border-b-2 px-3 py-2.5 text-xs font-bold tracking-wide transition-colors sm:text-sm cursor-pointer ${
+                on
+                  ? "border-brand-600 bg-white text-brand-700 shadow-sm"
+                  : "border-transparent text-ink-600 hover:text-ink-900"
+              }`}
             >
-              <I className="size-5" />
-              <span className="text-center leading-tight">{t.roles[k].tab}</span>
+              <span className="text-center">{t.roles[k].tab}</span>
             </button>
           );
         })}
       </div>
-      <div role="tabpanel" className="grid gap-6 p-5 sm:p-8 md:grid-cols-[1fr_1.3fr] md:items-center">
+      <div role="tabpanel" className="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_1.4fr] md:items-center">
         <div>
-          <div className="flex size-12 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-            <Active className="size-6" />
-          </div>
-          <h3 className="mt-4 text-xl font-bold text-ink-900 sm:text-2xl">{active.title}</h3>
-          <p className="mt-2 text-ink-500">{active.desc}</p>
+          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-brand-600">
+            Perfil B2B Seleccionado
+          </span>
+          <h3 className="mt-1.5 text-xl font-extrabold text-ink-900 sm:text-2xl">{active.title}</h3>
+          <p className="mt-2 text-sm text-ink-600 leading-relaxed">{active.desc}</p>
         </div>
-        <ul className="grid gap-2 sm:grid-cols-2">
+        <ul className="grid gap-2.5 sm:grid-cols-2">
           {roles[role].links.map((l) => (
             <li key={l.l}>
               {l.sos ? (
                 <button
                   onClick={() => document.getElementById("sos-plant-down")?.click()}
-                  className="group flex min-h-16 w-full items-center justify-between rounded-lg border border-safety-500/40 bg-safety-500/5 px-4 text-left font-semibold text-safety-600 hover:bg-safety-500/10"
+                  className="flex min-h-14 w-full items-center justify-between rounded-md border border-brand-300 bg-brand-50/70 px-4 text-left font-bold text-brand-800 hover:bg-brand-100 transition-colors cursor-pointer text-sm"
                 >
-                  {l.l} <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                  <span>{l.l}</span>
+                  <span className="font-mono text-xs font-bold text-brand-700 bg-white px-2 py-0.5 rounded border border-brand-200">
+                    24/7
+                  </span>
                 </button>
               ) : (
                 <Link
                   href={l.href}
-                  className="group flex min-h-16 items-center justify-between rounded-lg border border-ink-200 px-4 font-semibold text-ink-800 hover:border-brand-600 hover:text-brand-700"
+                  className="flex min-h-14 items-center justify-between rounded-md border border-ink-200 px-4 text-sm font-semibold text-ink-800 hover:border-brand-600 hover:text-brand-700 hover:bg-ink-50 transition-colors"
                 >
-                  {l.l} <ArrowRight className="size-4 text-ink-400 transition-transform group-hover:translate-x-0.5 group-hover:text-brand-600" />
+                  <span>{l.l}</span>
+                  <span className="text-ink-400 font-mono text-xs">→</span>
                 </Link>
               )}
             </li>

@@ -16,22 +16,19 @@ export function SOSButton() {
       <button
         id="sos-plant-down"
         onClick={() => setOpen(true)}
-        className="fixed right-4 bottom-4 z-40 flex h-14 items-center gap-2 rounded-full bg-safety-500 pr-5 pl-4 font-bold text-white shadow-[0_10px_30px_-8px_rgba(242,107,29,0.7)] ring-4 ring-white transition-transform hover:scale-[1.03] hover:bg-safety-600 active:scale-95"
+        className="fixed right-4 bottom-4 z-40 flex h-13 items-center gap-2.5 rounded-full bg-brand-700 px-5 font-bold text-white shadow-[0_8px_24px_-6px_rgba(2,86,178,0.5)] ring-2 ring-white transition-all hover:bg-brand-800 active:scale-95 cursor-pointer"
         aria-label={t.sos.button}
       >
-        <span className="relative flex size-7 items-center justify-center">
-          <span className="absolute inline-flex size-full animate-ping rounded-full bg-white/40" />
-          <Siren className="relative size-5" />
-        </span>
-        <span className="text-sm">{t.sos.button}</span>
+        <Siren className="size-5" />
+        <span className="text-sm tracking-wide">{t.sos.button}</span>
       </button>
 
-      <Modal open={open} onClose={() => setOpen(false)} title={t.sos.title} tone="danger">
+      <Modal open={open} onClose={() => setOpen(false)} title={t.sos.title}>
         <p className="mb-5 text-sm text-ink-600">{t.sos.desc}</p>
         <LeadForm
           id="sos-form"
           type="SOS"
-          tone="safety"
+          tone="primary"
           submitLabel={t.sos.send}
           fields={[
             { name: "plant", label: t.sos.plant, required: true },
