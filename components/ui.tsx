@@ -62,14 +62,14 @@ export function PageHero({
       <div className="grid-lines absolute inset-0" />
       <div className="container-x relative py-12 sm:py-16 lg:py-20">
         {badgeLogo && (
-          <div className="mb-5 inline-flex items-center gap-3.5 rounded-xl bg-white/95 p-2.5 sm:p-3 shadow-lg backdrop-blur">
+          <div className="mb-6 inline-flex items-center gap-4 sm:gap-5 rounded-2xl bg-white p-3 sm:p-4 shadow-2xl border border-white/20 backdrop-blur">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={badgeLogo} alt={badgeAlt || "Unidad IMI"} className="h-12 w-12 sm:h-14 sm:w-14 object-contain" />
-            <div className="pr-3 text-left">
-              <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-ink-500">
+            <img src={badgeLogo} alt={badgeAlt || "Unidad IMI"} className="size-16 sm:size-20 md:size-24 object-contain shrink-0" />
+            <div className="pr-2 sm:pr-4 text-left">
+              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-brand-700">
                 {unitTag || "Unidad Estratégica IMI"}
               </span>
-              <span className="block text-xs sm:text-sm font-extrabold text-brand-900">
+              <span className="block text-sm sm:text-base md:text-lg font-extrabold text-ink-950">
                 {badgeAlt || "Instrumentación y Metrología Industrial"}
               </span>
             </div>

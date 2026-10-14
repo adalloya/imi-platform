@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Globe, Mail, Menu, Phone, ShoppingCart, X } from "lucide-react";
+import { Globe, Mail, Menu, Phone, ShoppingCart, X, Bot, Sparkles } from "lucide-react";
 import { company, images } from "@/data/company";
 import { localeNames, locales } from "@/lib/i18n";
 import { useCart, useI18n } from "./Providers";
@@ -47,8 +47,16 @@ export function Header() {
               <Mail className="size-3.5" /> {company.email}
             </a>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="font-mono tracking-wide">STPS IMI150311QL2-0013 · CONOCER EC0217</span>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/consultant/imi"
+              className="hover:text-white flex items-center gap-1.5 text-[11px] bg-brand-700/80 hover:bg-brand-600 px-2.5 py-0.5 rounded-full font-bold text-white transition-colors"
+            >
+              <Bot className="size-3 text-brand-200" />
+              <span>Consultor IA</span>
+              <Sparkles className="size-2.5 text-yellow-300" />
+            </Link>
+            <span className="font-mono tracking-wide hidden lg:inline">STPS IMI150311QL2-0013 · CONOCER EC0217</span>
             <Link href={href("/admin")} className="hover:text-white flex items-center gap-1 text-[11px] bg-white/10 hover:bg-white/20 px-2 py-0.5 rounded font-semibold text-white">
               Super Admin
             </Link>
@@ -56,15 +64,15 @@ export function Header() {
         </div>
       </div>
 
-      <div className="container-x flex h-20 items-center justify-between gap-6 lg:h-24">
-        <Link href={href("")} className="flex shrink-0 items-center py-1.5" aria-label="IMI Inicio">
+      <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-2 sm:gap-4 lg:gap-6">
+        <Link href={href("")} className="flex min-w-0 shrink items-center py-1" aria-label="IMI Inicio">
           <Image
             src={images.logo}
             alt={company.legalName}
             width={329}
             height={47}
             priority
-            className="h-10 w-auto sm:h-12 lg:h-14 max-w-[250px] sm:max-w-[320px] lg:max-w-[360px] object-contain"
+            className="h-7 w-auto max-w-[155px] xs:max-w-[190px] sm:h-9 sm:max-w-[240px] md:h-10 md:max-w-[280px] object-contain transition-all"
           />
         </Link>
 
@@ -83,20 +91,30 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-1 sm:gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+          {/* Botón Consultor IA en barra principal */}
+          <Link
+            href="/consultant/imi"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-800 border border-brand-200 px-3 py-1.5 text-xs font-bold transition-colors"
+          >
+            <Bot className="size-3.5 text-brand-700" />
+            <span>Consultor IA</span>
+            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          </Link>
+
           <div className="relative">
             <button
               id="lang-switcher"
               onClick={() => setLang((v) => !v)}
-              className="flex h-11 items-center gap-1.5 rounded-md px-2.5 text-sm font-medium text-ink-700 hover:bg-ink-100"
+              className="flex h-9 sm:h-10 items-center gap-1 sm:gap-1.5 rounded-md px-2 sm:px-2.5 text-xs sm:text-sm font-medium text-ink-700 hover:bg-ink-100"
               aria-label={t.nav.language}
               aria-expanded={lang}
             >
-              <Globe className="size-4" />
+              <Globe className="size-3.5 sm:size-4" />
               <span className="uppercase">{locale}</span>
             </button>
             {lang && (
-              <ul className="absolute right-0 mt-1 w-44 overflow-hidden rounded-md border border-ink-200 bg-white py-1 shadow-lg">
+              <ul className="absolute right-0 mt-1 w-44 overflow-hidden rounded-md border border-ink-200 bg-white py-1 shadow-lg z-50">
                 {locales.map((l) => (
                   <li key={l}>
                     <Link
@@ -115,47 +133,69 @@ export function Header() {
           <button
             id="cart-open"
             onClick={() => setOpen(true)}
-            className="relative flex size-11 items-center justify-center rounded-md text-ink-700 hover:bg-ink-100"
+            className="relative flex size-9 sm:size-10 items-center justify-center rounded-md text-ink-700 hover:bg-ink-100"
             aria-label={t.store.cart}
           >
-            <ShoppingCart className="size-5" />
+            <ShoppingCart className="size-4.5 sm:size-5" />
             {count > 0 && (
-              <span className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-brand-700 text-[11px] font-bold text-white">
+              <span className="absolute top-0.5 right-0.5 flex size-4 sm:size-5 items-center justify-center rounded-full bg-brand-700 text-[10px] sm:text-[11px] font-bold text-white">
                 {count}
               </span>
             )}
           </button>
 
-          <Link href={href("/contacto")} className="btn btn-primary hidden sm:inline-flex">
+          <Link href={href("/contacto")} className="btn btn-primary hidden md:inline-flex h-9 sm:h-10 px-4 text-xs sm:text-sm font-bold">
             {t.nav.quote}
           </Link>
 
           <button
             id="menu-toggle"
             onClick={() => setMenu((v) => !v)}
-            className="flex size-11 items-center justify-center rounded-md text-ink-800 hover:bg-ink-100 xl:hidden"
+            className="flex size-9 sm:size-10 items-center justify-center rounded-md text-ink-800 hover:bg-ink-100 xl:hidden"
             aria-label={menu ? t.nav.close : t.nav.menu}
             aria-expanded={menu}
           >
-            {menu ? <X className="size-6" /> : <Menu className="size-6" />}
+            {menu ? <X className="size-5 sm:size-6" /> : <Menu className="size-5 sm:size-6" />}
           </button>
         </div>
       </div>
 
       {menu && (
-        <nav className="border-t border-ink-200 bg-white xl:hidden" aria-label="Móvil">
+        <nav className="border-t border-ink-200 bg-white xl:hidden shadow-lg" aria-label="Móvil">
+          {/* Banner móvil destacado para el Chatbot IA */}
+          <div className="p-3 bg-gradient-to-r from-brand-900 to-brand-800 text-white">
+            <Link
+              href="/consultant/imi"
+              className="flex items-center justify-between p-2.5 rounded-xl bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="flex size-9 items-center justify-center rounded-lg bg-white/20 text-white">
+                  <Bot className="size-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-extrabold text-sm text-white">Consultor IA IMI</span>
+                    <span className="text-[9px] bg-emerald-500 text-white font-mono px-1.5 py-0.2 rounded-full font-bold">EN LÍNEA</span>
+                  </div>
+                  <span className="text-xs text-brand-200 block">Asesor Técnico & Comercial 24/7</span>
+                </div>
+              </div>
+              <span className="text-xs font-bold text-white bg-white/20 px-2.5 py-1 rounded-md">Abrir →</span>
+            </Link>
+          </div>
+
           <ul className="container-x divide-y divide-ink-100 py-2">
             {[...nav, { p: "/contacto", l: t.nav.contact }].map((n) => (
               <li key={n.p}>
-                <Link href={href(n.p)} className="flex min-h-14 items-center text-base font-medium text-ink-800">
+                <Link href={href(n.p)} className="flex min-h-12 items-center text-sm font-medium text-ink-800 hover:text-brand-700">
                   {n.l}
                 </Link>
               </li>
             ))}
           </ul>
-          <div className="container-x grid grid-cols-2 gap-2 pb-4">
-            <a href={`tel:${company.mobileRaw}`} className="btn btn-outline"><Phone className="size-4" />{t.common.call}</a>
-            <a href={`mailto:${company.email}`} className="btn btn-outline"><Mail className="size-4" />{t.common.email}</a>
+          <div className="container-x grid grid-cols-2 gap-2 pb-4 pt-2">
+            <a href={`tel:${company.mobileRaw}`} className="btn btn-outline text-xs"><Phone className="size-3.5" />{t.common.call}</a>
+            <a href={`mailto:${company.email}`} className="btn btn-outline text-xs"><Mail className="size-3.5" />{t.common.email}</a>
           </div>
         </nav>
       )}

@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Providers } from "@/components/Providers";
 import { SOSButton } from "@/components/SOSButton";
+import { ChatbotWidget } from "@/components/ChatbotWidget";
 import { images } from "@/data/company";
 import { getDictionary, htmlLang, isLocale, locales } from "@/lib/i18n";
 
@@ -75,6 +76,7 @@ export default async function LocaleLayout({
           <main className="flex-1">{children}</main>
           <Footer locale={locale} t={t} />
           <SOSButton />
+          <ChatbotWidget />
           <CartDrawer />
         </Providers>
       </body>

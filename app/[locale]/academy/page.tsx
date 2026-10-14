@@ -22,20 +22,20 @@ export default async function Page({ params }: P) {
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/90 to-brand-900/60" />
         <div className="grid-lines absolute inset-0" />
         <div className="container-x relative py-12 sm:py-16 lg:py-20">
-          <div className="mb-5 inline-flex items-center gap-4 rounded-2xl bg-white p-3 shadow-xl border border-white/20">
+          <div className="mb-6 inline-flex items-center gap-4 sm:gap-5 rounded-2xl bg-white p-3.5 sm:p-4 shadow-2xl border border-white/20">
             <Image
               src={images.logoAcademy}
               alt="Logotipo Oficial IMI Academy México 2010"
-              width={72}
-              height={72}
+              width={96}
+              height={96}
               priority
-              className="size-14 sm:size-16 object-contain"
+              className="size-16 sm:size-20 md:size-24 object-contain"
             />
             <div className="pr-3 text-left">
-              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-ink-500">
+              <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-brand-700">
                 División de Educación Técnica
               </span>
-              <span className="block text-sm sm:text-base font-extrabold text-brand-900">
+              <span className="block text-base sm:text-lg md:text-xl font-extrabold text-ink-950">
                 IMI Academy · Fundada en 2010
               </span>
             </div>

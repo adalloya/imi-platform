@@ -16,17 +16,11 @@ export function SOSButton() {
       <button
         id="sos-plant-down"
         onClick={() => setOpen(true)}
-        className="fixed right-4 bottom-4 z-40 flex h-13 items-center gap-2.5 rounded-full bg-brand-700 px-5 font-bold text-white shadow-[0_10px_30px_-6px_rgba(2,86,178,0.55)] ring-2 ring-white transition-all hover:bg-brand-800 active:scale-95 cursor-pointer"
+        className="fixed right-4 bottom-[72px] sm:bottom-20 z-40 flex h-11 sm:h-12 items-center gap-2 rounded-full bg-ink-900/95 backdrop-blur-md px-3.5 sm:px-4 font-semibold text-white shadow-lg ring-1 ring-white/20 transition-all hover:bg-ink-800 active:scale-95 cursor-pointer text-xs sm:text-sm"
         aria-label={t.sos.button}
       >
-        <span className="relative flex items-center justify-center">
-          <Headset className="size-5" />
-          <span className="absolute -top-1 -right-1 flex size-2.5">
-            <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
-          </span>
-        </span>
-        <span className="text-sm tracking-wide font-semibold">{t.sos.button}</span>
+        <Headset className="size-4 sm:size-4.5 text-brand-300" />
+        <span className="tracking-wide">{t.sos.button}</span>
       </button>
 
       <Modal open={open} onClose={() => setOpen(false)} title={t.sos.title}>
