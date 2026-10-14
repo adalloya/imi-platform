@@ -61,10 +61,10 @@ export function Header() {
           <Image
             src={images.logo}
             alt={company.legalName}
-            width={320}
-            height={90}
+            width={329}
+            height={47}
             priority
-            className="h-12 w-auto sm:h-14 lg:h-18 max-w-[240px] sm:max-w-[300px] object-contain"
+            className="h-10 w-auto sm:h-12 lg:h-14 max-w-[250px] sm:max-w-[320px] lg:max-w-[360px] object-contain"
           />
         </Link>
 

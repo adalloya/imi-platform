@@ -22,7 +22,8 @@ export const company = {
 const WP = "https://www.imindustrial.mx/wp-content/uploads";
 
 export const images = {
-  logo: `${WP}/2018/06/imindustrial-e1528055817985.png`,
+  logo: `${WP}/2021/02/Logotipo-IMI-horizontal.jpeg`,
+  logoLocal: "/images/logo-header.jpg",
   favicon: `${WP}/2018/07/favicon.png`,
   hero1: `${WP}/1-marco-homepage.jpg`,
   hero2: `${WP}/2-marco-homepage.jpg`,
