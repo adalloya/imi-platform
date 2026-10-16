@@ -28,67 +28,41 @@ export function PowerGenerationSection({ locale }: { locale: Locale }) {
           </p>
         </div>
 
-        {/* Big Stat Banner */}
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <div className="rounded-2xl border border-brand-500/30 bg-gradient-to-br from-brand-900/60 to-ink-900/80 p-6 sm:p-8 flex flex-col justify-between backdrop-blur-md">
-            <div>
-              <span className="text-xs font-mono font-bold tracking-wider text-brand-300 uppercase">
-                Cobertura Nacional Comprobada
-              </span>
-              <div className="mt-3 flex items-baseline gap-2">
-                <span className="text-5xl sm:text-6xl font-black text-white font-mono tracking-tight">
-                  {powerGenerationData.percentage}
-                </span>
-                <span className="text-xl sm:text-2xl font-bold text-brand-400 font-mono">
-                  ({powerGenerationData.statCcc} CCC)
-                </span>
-              </div>
-              <p className="mt-3 text-sm text-ink-300">
-                De las centrales de Ciclo Combinado privadas activas en la República Mexicana confían su instrumentación crítica y válvulas de seguridad a IMI.
-              </p>
+        {/* Turbines Supported */}
+        <div className="mt-10 rounded-2xl border border-ink-800 bg-ink-900/70 p-6 sm:p-8 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-2 text-brand-400 text-xs font-mono font-bold uppercase tracking-wider">
+              <Cpu className="size-4" />
+              <span>Turbomáquinas & Equipos Mayores Atendidos</span>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-brand-300 font-mono">
-              <ShieldCheck className="size-4 text-emerald-400 shrink-0" />
-              <span>Acreditación EMA FL-55 · NOM-093-SCFI</span>
+            <h3 className="mt-2 text-xl sm:text-2xl font-extrabold text-white">
+              Solvencia Técnica en Turbinas de Gas, Vapor y Motores Wärtsilä
+            </h3>
+            <p className="mt-2 text-sm text-ink-400">
+              Experiencia en campo y taller con las plataformas tecnológicas más exigentes del sector energético:
+            </p>
+
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {powerGenerationData.turbinesSupported.map((t, idx) => (
+                <div key={idx} className="rounded-xl border border-white/10 bg-white/5 p-3.5 flex items-start gap-3">
+                  <CheckCircle2 className="size-4 text-brand-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-bold text-white font-mono">{t.model}</p>
+                    <p className="text-xs text-ink-300 mt-0.5">{t.specs}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Turbines Supported */}
-          <div className="rounded-2xl border border-ink-800 bg-ink-900/70 p-6 sm:p-8 lg:col-span-2 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-brand-400 text-xs font-mono font-bold uppercase tracking-wider">
-                <Cpu className="size-4" />
-                <span>Turbomáquinas & Equipos Mayores Atendidos</span>
-              </div>
-              <h3 className="mt-2 text-xl sm:text-2xl font-extrabold text-white">
-                Solvencia Técnica en Turbinas de Gas, Vapor y Motores Wärtsilä
-              </h3>
-              <p className="mt-2 text-sm text-ink-400">
-                Experiencia en campo y taller con las plataformas tecnológicas más exigentes del sector energético:
-              </p>
-
-              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                {powerGenerationData.turbinesSupported.map((t, idx) => (
-                  <div key={idx} className="rounded-xl border border-white/10 bg-white/5 p-3.5 flex items-start gap-3">
-                    <CheckCircle2 className="size-4 text-brand-400 shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-sm font-bold text-white font-mono">{t.model}</p>
-                      <p className="text-xs text-ink-300 mt-0.5">{t.specs}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs text-ink-400 font-mono">
-                Soporte en paros programados, calibración fiscal y pruebas en línea EVT Accutest
-              </span>
-              <Link href={h("/contacto")} className="btn btn-primary text-xs font-bold py-2 px-4 shrink-0 flex items-center gap-2">
-                <span>Solicitar Cuadrilla para Paro</span>
-                <ArrowRight className="size-3.5" />
-              </Link>
-            </div>
+          <div className="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <span className="text-xs text-ink-400 font-mono">
+              Soporte en paros programados, calibración fiscal y pruebas en línea EVT Accutest
+            </span>
+            <Link href={h("/contacto")} className="btn btn-primary text-xs font-bold py-2 px-4 shrink-0 flex items-center gap-2">
+              <span>Solicitar Cuadrilla para Paro</span>
+              <ArrowRight className="size-3.5" />
+            </Link>
           </div>
         </div>
 
