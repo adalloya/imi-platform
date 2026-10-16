@@ -9,64 +9,110 @@ interface MarkdownMessageProps {
   isUser?: boolean;
 }
 
+type Block =
+  | { type: "p"; lines: string[] }
+  | { type: "ol"; items: string[] }
+  | { type: "ul"; items: string[] };
+
 /**
- * Renderizador de mensajes que transforma sintaxis Markdown a componentes React estilizados:
- * - Convierte **negritas** en <strong>
- * - Convierte *cursivas* en <em>
- * - Convierte enlaces [texto](url) en botones de acción o hipervínculos limpios (¡cero paréntesis o corchetes expuestos!)
- * - Convierte listas con guiones o viñetas (- , * , 1.) en listas estilizadas
- * - Maneja saltos de línea naturales
+ * Renderizador de mensajes que transforma sintaxis Markdown a componentes React estilizados
+ * sin fugas de caracteres como asteriscos, corchetes, paréntesis escapados o viñetas rotas.
  */
 export function MarkdownMessage({ content, className = "", isUser = false }: MarkdownMessageProps) {
   if (!content) return null;
 
-  // Si es mensaje del usuario, no requiere parseo de links externos complejos
   if (isUser) {
     return <p className={`whitespace-pre-wrap leading-relaxed ${className}`}>{content}</p>;
   }
 
-  // Dividir por bloques de párrafos (doble salto de línea)
-  const blocks = content.split(/\n{2,}/);
+  // Sanitizar caracteres escapados como \(NOM-093\) o asteriscos extra
+  const cleanContent = content
+    .replace(/\\([()[\]])/g, "$1") // des-escapar \( \) \[ \]
+    .replace(/\r\n/g, "\n");
+
+  const lines = cleanContent.split("\n");
+  const blocks: Block[] = [];
+  let currentBlock: Block | null = null;
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (!line) {
+      if (currentBlock) {
+        blocks.push(currentBlock);
+        currentBlock = null;
+      }
+      continue;
+    }
+
+    const olMatch = line.match(/^(\d+)\.\s+(.*)$/);
+    const ulMatch = line.match(/^([*•\-])\s+(.*)$/);
+
+    if (olMatch) {
+      const text = olMatch[2];
+      if (currentBlock && currentBlock.type === "ol") {
+        currentBlock.items.push(text);
+      } else {
+        if (currentBlock) blocks.push(currentBlock);
+        currentBlock = { type: "ol", items: [text] };
+      }
+    } else if (ulMatch) {
+      const text = ulMatch[2];
+      if (currentBlock && currentBlock.type === "ul") {
+        currentBlock.items.push(text);
+      } else {
+        if (currentBlock) blocks.push(currentBlock);
+        currentBlock = { type: "ul", items: [text] };
+      }
+    } else {
+      if (currentBlock && currentBlock.type === "p") {
+        currentBlock.lines.push(line);
+      } else {
+        if (currentBlock) blocks.push(currentBlock);
+        currentBlock = { type: "p", lines: [line] };
+      }
+    }
+  }
+
+  if (currentBlock) {
+    blocks.push(currentBlock);
+  }
 
   return (
-    <div className={`space-y-3 leading-relaxed ${className}`}>
+    <div className={`space-y-3 leading-relaxed text-inherit ${className}`}>
       {blocks.map((block, bIdx) => {
-        const trimmedBlock = block.trim();
-        if (!trimmedBlock) return null;
-
-        const lines = trimmedBlock.split("\n");
-
-        // Detectar si el bloque es una lista con viñetas (- , * , • ) o numerada (1. )
-        const isList = lines.every(
-          (l) => /^\s*([*•-]|(\d+\.))\s+/.test(l) || l.trim() === ""
-        );
-
-        if (isList) {
+        if (block.type === "ol") {
           return (
-            <ul key={bIdx} className="space-y-2 my-2 pl-1">
-              {lines.map((line, lIdx) => {
-                const match = line.match(/^\s*([*•-]|(\d+\.))\s+(.*)$/);
-                if (!match) return null;
-                const itemContent = match[3];
+            <ol key={bIdx} className="space-y-1.5 my-2.5 pl-5 list-decimal text-inherit">
+              {block.items.map((item, iIdx) => (
+                <li key={iIdx} className="leading-relaxed pl-1">
+                  {parseInlineText(item)}
+                </li>
+              ))}
+            </ol>
+          );
+        }
 
-                return (
-                  <li key={lIdx} className="flex items-start gap-2 text-inherit">
-                    <span className="text-brand-600 font-bold shrink-0 mt-0.5">•</span>
-                    <span className="flex-1">{parseInlineText(itemContent)}</span>
-                  </li>
-                );
-              })}
+        if (block.type === "ul") {
+          return (
+            <ul key={bIdx} className="space-y-1.5 my-2.5 pl-1 text-inherit">
+              {block.items.map((item, iIdx) => (
+                <li key={iIdx} className="flex items-start gap-2 leading-relaxed">
+                  <span className="text-brand-600 font-bold shrink-0 mt-0.5">•</span>
+                  <span className="flex-1">{parseInlineText(item)}</span>
+                </li>
+              ))}
             </ul>
           );
         }
 
-        // Párrafo normal con posibles saltos de línea internos
+        // Párrafo normal
         return (
           <p key={bIdx} className="text-inherit">
-            {lines.map((line, lIdx) => (
+            {block.lines.map((l, lIdx) => (
               <React.Fragment key={lIdx}>
-                {parseInlineText(line)}
-                {lIdx < lines.length - 1 && <br />}
+                {parseInlineText(l)}
+                {lIdx < block.lines.length - 1 && <br />}
               </React.Fragment>
             ))}
           </p>
@@ -77,103 +123,86 @@ export function MarkdownMessage({ content, className = "", isUser = false }: Mar
 }
 
 /**
- * Parsea formato en línea: enlaces [texto](url), negritas **texto**, y cursivas *texto*
+ * Tokeniza formato en línea: enlaces [texto](url), negritas **texto**, cursivas *texto* y código `code`
  */
 function parseInlineText(text: string): React.ReactNode {
-  // Regex para encontrar enlaces [texto](url)
-  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-  const parts: React.ReactNode[] = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
+  // Regex para capturar [link](url), **bold**, *italic*, `code`
+  const tokenRegex = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|`[^`]+`)/g;
+  const parts = text.split(tokenRegex);
 
-  while ((match = linkRegex.exec(text)) !== null) {
-    const start = match.index;
-    const end = linkRegex.lastIndex;
+  return parts.map((part, idx) => {
+    if (!part) return null;
 
-    // Texto antes del enlace
-    if (start > lastIndex) {
-      parts.push(parseFormatting(text.slice(lastIndex, start)));
-    }
+    // Enlace Markdown [texto](url)
+    if (part.startsWith("[") && part.includes("](") && part.endsWith(")")) {
+      const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (match) {
+        const linkText = match[1].replace(/^[👉\s]+/, "").trim();
+        const linkUrl = match[2].trim();
+        const isWhatsApp = linkUrl.includes("wa.me") || linkUrl.includes("whatsapp");
 
-    const linkText = match[1];
-    const linkUrl = match[2];
-    const isWhatsApp = linkUrl.includes("wa.me") || linkUrl.includes("whatsapp");
+        if (isWhatsApp) {
+          return (
+            <span key={idx} className="block my-2.5">
+              <a
+                href={linkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-emerald-700 transition-all hover:scale-[1.02] active:scale-95 text-center"
+              >
+                <MessageSquare className="size-4 shrink-0" />
+                <span>{linkText}</span>
+                <ExternalLink className="size-3.5 opacity-80" />
+              </a>
+            </span>
+          );
+        }
 
-    if (isWhatsApp) {
-      // Si es un enlace a WhatsApp, renderizarlo como botón interactivo destacado
-      parts.push(
-        <span key={`wa-${start}`} className="block my-2">
+        return (
           <a
+            key={idx}
             href={linkUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-emerald-700 transition-all hover:scale-[1.02] active:scale-95 text-center"
+            className="inline-flex items-center gap-1 font-bold text-brand-700 hover:text-brand-900 underline decoration-brand-400 hover:decoration-brand-600 transition-colors"
           >
-            <MessageSquare className="size-4 shrink-0" />
-            <span>{linkText.replace(/^[👉\s]+/, "").trim()}</span>
-            <ExternalLink className="size-3.5 opacity-80" />
+            <span>{linkText}</span>
+            <ExternalLink className="size-3 opacity-70" />
           </a>
-        </span>
-      );
-    } else {
-      // Enlace web regular
-      parts.push(
-        <a
-          key={`link-${start}`}
-          href={linkUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 font-bold text-brand-700 hover:text-brand-900 underline decoration-brand-400 hover:decoration-brand-600 transition-colors"
-        >
-          <span>{linkText}</span>
-          <ExternalLink className="size-3 opacity-70" />
-        </a>
-      );
+        );
+      }
     }
 
-    lastIndex = end;
-  }
-
-  // Texto restante
-  if (lastIndex < text.length) {
-    parts.push(parseFormatting(text.slice(lastIndex)));
-  }
-
-  return parts.length > 0 ? parts : text;
-}
-
-/**
- * Parsea negritas **texto** y cursivas *texto*
- */
-function parseFormatting(text: string): React.ReactNode {
-  // Separar por tokens de **negrita**
-  const boldParts = text.split(/(\*\*[^*]+\*\*)/g);
-
-  return boldParts.map((part, idx) => {
-    if (part.startsWith("**") && part.endsWith("**") && part.length > 4) {
-      const boldText = part.slice(2, -2);
+    // Negrita **texto**
+    if (part.startsWith("**") && part.endsWith("**") && part.length >= 4) {
+      const boldInner = part.slice(2, -2);
       return (
         <strong key={idx} className="font-extrabold text-ink-950">
-          {boldText}
+          {boldInner}
         </strong>
       );
     }
 
-    // Cursivas *texto*
-    const italicParts = part.split(/(\*[^*]+\*)/g);
-    if (italicParts.length > 1) {
-      return italicParts.map((iPart, iIdx) => {
-        if (iPart.startsWith("*") && iPart.endsWith("*") && iPart.length > 2) {
-          return (
-            <em key={`${idx}-${iIdx}`} className="italic font-medium">
-              {iPart.slice(1, -1)}
-            </em>
-          );
-        }
-        return iPart;
-      });
+    // Cursiva *texto*
+    if (part.startsWith("*") && part.endsWith("*") && part.length >= 2) {
+      const italicInner = part.slice(1, -1);
+      return (
+        <em key={idx} className="italic font-medium">
+          {italicInner}
+        </em>
+      );
     }
 
-    return part;
+    // Código `code`
+    if (part.startsWith("`") && part.endsWith("`") && part.length >= 2) {
+      return (
+        <code key={idx} className="rounded bg-brand-50 px-1 py-0.5 font-mono text-xs text-brand-800">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+
+    // Texto plano
+    return <span key={idx}>{part}</span>;
   });
 }
