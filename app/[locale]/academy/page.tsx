@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Award, BookOpen, CheckCircle2, Cpu, GraduationCap, ShieldCheck, Users } from "lucide-react";
 import { AcademyCatalog } from "@/components/AcademyCatalog";
 import { images } from "@/data/company";
 import { getDictionary, type Locale } from "@/lib/i18n";
@@ -47,6 +48,85 @@ export default async function Page({ params }: P) {
           <p className="mt-4 max-w-2xl text-base text-ink-300 sm:text-lg leading-relaxed">
             {t.academy.subtitle}
           </p>
+
+          {/* Badges oficiales del MediaKit */}
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl border-t border-white/10 pt-6">
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
+              <span className="text-xl sm:text-2xl font-black font-mono text-brand-400">16 Años</span>
+              <p className="text-xs text-ink-300 mt-0.5">Trayectoria (2010 - 2026)</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
+              <span className="text-xl sm:text-2xl font-black font-mono text-white">21 Cursos</span>
+              <p className="text-xs text-ink-300 mt-0.5">Registro Oficial STPS</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
+              <span className="text-xl sm:text-2xl font-black font-mono text-emerald-400">Formato DC-3</span>
+              <p className="text-xs text-ink-300 mt-0.5">Validez Curricular</p>
+            </div>
+            <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm">
+              <span className="text-xl sm:text-2xl font-black font-mono text-yellow-400">EC0217</span>
+              <p className="text-xs text-ink-300 mt-0.5">Estándar CONOCER · SEP</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección Institucional: Equipo de Instructores y Automatización MediaKit */}
+      <section className="bg-ink-50 py-12 lg:py-16 border-b border-ink-200">
+        <div className="container-x">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
+            <div className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden shadow-xl border border-ink-200 bg-ink-950">
+              <Image
+                src={images.academyInstructors}
+                alt="Cuerpo de Instructores e Ingenieros de IMI Academy"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent" />
+              <span className="absolute bottom-4 left-4 z-10 rounded-full bg-brand-700/90 backdrop-blur-md px-3.5 py-1 text-xs font-mono font-bold text-white shadow">
+                Cuerpo Docente & Especialistas Certificados
+              </span>
+            </div>
+
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-0.5 text-xs font-mono font-bold uppercase tracking-wider text-brand-800">
+                <Users className="size-3.5 text-brand-600" />
+                Formadores con Experiencia Real en Planta
+              </div>
+              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-ink-950">
+                Aprenda con Ingenieros de Campo Activos en la Industria
+              </h2>
+              <p className="mt-3 text-sm sm:text-base text-ink-600 leading-relaxed">
+                Nuestros instructores son ingenieros en activo con amplia trayectoria en centrales eléctricas, refinerías y complejos petroquímicos. No enseñamos únicamente teoría: transmitimos prácticas reales de calibración, diagnóstico y comisionamiento.
+              </p>
+
+              {/* Tecnologías de Control en Cursos */}
+              <div className="mt-6 space-y-3">
+                <p className="text-xs font-mono font-bold uppercase tracking-wider text-ink-500">
+                  Plataformas y Tecnologías Integradas en el Temario:
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-ink-700 font-medium">
+                  <div className="flex items-center gap-2 rounded-lg bg-white p-2.5 border border-ink-200 shadow-2xs">
+                    <CheckCircle2 className="size-4 text-brand-600 shrink-0" />
+                    <span>Rockwell Automation (Studio 5000 / PowerFlex)</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg bg-white p-2.5 border border-ink-200 shadow-2xs">
+                    <CheckCircle2 className="size-4 text-brand-600 shrink-0" />
+                    <span>SIEMENS (SIMATIC S7-300 / S7-1200 / S7-1500)</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg bg-white p-2.5 border border-ink-200 shadow-2xs">
+                    <CheckCircle2 className="size-4 text-brand-600 shrink-0" />
+                    <span>Preparación para Examen ISA CCST Nivel 1</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg bg-white p-2.5 border border-ink-200 shadow-2xs">
+                    <CheckCircle2 className="size-4 text-brand-600 shrink-0" />
+                    <span>Válvulas de Seguridad NOM-093 (40 hrs en Banco)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

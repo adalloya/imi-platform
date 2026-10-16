@@ -3,6 +3,9 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck, Award, Clock, ArrowDown } from "lucide-react";
 import { AccreditationGrid, CtaBand } from "@/components/sections";
 import { BusinessUnitsSection } from "@/components/BusinessUnitsSection";
+import { PowerGenerationSection } from "@/components/PowerGenerationSection";
+import { RealOperationsGallery } from "@/components/RealOperationsGallery";
+import { IndustriesSection } from "@/components/IndustriesSection";
 import { RoleSelector } from "@/components/RoleSelector";
 import { SectionHeader } from "@/components/ui";
 import { company, images } from "@/data/company";
@@ -96,7 +99,16 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* 1. SECCIÓN ESTELAR: LAS 3 UNIDADES DE NEGOCIO OFICIALES */}
       <BusinessUnitsSection locale={locale} />
 
-      {/* 2. SOLUCIONES POR PERFIL / ESPECIALIDAD TÉCNICA */}
+      {/* 2. SOLVENCIA EN GENERACIÓN ELÉCTRICA & GRANDES COMPLEJOS (MEDIAKIT) */}
+      <PowerGenerationSection locale={locale} />
+
+      {/* 3. GALERÍA DE OPERACIONES REALES & LABORATORIOS (MEDIAKIT) */}
+      <RealOperationsGallery locale={locale} />
+
+      {/* 4. 16 INDUSTRIAS ESTRATÉGICAS ATENDIDAS (MEDIAKIT) */}
+      <IndustriesSection locale={locale} />
+
+      {/* 5. SOLUCIONES POR PERFIL / ESPECIALIDAD TÉCNICA */}
       <section className="bg-white py-16 lg:py-24">
         <div className="container-x">
           <SectionHeader

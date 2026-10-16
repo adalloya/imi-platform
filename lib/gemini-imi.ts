@@ -19,14 +19,19 @@ export const IMI_KNOWLEDGE_BASE = {
   },
   accreditations: [
     {
-      code: "NMX-EC-17025-IMNC-2018",
+      code: "NMX-EC-17025-IMNC-2018 (Acreditación EMA FL-55)",
       authority: "ISO/IEC 17025 / EMA",
-      desc: "Laboratorio de calibración conforme a norma con cálculo de incertidumbre expandida y patrones trazables a CENAM / NIST.",
+      desc: "Laboratorio de calibración acreditado en Flujo No. FL-55 con cálculo de incertidumbre expandida y patrones trazables a CENAM / NIST.",
     },
     {
       code: "NOM-093-SCFI-1994 / 2020",
       authority: "SCFI",
       desc: "Calibración, inspección, prueba de disparo (pop test), lapeado y mantenimiento de Válvulas de Seguridad y Alivio (PSV).",
+    },
+    {
+      code: "NBIC 2023 / ASME VR",
+      authority: "The National Board",
+      desc: "Certificación internacional para inspección y reparación de válvulas de alivio de presión.",
     },
     {
       code: "IMI150311QL2-0013",
@@ -39,6 +44,16 @@ export const IMI_KNOWLEDGE_BASE = {
       desc: "Estándar de competencia para impartición de cursos de formación del capital humano.",
     },
   ],
+  powerGeneration: {
+    stat: "19 de 46 Centrales de Ciclo Combinado privadas en México atendidas (40% del mercado)",
+    clients: "Iberdrola México, ENGIE, Valia Energía, Quantum Energía, Grupo México, Central Eléctrica Pesquería (Techgen), Abent 3T, NAES, Saavi Energía, KST KEPCO",
+    turbines: "GE (7F.04, 7FA, 7EA, LM6000), MHPS (M501J), Alstom (GT24), Siemens (W501), Wärtsilä (18V50SG)",
+  },
+  specialTechnologies: {
+    evtAccutest: "Prueba electrónica en línea de válvulas de seguridad sin parar la planta (ASME Secc. I & VIII, API RP 576)",
+    bentlyNevada: "Monitoreo y diagnóstico de vibraciones Bently Nevada 3500 (proximidad, velocidad, aceleración y tacómetros)",
+    basesOperativas: "Altamira (Sede Central), Hermosillo (Sonora) y Ciudad del Carmen (Campeche) + Unidades móviles 24/7",
+  },
   products: [
     {
       name: "Manómetros Industriales Marca IMI",

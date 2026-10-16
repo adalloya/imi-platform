@@ -52,6 +52,24 @@ export const images = {
   unitMaintenance: "/images/unit-maintenance.jpg",
   logoInstruments: "/images/logo-instruments.png",
   unitInstruments: "/images/unit-instruments.jpg",
+  // Activos oficiales extraídos del MediaKit IMI
+  flowCalibrationFl55: "/images/mediakit/flow-calibration-fl55.jpg",
+  pressureMetrologyLab: "/images/mediakit/pressure-metrology-lab.jpg",
+  temperatureMetrologyLab: "/images/mediakit/temperature-metrology-lab.jpg",
+  psvValvesBench: "/images/mediakit/psv-valves-bench-nom093.jpg",
+  plantFieldService: "/images/mediakit/plant-field-service.jpg",
+  plantPipingService: "/images/mediakit/plant-piping-service.jpg",
+  teamOfficial: "/images/mediakit/team-official-imi.jpg",
+  academyInstructors: "/images/mediakit/academy-instructors.jpg",
+  facilitiesMobileUnits: "/images/mediakit/facilities-mobile-units.jpg",
+  nationalBoardVr: "/images/mediakit/national-board-vr.jpg",
+  accutestElectronic: "/images/mediakit/accutest-electronic-testing.jpg",
+  accutestField: "/images/mediakit/accutest-field-engineer.jpg",
+  valveTagPlate: "/images/mediakit/valve-tag-plate.jpg",
+  marketMapCcc: "/images/mediakit/market-map-ccc.jpg",
+  powerGenClients: "/images/mediakit/power-generation-clients.jpg",
+  cuatroUnidades: "/images/mediakit/cuatro-unidades-imi.jpg",
+  credenciales16Anos: "/images/mediakit/credenciales-16-anos.jpg",
   // Placeholders corporativos externos (Unsplash, alta calidad industrial)
   plant:
     "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600&q=80",
@@ -365,6 +383,18 @@ export const accreditations: Accreditation[] = [
     },
   },
   {
+    id: "ema_fl55",
+    code: "FL-55",
+    authority: "EMA (Entidad Mexicana de Acreditación)",
+    label: {
+      es: "Laboratorio de Calibración Acreditado en Flujo No. FL-55 conforme a ISO/IEC 17025",
+      en: "Flow Calibration Laboratory Accreditation No. FL-55 compliant with ISO/IEC 17025",
+      ko: "ISO/IEC 17025 준거 유량 교정 공인 시험소 No. FL-55 (EMA)",
+      ja: "ISO/IEC 17025 準拠 流量校正認定試験所 No. FL-55（EMA）",
+      zh: "符合 ISO/IEC 17025 官方认可流量校准实验室 No. FL-55 (EMA)",
+    },
+  },
+  {
     id: "nom093",
     code: "NOM-093-SCFI-1994 / 2020",
     authority: "SCFI",
@@ -376,4 +406,95 @@ export const accreditations: Accreditation[] = [
       zh: "依据 NOM-093-SCFI-1994 及其更新版 NOM-093-SCFI-2020 进行安全阀 (PSV) 校准",
     },
   },
+  {
+    id: "national_board",
+    code: "NBIC 2023 / VR",
+    authority: "The National Board",
+    label: {
+      es: "The National Board of Boiler & Pressure Vessel Inspectors: Certificación VR para Inspección y Reparación de Válvulas de Seguridad",
+      en: "The National Board of Boiler & Pressure Vessel Inspectors: VR Certification for Pressure Relief Valve Repair",
+      ko: "미국 보일러 압력용기 검사관 협회(National Board): VR 안전밸브 수리 및 검사 인증",
+      ja: "全米ボイラー圧力容器検査官協会（National Board）：安全弁修理・検査 VR 認定",
+      zh: "美国锅炉压力容器检验师协会 (National Board)：安全阀维修与检验 VR 国际认证",
+    },
+  },
 ];
+
+/**
+ * Datos y solvencia técnica en Generación Eléctrica (Power Generation) extraídos del MediaKit oficial
+ */
+export const powerGenerationData = {
+  statCcc: "19 / 46",
+  percentage: "40%",
+  headline: {
+    es: "Atendemos el 40% de las Centrales de Ciclo Combinado privadas en México",
+    en: "We serve 40% of private Combined-Cycle Power Plants in Mexico",
+    ko: "멕시코 민간 복합화력발전소(CCC)의 40% (19/46) 전담 기술 지원",
+    ja: "メキシコ国内の民間複合火力発電所（CCC）の40%（19/46）に技術提供",
+    zh: "为墨西哥 40% 的私营联合循环发电厂 (19/46) 提供专业技术支持",
+  },
+  clients: [
+    { name: "Iberdrola México", scope: "Centrales El Carmen, Ramos, Bajío, Monterrey" },
+    { name: "ENGIE", scope: "Centrales Altamira y Monterrey" },
+    { name: "Valia Energía", scope: "Central Saltillo, EVM II, Río Bravo" },
+    { name: "Quantum Energía", scope: "Monterrey I-IV, Escobedo, Altamira V, Tamazunchale I-II" },
+    { name: "Grupo México", scope: "CCC La Caridad (Nacozari), CCC Reforma" },
+    { name: "Central Eléctrica Pesquería (Techgen)", scope: "Parque Industrial Pesquería, N.L." },
+    { name: "Abent 3T (A3T)", scope: "Cogeneración Nuevo Pemex" },
+    { name: "NAES", scope: "Operación y Mantenimiento de Turbomáquinas" },
+    { name: "Global Contour / KST KEPCO", scope: "Central Ciclo Combinado Norte II" },
+    { name: "Saavi Energía", scope: "Centrales La Rosita, Bajío, Tierra Mojada" },
+  ],
+  turbinesSupported: [
+    { model: "General Electric (GE)", specs: "GT 7F.04, 7F.05, MS7001-FA (7FA), 7EA, LM6000" },
+    { model: "Mitsubishi Hitachi (MHPS)", specs: "Modelo M501J (Tamazunchale, El Carmen, Escobedo)" },
+    { model: "ALSTOM / GE", specs: "Modelo GT24 (Dulces Nombres III & IV)" },
+    { model: "SIEMENS", specs: "Modelo W501 F4 WH (Nacozari La Caridad)" },
+    { model: "WÄRTSILÄ", specs: "Motores 18V50SG + Turbinas de Vapor (Huinalá Pemcorp)" },
+  ],
+};
+
+/**
+ * 16 Industrias Estratégicas Atendidas
+ */
+export const industriesData = [
+  { id: "power", name: "Generación Eléctrica (CCC / Cogen)", icon: "Zap" },
+  { id: "refinery", name: "Refinerías y Petroquímica", icon: "Flame" },
+  { id: "oilgas", name: "Petróleo y Gas (Upstream / Downstream)", icon: "Fuel" },
+  { id: "mining", name: "Minera y Metalúrgica", icon: "Mountain" },
+  { id: "steel", name: "Acero y Metalmecánica", icon: "Boxes" },
+  { id: "airchem", name: "Plantas de Aire y Criogenia", icon: "Wind" },
+  { id: "pharma", name: "Farmacéutica y Biotecnológica", icon: "Pill" },
+  { id: "food", name: "Alimentos y Bebidas", icon: "Utensils" },
+  { id: "sugar", name: "Ingenios Azucareros y Bioenergía", icon: "Sprout" },
+  { id: "paper", name: "Papelera y Celulosa", icon: "FileText" },
+  { id: "cement", name: "Cementera y Materiales", icon: "Building2" },
+  { id: "cosmetics", name: "Cosméticos y Cuidado Personal", icon: "Sparkles" },
+  { id: "marine", name: "Naviera y Plataformas Costa Afuera", icon: "Ship" },
+  { id: "autotanks", name: "Autotanques y Transporte de Hidrocarburos", icon: "Truck" },
+  { id: "analytics", name: "Analítica en Línea y F&G", icon: "Activity" },
+  { id: "oem", name: "Fabricantes OEM e Integradores", icon: "Cpu" },
+];
+
+/**
+ * Tecnologías de Vanguardia Destacadas en MediaKit
+ */
+export const technologyData = {
+  evtAccutest: {
+    title: "Prueba Electrónica en Línea EVT Accutest (En Caliente)",
+    subtitle: "Calibración de válvulas de seguridad sin detener la producción de la planta",
+    normative: "Aprobado bajo ASME Secc. I (PG-72.2), ASME Secc. VIII (UG-134) y API RP 576",
+    description: "Dispositivo auxiliar de alta precisión que aplica carga hidráulica controlada al vástago para determinar la presión de disparo exacta sin necesidad de despresurizar la caldera o línea de proceso.",
+  },
+  bentlyNevada: {
+    title: "Monitoreo y Diagnóstico Bently Nevada 3500",
+    subtitle: "Protección integral a turbomaquinaria y equipos dinámicos de BOP",
+    sensors: ["Proximitor Probes (Proximidad)", "Velomitor Transducers (Velocidad)", "Seismic Probes (Acelerómetro)", "Tacómetros y Aceleración Integral"],
+  },
+  flowFl55: {
+    title: "Laboratorio Acreditado EMA FL-55",
+    subtitle: "Trazabilidad Nacional CENAM e Internacional NIST",
+    methods: "Comparación directa con medidor maestro y pesaje gravimétrico en lazos cerrados para flujómetros Coriolis, magnéticos, vórtex y turbinas.",
+  },
+};
+

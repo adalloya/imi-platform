@@ -80,15 +80,15 @@ export const locations: Location[] = [
   },
   {
     id: "hermosillo",
-    type: "pos",
-    name: "Hermosillo, Son.",
+    type: "branch",
+    name: "Hermosillo, Sonora",
     shortName: "Hermosillo",
     address: "Parque Industrial Hermosillo, Sonora",
     country: "MX",
     lat: 29.0729,
     lng: -110.9559,
     region: "Sonora, México",
-    specialty: "Soporte Técnico a Industria Minera, Metalúrgica y Generación en el Noroeste",
+    specialty: "Base Operativa Noroeste: Minería, Metalúrgica y Centrales Ciclo Combinado",
   },
   {
     id: "cadereyta",

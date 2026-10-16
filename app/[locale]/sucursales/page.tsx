@@ -26,7 +26,7 @@ export default async function Page({ params }: P) {
         eyebrow={t.eyebrows.locations}
         title={t.locations.title}
         subtitle={t.locations.subtitle}
-        image={images.refinery}
+        image={images.facilitiesMobileUnits}
       />
 
       <div className="container-x py-12 lg:py-16 space-y-16">
