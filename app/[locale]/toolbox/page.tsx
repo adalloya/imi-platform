@@ -2,21 +2,21 @@ import type { Metadata } from "next";
 import { Toolbox } from "@/components/Toolbox";
 import { PageHero } from "@/components/ui";
 import { images } from "@/data/company";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 type P = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
-  const t = getDictionary((await params).locale);
+  const t = getDictionary((await params).locale as Locale);
   return { title: t.toolbox.title, description: t.toolbox.subtitle };
 }
 
 export default async function Page({ params }: P) {
-  const t = getDictionary((await params).locale);
+  const t = getDictionary((await params).locale as Locale);
   return (
     <>
       <PageHero
-        eyebrow="Ingeniería y Diagnóstico de Campo"
+        eyebrow={t.eyebrows.toolbox}
         title={t.toolbox.title}
         subtitle={t.toolbox.subtitle}
         image={images.fieldCalibration}

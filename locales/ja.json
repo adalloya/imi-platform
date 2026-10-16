@@ -197,5 +197,64 @@
   "footer": {
     "tagline": "認定トレーサビリティを備えた工業計装・計量・研修。",
     "rights": "All rights reserved."
+  },
+  "units": {
+    "eyebrow": "IMI 企業体制",
+    "title": "3つの戦略事業部門",
+    "subtitle": "各事業部門は公的認定、自社設備、専門エンジニアを備え、プラントの課題に正確なソリューションを提供します。",
+    "division": "専門事業部門",
+    "capabilities": "主な対応能力:"
+  },
+  "home": {
+    "exploreUnits": "3大事業部門を見る",
+    "contactEng": "エンジニアに相談",
+    "trust1Title": "ISO/IEC 17025",
+    "trust1Desc": "圧力・流量分野 EMA公認校正",
+    "trust2Title": "STPS & CONOCER",
+    "trust2Desc": "労働省公認研修機関・EC0217基準",
+    "trust3Title": "24/7 緊急対応",
+    "trust3Desc": "プラント停止・定修緊急サポート",
+    "navRoles": "専門分野別ナビゲーション",
+    "toolsEyebrow": "生産性とトレーサビリティ",
+    "toolsTitle": "プラントエンジニアリング用デジタルツール",
+    "toolsSubtitle": "計装エンジニアの日々の業務を迅速化し、監査対応を支援する計算プラットフォーム。",
+    "calcField": "現場計算ツール",
+    "openToolbox": "計装計算機を開く",
+    "portalSync": "顧客ポータル & クラウド同期",
+    "openPortal": "サービスセンターへアクセス",
+    "tampicoHq": "タンピコ本社・メキシコ全域サポート",
+    "viewBranches": "拠点一覧を見る"
+  },
+  "downloads": {
+    "title": "ダウンロードセンター & PDF資料",
+    "subtitle": "企業案内、EMA公式認定証、STPS公式研修申請書類を閲覧・ダウンロードいただけます。",
+    "eyebrow": "公式資料 & ドキュメント",
+    "brochuresTitle": "会社案内 & カタログ",
+    "brochuresDesc": "計測機器、PSV安全弁、アカデミー総合資料",
+    "accredTitle": "EMA公認認定証および技術別添",
+    "accredDesc": "ISO/IEC 17025規格適合証明書",
+    "formatsTitle": "STPS公式申請書式",
+    "formatsDesc": "研修受講者登録のための公的書類",
+    "officialTitle": "公的登録証明",
+    "officialDesc": "IMIの法人登録および公認資格証明"
+  },
+  "eyebrows": {
+    "services": "産業プロセス向け統合ソリューション",
+    "lab": "公認校正試験所 · ISO/IEC 17025",
+    "academy": "技術研修・公的資格認定 · STPS · CONOCER",
+    "academyDivision": "技術教育事業部",
+    "academyFounded": "IMI Academy · 2010年設立",
+    "store": "計測・校正・制御機器",
+    "toolbox": "現場エンジニアリング・診断ツール",
+    "portal": "信頼性・計測トレーサビリティ",
+    "locations": "産業拠点・サービス網",
+    "contact": "迅速な技術相談・お見積り",
+    "accreditations": "公的認定・規格準拠"
+  },
+  "unitTags": {
+    "instruments": "調達・販売・レンタル",
+    "maintenance": "計測・検査事業部",
+    "maintenanceField": "現場・工場サービス",
+    "academy": "技術教育事業部"
   }
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Download, FileText, ExternalLink, ShieldCheck } from "lucide-react";
+import { Download, FileText, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/ui";
 import { CtaBand } from "@/components/sections";
 import { documents } from "@/data/documents";
@@ -10,9 +10,10 @@ type P = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
   const { locale } = await params;
+  const t = getDictionary(locale as Locale);
   return {
-    title: "Centro de Descargas & Recursos Oficiales PDF · IMI",
-    description: "Brochures institucionales, acreditaciones de la Entidad Mexicana de Acreditación (EMA) y formatos oficiales de registro STPS.",
+    title: t.downloads.title,
+    description: t.downloads.subtitle,
   };
 }
 
@@ -22,18 +23,18 @@ export default async function DescargasPage({ params }: P) {
   const t = getDictionary(locale);
 
   const categories = [
-    { id: "brochure", title: "Brochures y Folletos Corporativos", subtitle: "Información integral de metrología, válvulas PSV y academia" },
-    { id: "accreditation", title: "Acreditaciones y Anexos Técnicos EMA", subtitle: "Certificados de cumplimiento bajo NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)" },
-    { id: "format", title: "Formatos y Solicitudes STPS", subtitle: "Documentos para el registro oficial de participantes en cursos" },
-    { id: "official", title: "Constancias Institucionales", subtitle: "Cédula y registro oficial de Instrumentación y Metrología Industrial" },
+    { id: "brochure", title: t.downloads.brochuresTitle, subtitle: t.downloads.brochuresDesc },
+    { id: "accreditation", title: t.downloads.accredTitle, subtitle: t.downloads.accredDesc },
+    { id: "format", title: t.downloads.formatsTitle, subtitle: t.downloads.formatsDesc },
+    { id: "official", title: t.downloads.officialTitle, subtitle: t.downloads.officialDesc },
   ];
 
   return (
     <>
       <PageHero
-        eyebrow="Recursos & Documentación Oficial"
-        title="Centro de Descargas y Folletos PDF"
-        subtitle="Consulte y descargue nuestros brochures institucionales, acreditaciones oficiales emitidas por la EMA y formatos de registro STPS."
+        eyebrow={t.downloads.eyebrow}
+        title={t.downloads.title}
+        subtitle={t.downloads.subtitle}
         image={images.workshop}
       />
 

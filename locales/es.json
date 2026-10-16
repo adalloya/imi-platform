@@ -197,5 +197,64 @@
   "footer": {
     "tagline": "Metrología acreditada, calibración trazable y capacitación de ingeniería para la industria global.",
     "rights": "Instrumentación y Metrología Industrial S.R.L. de C.V. Todos los derechos reservados."
+  },
+  "units": {
+    "eyebrow": "Estructura Corporativa IMI",
+    "title": "Nuestras 3 Unidades Estratégicas",
+    "subtitle": "Cada división cuenta con su propia identidad, acreditaciones oficiales, laboratorio y especialistas para dar solución exacta a los retos de su planta.",
+    "division": "División Especializada",
+    "capabilities": "Capacidades Principales:"
+  },
+  "home": {
+    "exploreUnits": "Explorar las 3 Unidades",
+    "contactEng": "Contactar a un Ingeniero",
+    "trust1Title": "ISO/IEC 17025",
+    "trust1Desc": "Acreditación EMA en Presión y Flujo",
+    "trust2Title": "STPS & CONOCER",
+    "trust2Desc": "Agente Capacitador y Estándar EC0217",
+    "trust3Title": "Atención 24/7",
+    "trust3Desc": "Soporte en Paros de Planta y Campo",
+    "navRoles": "Navegación Especializada",
+    "toolsEyebrow": "Productividad & Trazabilidad",
+    "toolsTitle": "Herramientas Digitales para Ingeniería de Planta",
+    "toolsSubtitle": "Plataformas de cálculo técnico y consulta documental inmediata diseñadas para agilizar la labor diaria del instrumentista y cumplir auditorías.",
+    "calcField": "Cálculo en Campo",
+    "openToolbox": "Abrir Calculadoras de Campo",
+    "portalSync": "Portal de Clientes & Cloud Sync",
+    "openPortal": "Acceder al Centro de Servicios",
+    "tampicoHq": "Sede Central Tampico & Atención Nacional",
+    "viewBranches": "Ver Directorio de Sucursales"
+  },
+  "downloads": {
+    "title": "Centro de Descargas y Folletos PDF",
+    "subtitle": "Consulte y descargue nuestros brochures institucionales, acreditaciones oficiales emitidas por la EMA y formatos de registro STPS.",
+    "eyebrow": "Recursos & Documentación Oficial",
+    "brochuresTitle": "Brochures y Folletos Corporativos",
+    "brochuresDesc": "Información integral de metrología, válvulas PSV y academia",
+    "accredTitle": "Acreditaciones y Anexos Técnicos EMA",
+    "accredDesc": "Certificados de cumplimiento bajo NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)",
+    "formatsTitle": "Formatos y Solicitudes STPS",
+    "formatsDesc": "Documentos para el registro oficial de participantes en cursos",
+    "officialTitle": "Constancias Institucionales",
+    "officialDesc": "Cédula y registro oficial de Instrumentación y Metrología Industrial"
+  },
+  "eyebrows": {
+    "services": "Soluciones Integrales para Procesos Industriales",
+    "lab": "Laboratorio Acreditado · NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)",
+    "academy": "Capacitación Técnica y Certificaciones · STPS · CONOCER EC0217",
+    "academyDivision": "División de Educación Técnica",
+    "academyFounded": "IMI Academy · Fundada en 2010",
+    "store": "Equipos de Medición, Calibración y Control",
+    "toolbox": "Ingeniería y Diagnóstico de Campo",
+    "portal": "Confiabilidad & Trazabilidad Metrológica",
+    "locations": "Presencia & Cobertura Industrial",
+    "contact": "Respuesta Técnica y Comercial Inmediata",
+    "accreditations": "Acreditaciones & Normatividad"
+  },
+  "unitTags": {
+    "instruments": "Suministro, Venta y Renta",
+    "maintenance": "División de Metrología e Inspección",
+    "maintenanceField": "Servicios en Campo & Taller",
+    "academy": "División de Educación Técnica"
   }
 }

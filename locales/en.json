@@ -197,5 +197,64 @@
   "footer": {
     "tagline": "Accredited metrology, traceable calibration, and engineering training for global industry.",
     "rights": "Instrumentación y Metrología Industrial S.R.L. de C.V. All rights reserved."
+  },
+  "units": {
+    "eyebrow": "IMI Corporate Structure",
+    "title": "Our 3 Strategic Business Units",
+    "subtitle": "Each division features dedicated accreditations, internal facilities, and expert engineers to resolve your plant's challenges.",
+    "division": "Specialized Division",
+    "capabilities": "Core Capabilities:"
+  },
+  "home": {
+    "exploreUnits": "Explore the 3 Units",
+    "contactEng": "Contact an Engineer",
+    "trust1Title": "ISO/IEC 17025",
+    "trust1Desc": "EMA Accreditation in Pressure & Flow",
+    "trust2Title": "STPS & CONOCER",
+    "trust2Desc": "Official Training Agent & EC0217 Standard",
+    "trust3Title": "24/7 Response",
+    "trust3Desc": "Emergency Support for Plant Turnarounds",
+    "navRoles": "Specialized Navigation",
+    "toolsEyebrow": "Productivity & Traceability",
+    "toolsTitle": "Digital Engineering Tools for Plant Operations",
+    "toolsSubtitle": "Technical calculation platforms and document retrieval designed to streamline instrumentation engineering and compliance.",
+    "calcField": "Field Calculation",
+    "openToolbox": "Open Field Calculators",
+    "portalSync": "Client Portal & Cloud Sync",
+    "openPortal": "Access Client Service Center",
+    "tampicoHq": "Tampico Central HQ & Nationwide Coverage",
+    "viewBranches": "View Locations Directory"
+  },
+  "downloads": {
+    "title": "Downloads Center & PDF Brochures",
+    "subtitle": "Browse and download corporate brochures, official EMA accreditation certificates, and STPS training enrollment forms.",
+    "eyebrow": "Official Resources & Documentation",
+    "brochuresTitle": "Corporate Brochures & Overviews",
+    "brochuresDesc": "Comprehensive details on metrology, PSV safety valves, and academy",
+    "accredTitle": "EMA Accreditations & Technical Annexes",
+    "accredDesc": "Compliance certificates under ISO/IEC 17025 standards",
+    "formatsTitle": "STPS Official Forms & Requests",
+    "formatsDesc": "Official enrollment documentation for certified training",
+    "officialTitle": "Institutional Certificates",
+    "officialDesc": "Official corporate registration and accreditation credentials"
+  },
+  "eyebrows": {
+    "services": "Comprehensive Solutions for Industrial Processes",
+    "lab": "Accredited Laboratory · ISO/IEC 17025 Standards",
+    "academy": "Technical Training & Certifications · STPS · CONOCER EC0217",
+    "academyDivision": "Technical Education Division",
+    "academyFounded": "IMI Academy · Founded in 2010",
+    "store": "Measurement, Calibration & Control Instruments",
+    "toolbox": "Field Engineering & Diagnostic Tools",
+    "portal": "Reliability & Metrological Traceability",
+    "locations": "Industrial Presence & Strategic Coverage",
+    "contact": "Immediate Technical & Commercial Support",
+    "accreditations": "Accreditations & Regulatory Standards"
+  },
+  "unitTags": {
+    "instruments": "Procurement, Sales & Rentals",
+    "maintenance": "Metrology & Inspection Division",
+    "maintenanceField": "Field & Workshop Services",
+    "academy": "Technical Education Division"
   }
 }

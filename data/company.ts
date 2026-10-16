@@ -64,78 +64,258 @@ export const images = {
 export type BusinessUnit = {
   id: "instruments" | "maintenance" | "academy";
   shortName: string;
-  fullName: string;
-  badge: string;
-  tagline: string;
-  description: string;
+  fullName: L10n;
+  badge: L10n;
+  tagline: L10n;
+  description: L10n;
   logo: string;
   image: string;
   primaryHref: string;
-  primaryLabel: string;
+  primaryLabel: L10n;
   secondaryHref: string;
-  secondaryLabel: string;
-  highlights: string[];
+  secondaryLabel: L10n;
+  highlights: L10n[];
 };
 
 export const businessUnits: BusinessUnit[] = [
   {
     id: "instruments",
     shortName: "Instruments & Equipment",
-    fullName: "IMI Instruments & Equipment",
-    badge: "Venta · Renta · Equipamiento",
-    tagline: "Suministro y Renta de Instrumentación de Proceso",
-    description: "Venta y renta de calibradores de procesos multifunción, bombas de presión neumáticas e hidráulicas, manómetros de proceso con sellos químicos y refaccionamiento crítico con entrega inmediata.",
+    fullName: {
+      es: "IMI Instruments & Equipment",
+      en: "IMI Instruments & Equipment",
+      ko: "IMI 계측 & 장비 사업부",
+      ja: "IMI 計装機器・装置事業部",
+      zh: "IMI 仪器与设备事业部",
+    },
+    badge: {
+      es: "Venta · Renta · Equipamiento",
+      en: "Sales · Rentals · Procurement",
+      ko: "판매 · 렌탈 · 설비 공급",
+      ja: "販売・レンタル・調達",
+      zh: "销售 · 租赁 · 设备采购",
+    },
+    tagline: {
+      es: "Suministro y Renta de Instrumentación de Proceso",
+      en: "Process Instrumentation Sales & Rentals",
+      ko: "공정 계측기 공급 및 렌탈 솔루션",
+      ja: "プロセス計装機器の販売およびレンタル",
+      zh: "流程工业仪表销售与租赁",
+    },
+    description: {
+      es: "Venta y renta de calibradores de procesos multifunción, bombas de presión neumáticas e hidráulicas, manómetros de proceso con sellos químicos y refaccionamiento crítico con entrega inmediata.",
+      en: "Sales and rentals of documenting multifunction process calibrators, pneumatic and hydraulic pressure pumps, stainless process gauges with diaphragm seals, and immediate stock of critical parts.",
+      ko: "다기능 공정 교정기, 유압 및 공압 압력 펌프, 다이어프램 씰이 장착된 스테인리스 압력계 판매 및 렌탈 지원.",
+      ja: "多機能プロセス校正器、空気圧・油圧テストポンプ、ダイアフラムシール付きステンレス圧力計の販売・レンタル。",
+      zh: "多功能过程校准仪、气压及液压压力泵、带隔膜密封的不锈钢过程压力表销售与租赁，现货即时交付。",
+    },
     logo: "/images/logo-instruments.png",
     image: "/images/unit-instruments.jpg",
     primaryHref: "/tienda",
-    primaryLabel: "Explorar Catálogo y Renta",
+    primaryLabel: {
+      es: "Explorar Catálogo y Renta",
+      en: "Explore Catalog & Rentals",
+      ko: "카탈로그 및 렌탈 제품 보기",
+      ja: "機器カタログ・レンタルを見る",
+      zh: "查看产品与租赁目录",
+    },
     secondaryHref: "/descargas",
-    secondaryLabel: "Fichas Técnicas & Catálogos",
+    secondaryLabel: {
+      es: "Fichas Técnicas & Catálogos",
+      en: "Datasheets & Catalogs",
+      ko: "기술 사양서 및 카탈로그",
+      ja: "技術仕様書・カタログ",
+      zh: "技术规格书与宣传册",
+    },
     highlights: [
-      "Venta de instrumentación y equipo de medición industrial",
-      "Renta de calibradores y patrones trazables inmediatos",
-      "Manómetros y sellos de diafragma marca IMI",
-      "Asesoría técnica para especificación y reemplazo",
+      {
+        es: "Venta de instrumentación y equipo de medición industrial",
+        en: "Industrial measurement and process equipment sales",
+        ko: "산업용 정밀 측정 및 제어 계측기 판매",
+        ja: "産業用計測・プロセス機器の販売",
+        zh: "工业测量与过程控制仪器销售",
+      },
+      {
+        es: "Renta de calibradores y patrones trazables inmediatos",
+        en: "Rental of traceable calibrators and reference standards",
+        ko: "국가 소급성 보유 공인 교정기 긴급 렌탈 지원",
+        ja: "トレーサブルな基準校正器の即時レンタル",
+        zh: "具备计量溯源性的高精度校准器即时租赁",
+      },
+      {
+        es: "Manómetros y sellos de diafragma marca IMI (hasta 15,000 psi)",
+        en: "IMI pressure gauges and chemical seals (up to 15,000 psi)",
+        ko: "IMI 브랜드 압력계 및 케미컬 씰 (최대 15,000 psi)",
+        ja: "IMIブランド圧力計およびダイアフラムシール（最大15,000 psi）",
+        zh: "IMI品牌工业压力表及隔膜密封（最高至15,000 psi）",
+      },
+      {
+        es: "Asesoría técnica para especificación y reemplazo",
+        en: "Technical guidance for specification and replacement",
+        ko: "설비 스펙 선정 및 대체품 기술 컨설팅",
+        ja: "機器選定および代替品選定の技術相談",
+        zh: "选型规格确认与替代替换技术咨询",
+      },
     ],
   },
   {
     id: "maintenance",
     shortName: "Metrology & Maintenance",
-    fullName: "IMI Metrology & Maintenance",
-    badge: "Laboratorio Acreditado · ISO/IEC 17025",
-    tagline: "Laboratorio Acreditado y Mantenimiento a Válvulas PSV",
-    description: "Laboratorio acreditado ante la EMA en presión y flujo, mantenimiento integral a válvulas de seguridad (PSV) bajo NOM-093-SCFI, calibración in-situ con unidades móviles y soporte en paros de planta.",
+    fullName: {
+      es: "IMI Metrology & Maintenance",
+      en: "IMI Metrology & Maintenance",
+      ko: "IMI 정밀 교정 및 유지보수 사업부",
+      ja: "IMI 校正・メンテナンス事業部",
+      zh: "IMI 计量校准与维护事业部",
+    },
+    badge: {
+      es: "Laboratorio Acreditado · ISO/IEC 17025",
+      en: "Accredited Laboratory · ISO/IEC 17025",
+      ko: "공인 시험소 · ISO/IEC 17025",
+      ja: "公認校正所 · ISO/IEC 17025",
+      zh: "官方认可实验室 · ISO/IEC 17025",
+    },
+    tagline: {
+      es: "Laboratorio Acreditado y Mantenimiento a Válvulas PSV",
+      en: "Accredited Calibration Lab & PSV Valve Maintenance",
+      ko: "공인 교정 시험소 및 안전밸브(PSV) 유지보수",
+      ja: "公認校正ラボおよびPSV安全弁メンテナンス",
+      zh: "官方认可校准实验室及安全阀(PSV)检修",
+    },
+    description: {
+      es: "Laboratorio acreditado ante la EMA en presión y flujo, mantenimiento integral a válvulas de seguridad (PSV) bajo NOM-093-SCFI, calibración in-situ con unidades móviles y soporte en paros de planta.",
+      en: "EMA accredited calibration lab in pressure and flow, complete safety valve (PSV) maintenance per NOM-093-SCFI, on-site mobile calibration units, and plant turnaround support.",
+      ko: "EMA 공인 압력·유량 교정 시험소, NOM-093 규격 준거 안전밸브(PSV) 정비 및 플랜트 정기보수 현장 지원.",
+      ja: "EMA公認の圧力・流量校正ラボ、NOM-093準拠の安全弁（PSV）精密整備、移動校正車によるオンサイト対応。",
+      zh: "墨西哥EMA官方认可压力与流量校准实验室，NOM-093安全阀(PSV)综合检修，移动式现场校准与停工检修支持。",
+    },
     logo: "/images/logo-maintenance.png",
     image: "/images/unit-maintenance.jpg",
     primaryHref: "/laboratorio",
-    primaryLabel: "Servicios de Laboratorio y Campo",
+    primaryLabel: {
+      es: "Servicios de Laboratorio y Campo",
+      en: "Lab & Field Services",
+      ko: "시험소 및 현장 서비스",
+      ja: "校正ラボ・現場サービス",
+      zh: "实验室与现场校准服务",
+    },
     secondaryHref: "/servicios",
-    secondaryLabel: "Mantenimiento a Válvulas PSV",
+    secondaryLabel: {
+      es: "Mantenimiento a Válvulas PSV",
+      en: "PSV Valve Maintenance",
+      ko: "PSV 안전밸브 정비 안내",
+      ja: "PSV安全弁メンテナンス",
+      zh: "PSV安全阀检修维护",
+    },
     highlights: [
-      "Calibración acreditada EMA (NMX-EC-17025-IMNC-2018)",
-      "Mantenimiento, ajuste y prueba de Válvulas PSV",
-      "Calibración in-situ con patrones trazables CENAM/NIST",
-      "Soporte 24/7 y cuadrillas técnicas para paros de planta",
+      {
+        es: "Calibración acreditada EMA (NMX-EC-17025-IMNC-2018)",
+        en: "EMA accredited calibration (NMX-EC-17025 / ISO 17025)",
+        ko: "EMA 공인 교정 성적서 발급 (ISO/IEC 17025)",
+        ja: "EMA公認校正証明書発行（ISO/IEC 17025準拠）",
+        zh: "出具EMA官方认可校准证书（符合ISO/IEC 17025）",
+      },
+      {
+        es: "Mantenimiento, lapeado y prueba de Válvulas PSV (NOM-093)",
+        en: "PSV valve maintenance, precision lapping, and pop test",
+        ko: "PSV 안전밸브 정밀 래핑, 분해점검 및 작동시험",
+        ja: "PSV弁の精密ラッピング、作動試験および整備",
+        zh: "PSV安全阀精密研磨、起跳测试与全面维护",
+      },
+      {
+        es: "Calibración in-situ con patrones trazables CENAM/NIST",
+        en: "On-site calibration with CENAM/NIST traceable standards",
+        ko: "CENAM/NIST 국가표준 소급 현장 교정 서비스",
+        ja: "CENAM/NISTトレーサブル標準器による現場校正",
+        zh: "采用溯源至CENAM/NIST国家基准的现场校准",
+      },
+      {
+        es: "Soporte 24/7 y cuadrillas técnicas para paros de planta",
+        en: "24/7 turnaround response and specialist plant crews",
+        ko: "플랜트 셧다운 대비 24/7 긴급 출동 기술팀 상시대기",
+        ja: "定修・プラント停止対応の24時間専門クルー派遣",
+        zh: "工厂停工检修24小时驻场技术工程团队",
+      },
     ],
   },
   {
     id: "academy",
     shortName: "IMI Academy",
-    fullName: "IMI Academy México",
-    badge: "Capacitación Técnica · Desde 2010",
-    tagline: "Capacitación y Certificación Técnica Especializada",
-    description: "Centro de formación y especialización técnica desde 2010 con bancos de pruebas y equipo industrial real. Registro oficial ante la STPS con emisión de constancias DC-3 y alineación CONOCER EC0217.",
+    fullName: {
+      es: "IMI Academy México",
+      en: "IMI Academy Mexico",
+      ko: "IMI 아카데미 멕시코",
+      ja: "IMI アカデミー・メキシコ",
+      zh: "IMI 培训学院（墨西哥）",
+    },
+    badge: {
+      es: "Capacitación Técnica · Desde 2010",
+      en: "Technical Training · Since 2010",
+      ko: "산업 기술 교육 · 2010년 설립",
+      ja: "技術研修・人材育成 · 2010年設立",
+      zh: "专业技术培训 · 始于2010年",
+    },
+    tagline: {
+      es: "Capacitación y Certificación Técnica Especializada",
+      en: "Specialized Technical Training & Certifications",
+      ko: "전문 계측·제어 기술 교육 및 공인 자격증",
+      ja: "産業技術専門研修および公的認定資格",
+      zh: "专业工程技术培训与权威技能认证",
+    },
+    description: {
+      es: "Centro de formación y especialización técnica desde 2010 con bancos de pruebas y equipo industrial real. Registro oficial ante la STPS con emisión de constancias DC-3 y alineación CONOCER EC0217.",
+      en: "Technical training center established in 2010 equipped with real industrial test benches. Official STPS External Training Agent issuing DC-3 skill certificates aligned with CONOCER EC0217 standards.",
+      ko: "실제 공정 테스트 벤치를 갖춘 2010년 설립 전문 기술 아카데미. 멕시코 노동부(STPS) DC-3 공식 수료증 발급 및 CONOCER 역량 기준 준거.",
+      ja: "実機テストベンチを備えた2010年創設の産業研修センター。労働省公認STPS DC-3修了証明書の発行およびCONOCER基準対応。",
+      zh: "始于2010年拥有真实工业试验台的技术培训中心。劳工部官方认可外部培训机构，颁发合规DC-3技能证书，符合CONOCER标准。",
+    },
     logo: "/images/logo-academy.png",
     image: "/images/unit-academy.jpg",
     primaryHref: "/academy",
-    primaryLabel: "Ver Catálogo de Cursos",
+    primaryLabel: {
+      es: "Ver Catálogo de Cursos",
+      en: "View Course Catalog",
+      ko: "교육 과정 카탈로그 보기",
+      ja: "講座カタログを見る",
+      zh: "查阅全部课程目录",
+    },
     secondaryHref: "/contacto",
-    secondaryLabel: "Solicitar Plan In-Company",
+    secondaryLabel: {
+      es: "Solicitar Plan In-Company",
+      en: "Request On-Site Training Plan",
+      ko: "사내 맞춤형 연수 계획 문의",
+      ja: "社内研修（In-Company）を依頼",
+      zh: "申请企业定制内训计划",
+    },
     highlights: [
-      "Cursos teórico-prácticos con equipo industrial real",
-      "Constancia de habilidades DC-3 oficial ante la STPS",
-      "Alineación a estándares de competencia CONOCER",
-      "Modalidades en aulas IMI, In-Company o en línea",
+      {
+        es: "Cursos teórico-prácticos con equipo industrial real",
+        en: "Hands-on theoretical and practical courses with real instruments",
+        ko: "실제 공정 계측기를 활용한 실습 중심 교육",
+        ja: "実機計装機器を用いた理論・実技統合カリキュラム",
+        zh: "结合真实工业现场仪表的理论与实操培训",
+      },
+      {
+        es: "Constancia de habilidades DC-3 oficial ante la STPS",
+        en: "Official DC-3 Skills Certificate registered with STPS",
+        ko: "멕시코 노동부(STPS) 공인 DC-3 직무능력 수료증 발급",
+        ja: "メキシコ労働省（STPS）公認DC-3技能証明書の交付",
+        zh: "颁发墨西哥劳工部官方认可DC-3技能证明",
+      },
+      {
+        es: "Alineación a estándares de competencia CONOCER (EC0217)",
+        en: "Alignment with CONOCER EC0217 national competency standard",
+        ko: "CONOCER EC0217 국가 직무역량 표준 준거",
+        ja: "CONOCER EC0217 国家教育基準への完全準拠",
+        zh: "完全对标CONOCER EC0217国家职业能力标准",
+      },
+      {
+        es: "Modalidades en aulas IMI, In-Company o en línea",
+        en: "Available at IMI facilities, on-site In-Company, or live online",
+        ko: "IMI 교육장, 기업 방문(In-Company) 또는 실시간 온라인",
+        ja: "IMI研修センター、社内オンサイト、オンライン対応",
+        zh: "支持IMI教学中心、企业内训(In-Company)或线上直播",
+      },
     ],
   },
 ];

@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { AcademyCatalog } from "@/components/AcademyCatalog";
-import { PageHero } from "@/components/ui";
 import { images } from "@/data/company";
-import { getDictionary } from "@/lib/i18n";
+import { getDictionary, type Locale } from "@/lib/i18n";
 
 type P = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
-  const t = getDictionary((await params).locale);
+  const t = getDictionary((await params).locale as Locale);
   return { title: t.academy.title, description: t.academy.subtitle };
 }
 
-import Image from "next/image";
-
 export default async function Page({ params }: P) {
-  const t = getDictionary((await params).locale);
+  const t = getDictionary((await params).locale as Locale);
   return (
     <>
       <section className="relative overflow-hidden bg-ink-950 text-white">
@@ -33,15 +31,15 @@ export default async function Page({ params }: P) {
             />
             <div className="pr-3 text-left">
               <span className="block text-[11px] font-mono font-bold uppercase tracking-wider text-brand-700">
-                División de Educación Técnica
+                {t.eyebrows.academyDivision}
               </span>
               <span className="block text-base sm:text-lg md:text-xl font-extrabold text-ink-950">
-                IMI Academy · Fundada en 2010
+                {t.eyebrows.academyFounded}
               </span>
             </div>
           </div>
           <p className="text-xs font-mono font-bold tracking-widest text-brand-200 uppercase">
-            Capacitación Técnica y Certificaciones · STPS IMI150311QL2-0013 · CONOCER EC0217
+            {t.eyebrows.academy}
           </p>
           <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
             {t.academy.title}

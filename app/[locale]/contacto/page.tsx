@@ -20,7 +20,7 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero
-        eyebrow="Respuesta Técnica y Comercial Inmediata"
+        eyebrow={t.eyebrows.contact}
         title={t.contact.title}
         subtitle={t.contact.subtitle}
         image={images.workshop}

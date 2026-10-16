@@ -23,7 +23,7 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero
-        eyebrow="Presencia & Cobertura Industrial"
+        eyebrow={t.eyebrows.locations}
         title={t.locations.title}
         subtitle={t.locations.subtitle}
         image={images.refinery}

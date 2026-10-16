@@ -197,5 +197,64 @@
   "footer": {
     "tagline": "공인된 소급성을 갖춘 산업 계측, 메트롤로지 및 교육.",
     "rights": "All rights reserved."
+  },
+  "units": {
+    "eyebrow": "IMI 기업 구조",
+    "title": "3대 핵심 사업 부문",
+    "subtitle": "각 사업부는 공인의 인증, 자체 시설 및 전문 엔지니어를 보유하여 산업 현장의 과제를 정밀하게 해결합니다.",
+    "division": "전문 사업부",
+    "capabilities": "주요 역량:"
+  },
+  "home": {
+    "exploreUnits": "3대 사업 부문 알아보기",
+    "contactEng": "전문 엔지니어 상담",
+    "trust1Title": "ISO/IEC 17025",
+    "trust1Desc": "압력 및 유량 분야 EMA 공인 인증",
+    "trust2Title": "STPS & CONOCER",
+    "trust2Desc": "노동부 공인 교육기관 및 EC0217 표준",
+    "trust3Title": "24/7 긴급 지원",
+    "trust3Desc": "플랜트 셧다운 및 현장 비상 대응",
+    "navRoles": "전문 분야별 맞춤 안내",
+    "toolsEyebrow": "생산성 & 추적성",
+    "toolsTitle": "플랜트 엔지니어링용 디지털 툴",
+    "toolsSubtitle": "계측 엔지니어의 현장 업무를 신속하게 지원하고 품질 감사를 대비하는 정밀 계산 플랫폼.",
+    "calcField": "현장 정밀 계산",
+    "openToolbox": "계측 계산기 열기",
+    "portalSync": "고객 포털 & 클라우드 동기화",
+    "openPortal": "서비스 센터 접속",
+    "tampicoHq": "탐피코 본사 및 멕시코 전역 서비스",
+    "viewBranches": "지사 디렉토리 보기"
+  },
+  "downloads": {
+    "title": "다운로드 센터 & PDF 브로슈어",
+    "subtitle": "회사 브로슈어, EMA 공식 교정 인증서 및 STPS 공식 등록 양식을 열람하고 다운로드하세요.",
+    "eyebrow": "공식 자료 & 문서",
+    "brochuresTitle": "기업 브로슈어 및 안내서",
+    "brochuresDesc": "계측, PSV 밸브 및 교육 아카데미 종합 안내",
+    "accredTitle": "EMA 공인 인증서 및 기술 부록",
+    "accredDesc": "ISO/IEC 17025 표준 준수 인증서",
+    "formatsTitle": "STPS 공식 양식 및 신청서",
+    "formatsDesc": "공식 직무역량 교육 수강생 등록 문서",
+    "officialTitle": "기관 증명서",
+    "officialDesc": "IMI 공식 사업자 및 공인 자격 증명"
+  },
+  "eyebrows": {
+    "services": "산업 공정을 위한 종합 솔루션",
+    "lab": "공인 교정 시험소 · ISO/IEC 17025 표준",
+    "academy": "기술 교육 및 공인 자격증 · STPS · CONOCER",
+    "academyDivision": "기술 교육 사업부",
+    "academyFounded": "IMI Academy · 2010년 설립",
+    "store": "측정, 교정 및 제어 계측기",
+    "toolbox": "현장 엔지니어링 및 진단 툴",
+    "portal": "신뢰성 및 측정 소급성",
+    "locations": "산업 거점 및 네트워크",
+    "contact": "신속한 기술 및 견적 상담",
+    "accreditations": "공인 인증 및 규격"
+  },
+  "unitTags": {
+    "instruments": "공급, 판매 및 렌탈",
+    "maintenance": "계측 및 검사 사업부",
+    "maintenanceField": "현장 및 워크숍 서비스",
+    "academy": "기술 교육 사업부"
   }
 }

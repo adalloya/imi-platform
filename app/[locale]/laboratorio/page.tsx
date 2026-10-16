@@ -8,7 +8,7 @@ import { getDictionary, type Locale } from "@/lib/i18n";
 type P = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: P): Promise<Metadata> {
-  const t = getDictionary((await params).locale);
+  const t = getDictionary((await params).locale as Locale);
   return { title: t.lab.title, description: t.lab.subtitle };
 }
 
@@ -19,13 +19,13 @@ export default async function Page({ params }: P) {
   return (
     <>
       <PageHero
-        eyebrow="Laboratorio Acreditado · NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)"
+        eyebrow={t.eyebrows.lab}
         title={t.lab.title}
         subtitle={t.lab.subtitle}
         image={images.unitMaintenance}
         badgeLogo={images.logoMaintenance}
         badgeAlt="IMI Metrology & Maintenance"
-        unitTag="División de Metrología e Inspección"
+        unitTag={t.unitTags.maintenance}
       />
       <div className="container-x py-14 lg:py-20">
         <ServiceGroupSection group="lab" locale={locale} t={t} />

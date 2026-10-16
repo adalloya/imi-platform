@@ -197,5 +197,64 @@
   "footer": {
     "tagline": "具备认证溯源能力的工业仪表、计量与培训。",
     "rights": "版权所有。"
+  },
+  "units": {
+    "eyebrow": "IMI 企业架构",
+    "title": "三大核心战略业务部门",
+    "subtitle": "每个部门均拥有官方认证、自备检测设施和资深工程师，为您的工厂提供精准可靠的解决方案。",
+    "division": "专业业务部门",
+    "capabilities": "核心服务能力:"
+  },
+  "home": {
+    "exploreUnits": "浏览三大业务部门",
+    "contactEng": "咨询专业工程师",
+    "trust1Title": "ISO/IEC 17025",
+    "trust1Desc": "压力与流量 EMA 官方校准认可",
+    "trust2Title": "STPS & CONOCER",
+    "trust2Desc": "墨西哥劳工部认证外部培训机构",
+    "trust3Title": "24/7 应急支持",
+    "trust3Desc": "工厂停工检修紧急驻场服务",
+    "navRoles": "专业职能导览",
+    "toolsEyebrow": "效率与追溯性",
+    "toolsTitle": "工厂工程数字化实用工具",
+    "toolsSubtitle": "专为仪表工程师设计的工程计算与证书追溯平台，助力日常维护与合规审计。",
+    "calcField": "现场工程计算",
+    "openToolbox": "打开计算工具箱",
+    "portalSync": "客户门户与云端同步",
+    "openPortal": "进入客户服务中心",
+    "tampicoHq": "坦皮科总部及全国服务网络",
+    "viewBranches": "查看全国办事处"
+  },
+  "downloads": {
+    "title": "下载中心与 PDF 资料",
+    "subtitle": "查阅并下载企业宣传册、墨西哥 EMA 官方认可证书及 STPS 官方培训登记表格。",
+    "eyebrow": "官方资源与文档",
+    "brochuresTitle": "企业宣传册与产品手册",
+    "brochuresDesc": "计量、PSV安全阀及培训学院综合手册",
+    "accredTitle": "EMA 认可证书及技术附件",
+    "accredDesc": "符合 ISO/IEC 17025 标准的合规证书",
+    "formatsTitle": "STPS 官方表格与申请单",
+    "formatsDesc": "官方职业技能培训学员注册文件",
+    "officialTitle": "机构法定证明",
+    "officialDesc": "IMI 企业法人及官方认可资质文件"
+  },
+  "eyebrows": {
+    "services": "工业流程综合解决方案",
+    "lab": "官方认可校准实验室 · ISO/IEC 17025",
+    "academy": "专业技术培训与认证 · STPS · CONOCER",
+    "academyDivision": "技术教育部门",
+    "academyFounded": "IMI Academy · 创立于2010年",
+    "store": "测量、校准与控制设备",
+    "toolbox": "现场工程与诊断工具箱",
+    "portal": "可靠性与计量溯源性",
+    "locations": "工业布局与服务网络",
+    "contact": "即时技术咨询与报价",
+    "accreditations": "官方认证与规范标准"
+  },
+  "unitTags": {
+    "instruments": "采购、销售与租赁",
+    "maintenance": "计量与检验部门",
+    "maintenanceField": "现场与车间维修服务",
+    "academy": "技术教育部门"
   }
 }

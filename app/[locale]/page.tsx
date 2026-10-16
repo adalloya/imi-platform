@@ -5,10 +5,19 @@ import { AccreditationGrid, CtaBand } from "@/components/sections";
 import { BusinessUnitsSection } from "@/components/BusinessUnitsSection";
 import { RoleSelector } from "@/components/RoleSelector";
 import { SectionHeader } from "@/components/ui";
-import { courses } from "@/data/academy";
 import { company, images } from "@/data/company";
 import { locations } from "@/data/locations";
 import { getDictionary, type Locale } from "@/lib/i18n";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: l } = await params;
+  const locale = l as Locale;
+  const t = getDictionary(locale);
+  return {
+    title: t.meta.title,
+    description: t.meta.description,
+  };
+}
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: l } = await params;
@@ -49,7 +58,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           {/* Botones de acción inmediata */}
           <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
             <a href="#unidades-de-negocio" className="btn btn-primary px-7 text-base font-bold shadow-lg">
-              <span>Explorar las 3 Unidades</span>
+              <span>{t.home.exploreUnits}</span>
               <ArrowDown className="size-4 animate-bounce" />
             </a>
             <Link href={h("/contacto")} className="btn btn-ghost-dark px-7 text-base">
@@ -62,22 +71,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <div className="flex items-center gap-3">
               <ShieldCheck className="size-6 text-brand-400 shrink-0" />
               <div>
-                <p className="text-xs font-bold font-mono text-white">ISO/IEC 17025</p>
-                <p className="text-xs text-ink-400">Acreditación EMA en Presión y Flujo</p>
+                <p className="text-xs font-bold font-mono text-white">{t.home.trust1Title}</p>
+                <p className="text-xs text-ink-400">{t.home.trust1Desc}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Award className="size-6 text-brand-400 shrink-0" />
               <div>
-                <p className="text-xs font-bold font-mono text-white">STPS & CONOCER</p>
-                <p className="text-xs text-ink-400">Agente Capacitador y Estándar EC0217</p>
+                <p className="text-xs font-bold font-mono text-white">{t.home.trust2Title}</p>
+                <p className="text-xs text-ink-400">{t.home.trust2Desc}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Clock className="size-6 text-brand-400 shrink-0" />
               <div>
-                <p className="text-xs font-bold font-mono text-white">Atención 24/7</p>
-                <p className="text-xs text-ink-400">Soporte en Paros de Planta y Campo</p>
+                <p className="text-xs font-bold font-mono text-white">{t.home.trust3Title}</p>
+                <p className="text-xs text-ink-400">{t.home.trust3Desc}</p>
               </div>
             </div>
           </div>
@@ -91,7 +100,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <section className="bg-white py-16 lg:py-24">
         <div className="container-x">
           <SectionHeader
-            eyebrow="Navegación Especializada"
+            eyebrow={t.home.navRoles}
             title={t.roles.title}
             subtitle={t.roles.subtitle}
           />
@@ -105,9 +114,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <section className="bg-ink-50 py-16 lg:py-24 border-y border-ink-200">
         <div className="container-x">
           <SectionHeader
-            eyebrow="Productividad & Trazabilidad"
-            title="Herramientas Digitales para Ingeniería de Planta"
-            subtitle="Plataformas de cálculo técnico y consulta documental inmediata diseñadas para agilizar la labor diaria del instrumentista y cumplir auditorías."
+            eyebrow={t.home.toolsEyebrow}
+            title={t.home.toolsTitle}
+            subtitle={t.home.toolsSubtitle}
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -118,7 +127,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             >
               <div>
                 <span className="inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider text-brand-700">
-                  Cálculo en Campo
+                  {t.home.calcField}
                 </span>
                 <h3 className="text-2xl font-extrabold text-ink-900 mt-3 group-hover:text-brand-700 transition-colors">
                   {t.toolbox.title}
@@ -133,7 +142,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </ul>
               </div>
               <div className="mt-6 pt-4 border-t border-ink-100 flex items-center justify-between text-sm font-bold text-brand-700">
-                <span>Abrir Calculadoras de Campo</span>
+                <span>{t.home.openToolbox}</span>
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </div>
             </Link>
@@ -145,7 +154,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             >
               <div>
                 <span className="inline-flex items-center rounded-md bg-brand-50 px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider text-brand-700">
-                  Portal de Clientes & Cloud Sync
+                  {t.home.portalSync}
                 </span>
                 <h3 className="text-2xl font-extrabold text-ink-900 mt-3 group-hover:text-brand-700 transition-colors">
                   {t.portal.title}
@@ -160,7 +169,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </ul>
               </div>
               <div className="mt-6 pt-4 border-t border-ink-100 flex items-center justify-between text-sm font-bold text-brand-700">
-                <span>Acceder al Centro de Servicios</span>
+                <span>{t.home.openPortal}</span>
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </div>
             </Link>
@@ -171,7 +180,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* 4. ACREDITACIONES Y MARCO NORMATIVO */}
       <section id="acreditaciones" className="container-x scroll-mt-28 py-16 lg:py-24">
         <SectionHeader
-          eyebrow="Acreditaciones & Normatividad"
+          eyebrow={t.eyebrows.accreditations}
           title={t.accred.title}
           subtitle={t.accred.subtitle}
         />
@@ -214,14 +223,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="mt-8 rounded-2xl bg-white border border-ink-200 p-6 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-xs font-mono font-bold uppercase tracking-wider text-brand-700">
-                Sede Central Tampico & Atención Nacional
+                {t.home.tampicoHq}
               </p>
               <p className="text-sm text-ink-700 mt-1">
                 {company.email} · Cel. {company.mobile} · Tel. {company.phone}
               </p>
             </div>
             <Link href={h("/sucursales")} className="btn btn-outline text-xs font-bold shrink-0">
-              Ver Directorio de Sucursales
+              {t.home.viewBranches}
             </Link>
           </div>
         </div>
