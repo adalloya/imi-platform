@@ -174,8 +174,8 @@ export function ChatbotWidget() {
             </div>
           </div>
 
-          {/* Historial de Mensajes */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-ink-50/60 text-xs sm:text-sm">
+          {/* Historial de Mensajes con fondo sutilmente azul para máximo contraste */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3.5 bg-brand-50/70 text-xs sm:text-sm">
             {messages.map((m) => (
               <div
                 key={m.id}
@@ -188,16 +188,16 @@ export function ChatbotWidget() {
                 )}
 
                 <div
-                  className={`max-w-[88%] rounded-2xl px-4 py-3 shadow-sm leading-relaxed ${
+                  className={`max-w-[88%] rounded-2xl px-4 py-3 leading-relaxed ${
                     m.role === "user"
-                      ? "bg-brand-600 text-white rounded-br-xs"
-                      : "bg-white text-ink-900 border border-ink-200/90 rounded-bl-xs"
+                      ? "bg-brand-600 text-white rounded-br-xs shadow-md"
+                      : "bg-white text-ink-900 border border-brand-100/90 rounded-bl-xs shadow-md"
                   }`}
                 >
                   <MarkdownMessage content={m.content} isUser={m.role === "user"} />
 
                   {m.whatsappUrl && !m.content.includes("wa.me") && (
-                    <div className="mt-3 pt-2.5 border-t border-ink-100 flex flex-col gap-1.5">
+                    <div className="mt-3 pt-2.5 border-t border-brand-100 flex flex-col gap-1.5">
                       <a
                         href={m.whatsappUrl}
                         target="_blank"
@@ -220,7 +220,7 @@ export function ChatbotWidget() {
             ))}
 
             {loading && (
-              <div className="flex items-center gap-2 text-xs text-ink-500 italic bg-white p-2.5 rounded-xl border border-ink-200/60 w-fit">
+              <div className="flex items-center gap-2 text-xs text-ink-500 italic bg-white p-2.5 rounded-xl border border-brand-200/80 shadow-xs w-fit">
                 <RefreshCw className="size-3.5 animate-spin text-brand-600" />
                 <span>Analizando requerimiento técnico...</span>
               </div>
@@ -231,12 +231,12 @@ export function ChatbotWidget() {
 
           {/* Sugerencias rápidas */}
           {messages.length <= 2 && (
-            <div className="px-3 py-2 bg-white border-t border-ink-100 flex gap-1.5 overflow-x-auto no-scrollbar">
+            <div className="px-3 py-2 bg-white/95 border-t border-brand-100 flex gap-1.5 overflow-x-auto no-scrollbar">
               {STARTER_PROMPTS.map((prompt) => (
                 <button
                   key={prompt}
                   onClick={() => handleSend(prompt)}
-                  className="shrink-0 text-[11px] font-medium bg-ink-100 hover:bg-brand-50 hover:text-brand-700 text-ink-700 px-2.5 py-1 rounded-full transition-colors border border-ink-200"
+                  className="shrink-0 text-[11px] font-medium bg-brand-50/80 hover:bg-brand-100 hover:text-brand-800 text-brand-900 px-2.5 py-1 rounded-full transition-colors border border-brand-200/80 shadow-2xs"
                 >
                   {prompt}
                 </button>
@@ -250,7 +250,7 @@ export function ChatbotWidget() {
               e.preventDefault();
               handleSend();
             }}
-            className="p-2.5 bg-white border-t border-ink-200 flex items-center gap-2"
+            className="p-2.5 bg-white border-t border-brand-200/70 flex items-center gap-2"
           >
             <input
               ref={inputRef}
@@ -259,7 +259,7 @@ export function ChatbotWidget() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Escribe tu consulta técnica o cotización..."
               disabled={loading}
-              className="flex-1 bg-ink-50 border border-ink-200 rounded-xl px-3 py-2 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-600 focus:bg-white transition-colors"
+              className="flex-1 bg-brand-50/40 border border-brand-200/80 rounded-xl px-3 py-2 text-xs sm:text-sm text-ink-900 focus:outline-none focus:border-brand-600 focus:bg-white transition-colors"
             />
             <button
               type="submit"

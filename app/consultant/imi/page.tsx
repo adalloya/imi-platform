@@ -87,9 +87,9 @@ export default function ImiConsultantPage() {
   }
 
   return (
-    <div className="flex h-screen w-full flex-col bg-ink-50 text-ink-900 font-sans antialiased">
+    <div className="flex h-screen w-full flex-col bg-brand-50/50 text-ink-900 font-sans antialiased">
       {/* HEADER CORPORATIVO IMI */}
-      <header className="flex shrink-0 items-center justify-between border-b border-ink-200 bg-white px-4 py-3 shadow-sm sm:px-6">
+      <header className="flex shrink-0 items-center justify-between border-b border-brand-200/80 bg-white px-4 py-3 shadow-xs sm:px-6">
         <div className="flex items-center gap-3">
           <div className="relative">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -122,8 +122,8 @@ export default function ImiConsultantPage() {
         </div>
       </header>
 
-      {/* ÁREA DE MENSAJES */}
-      <main className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+      {/* ÁREA DE MENSAJES CON FONDO SUTILMENTE AZUL */}
+      <main className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-brand-50/70">
         {messages.map((m) => {
           const isUser = m.role === "user";
           return (
@@ -138,10 +138,10 @@ export default function ImiConsultantPage() {
               )}
 
               <div
-                className={`rounded-2xl p-4 text-sm leading-relaxed shadow-sm ${
+                className={`rounded-2xl p-4 text-sm leading-relaxed ${
                   isUser
-                    ? "bg-brand-600 text-white rounded-br-none"
-                    : "bg-white text-ink-900 border border-ink-200/90 rounded-bl-none"
+                    ? "bg-brand-600 text-white rounded-br-none shadow-md"
+                    : "bg-white text-ink-900 border border-brand-100/90 rounded-bl-none shadow-md"
                 }`}
               >
                 <MarkdownMessage content={m.content} isUser={isUser} />
@@ -185,13 +185,13 @@ export default function ImiConsultantPage() {
       </main>
 
       {/* SUGERENCIAS RÁPIDAS (PROMPTS TÉCNICOS) */}
-      <div className="bg-white/80 border-t border-ink-200 px-4 py-2 sm:px-6">
+      <div className="bg-white/95 border-t border-brand-200/70 px-4 py-2 sm:px-6">
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
           {STARTER_PROMPTS.map((prompt) => (
             <button
               key={prompt}
               onClick={() => handleSend(prompt)}
-              className="shrink-0 rounded-full border border-ink-200 bg-white px-3 py-1 text-xs font-medium text-ink-700 hover:border-brand-500 hover:text-brand-700 hover:bg-brand-50 transition-colors cursor-pointer"
+              className="shrink-0 rounded-full border border-brand-200/80 bg-brand-50/70 px-3 py-1 text-xs font-medium text-brand-900 hover:border-brand-500 hover:text-brand-800 hover:bg-brand-100 transition-colors cursor-pointer shadow-2xs"
             >
               {prompt}
             </button>
@@ -200,7 +200,7 @@ export default function ImiConsultantPage() {
       </div>
 
       {/* FORMULARIO DE ENVÍO */}
-      <footer className="border-t border-ink-200 bg-white p-3 sm:p-4">
+      <footer className="border-t border-brand-200/70 bg-white p-3 sm:p-4">
         <form
           onSubmit={(e) => {
             e.preventDefault();
