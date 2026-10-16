@@ -64,26 +64,30 @@ export function Header() {
         </div>
       </div>
 
-      <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-2 sm:gap-4 lg:gap-6">
-        <Link href={href("")} className="flex min-w-0 shrink items-center py-1" aria-label="IMI Inicio">
+      <div className="container-x flex h-16 sm:h-20 items-center justify-between gap-3 lg:gap-6">
+        <Link href={href("")} className="flex shrink-0 items-center py-1" aria-label="IMI Inicio">
           <Image
             src={images.logo}
             alt={company.legalName}
             width={329}
             height={47}
             priority
-            className="h-7 w-auto max-w-[155px] xs:max-w-[190px] sm:h-9 sm:max-w-[240px] md:h-10 md:max-w-[280px] object-contain transition-all"
+            className="h-7 w-auto max-w-[160px] xs:max-w-[190px] sm:h-8 sm:max-w-[220px] lg:h-9 lg:max-w-[250px] object-contain transition-all"
           />
         </Link>
 
-        <nav className="hidden items-center gap-1 xl:flex" aria-label="Principal">
+        <nav className="hidden items-center gap-0.5 xl:flex 2xl:gap-1.5" aria-label="Principal">
           {nav.map((n) => {
             const active = pathname.startsWith(href(n.p));
             return (
               <Link
                 key={n.p}
                 href={href(n.p)}
-                className={`rounded px-3 py-2 text-sm font-semibold transition-colors ${active ? "text-brand-700 font-bold" : "text-ink-700 hover:text-brand-700"}`}
+                className={`rounded-md px-2 py-1.5 text-xs 2xl:px-3 2xl:text-sm font-semibold whitespace-nowrap transition-colors ${
+                  active
+                    ? "bg-brand-50 text-brand-700 font-bold"
+                    : "text-ink-700 hover:bg-ink-50 hover:text-brand-700"
+                }`}
               >
                 {n.l}
               </Link>
@@ -91,17 +95,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-          {/* Botón Consultor IA en barra principal */}
-          <Link
-            href="/consultant/imi"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-800 border border-brand-200 px-3 py-1.5 text-xs font-bold transition-colors"
-          >
-            <Bot className="size-3.5 text-brand-700" />
-            <span>Consultor IA</span>
-            <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          </Link>
-
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <div className="relative">
             <button
               id="lang-switcher"
