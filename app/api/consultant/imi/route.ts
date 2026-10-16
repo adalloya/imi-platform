@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       reply,
       whatsappUrl,
       lead,
-      consultant: "Adal · Ingeniero Senior y Consultor Técnico IMI",
+      consultant: "Sergio · Director General e Ingeniero Senior IMI",
     });
   } catch (error) {
     console.error("Error en API /api/consultant/imi:", error);
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       {
         reply:
           "Nuestro equipo de ingeniería está disponible 24/7. Puede contactar directamente con el ingeniero de guardia al teléfono (833) 126.9795 o por WhatsApp.",
-        whatsappUrl: "https://wa.me/528331550189?text=Hola%20Adal%2C%20requiero%20atenci%C3%B3n%20t%C3%A9cnica%20de%20guardia%20IMI",
+        whatsappUrl: "https://wa.me/528331550189?text=Hola%20Sergio%2C%20requiero%20atenci%C3%B3n%20t%C3%A9cnica%20de%20guardia%20IMI",
       },
       { status: 200 },
     );

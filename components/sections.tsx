@@ -9,12 +9,31 @@ import { Icon } from "./ui";
 
 export function AccreditationGrid({ locale }: { locale: Locale }) {
   return (
-    <div className="grid gap-px overflow-hidden rounded-lg border border-ink-200 bg-ink-200 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
       {accreditations.map((a) => (
-        <div key={a.id} className="flex flex-col bg-white p-6">
-          <span className="text-xs font-mono font-bold tracking-wider text-brand-700 uppercase">{a.authority}</span>
-          <p className="mt-2 font-mono text-base font-extrabold break-words text-ink-900">{a.code}</p>
-          <p className="mt-2 text-sm leading-relaxed text-ink-600">{tr(a.label, locale)}</p>
+        <div
+          key={a.id}
+          className="group relative flex flex-col justify-between rounded-2xl border border-ink-200 bg-white p-6 shadow-xs transition-all duration-300 hover:border-brand-500 hover:shadow-lg hover:-translate-y-0.5"
+        >
+          <div>
+            <div className="flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-2.5 py-1 text-[11px] font-mono font-bold text-brand-800 border border-brand-200/60 uppercase">
+                <BadgeCheck className="size-3.5 text-brand-600" />
+                {a.authority}
+              </span>
+              <span className="text-[10px] font-mono text-ink-400">OFICIAL</span>
+            </div>
+            <p className="mt-3.5 font-mono text-base sm:text-lg font-extrabold text-ink-900 group-hover:text-brand-800 transition-colors">
+              {a.code}
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-ink-600">
+              {tr(a.label, locale)}
+            </p>
+          </div>
+          <div className="mt-4 pt-3 border-t border-ink-100 flex items-center justify-between text-[11px] font-mono text-brand-700 font-semibold">
+            <span>Acreditación Vigente</span>
+            <span className="size-1.5 rounded-full bg-emerald-500" />
+          </div>
         </div>
       ))}
     </div>

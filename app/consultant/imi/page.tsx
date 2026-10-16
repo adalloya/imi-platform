@@ -27,7 +27,7 @@ export default function ImiConsultantPage() {
       id: "welcome",
       role: "assistant",
       content:
-        "¡Hola! ¿Qué tal? Soy Adal, Ingeniero Senior y consultor técnico de IMI.\n\nEstoy a tu disposición para apoyarte directamente con cualquier duda o especificación sobre calibración acreditada ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentos o capacitaciones oficiales STPS con constancia DC-3.\n\n¿En qué proyecto o equipo de tu planta estás trabajando hoy?",
+        "¡Hola! ¿Qué tal? Soy Sergio, Director General e Ingeniero Senior de IMI.\n\nEstoy a tu disposición para apoyarte directamente con cualquier duda o especificación sobre calibración acreditada ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentos o capacitaciones oficiales STPS con constancia DC-3.\n\n¿En qué proyecto o equipo de tu planta estás trabajando hoy?",
     },
   ]);
 
@@ -103,7 +103,7 @@ export default function ImiConsultantPage() {
             <div className="flex items-center gap-1.5">
               <span className="flex size-2 rounded-full bg-emerald-500 animate-pulse" />
               <h1 className="text-xs sm:text-sm font-bold text-ink-900">
-                Adal · Ingeniero Senior y Consultor Técnico
+                Sergio · Director General e Ingeniero Senior
               </h1>
             </div>
             <p className="text-[11px] text-ink-500 font-mono">
@@ -133,7 +133,7 @@ export default function ImiConsultantPage() {
             >
               {!isUser && (
                 <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-white font-extrabold text-xs shadow-md">
-                  Adal
+                  Sergio
                 </div>
               )}
 

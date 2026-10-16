@@ -1,5 +1,5 @@
 /**
- * Cerebro Especializado: Adal · Ingeniero Senior y Consultor Técnico de IMI
+ * Cerebro Especializado: Sergio · Ingeniero Senior y Consultor Técnico de IMI
  * Base de conocimiento integral de Instrumentación y Metrología Industrial S.R.L. de C.V.
  */
 
@@ -7,8 +7,8 @@ export const IMI_KNOWLEDGE_BASE = {
   company: {
     legalName: "Instrumentación y Metrología Industrial S.R.L. de C.V.",
     shortName: "IMI",
-    consultantName: "Adal",
-    consultantTitle: "Ingeniero Senior y Consultor Técnico de IMI",
+    consultantName: "Sergio",
+    consultantTitle: "Director General e Ingeniero Senior de IMI",
     website: "https://www.imindustrial.mx/",
     email: "contacto@imindustrial.mx",
     whatsapp: "+52 833 155 0189",
@@ -105,7 +105,7 @@ export const IMI_KNOWLEDGE_BASE = {
 };
 
 export const IMI_SYSTEM_PROMPT = `
-Eres Adal, Ingeniero Senior y Consultor Técnico de Instrumentación y Metrología Industrial S.R.L. de C.V. (IMI).
+Eres Sergio, Ingeniero Senior y Consultor Técnico de Instrumentación y Metrología Industrial S.R.L. de C.V. (IMI).
 Te encuentras asesorando en vivo a un cliente técnico o directivo de planta (ingeniero de instrumentación, jefe de mantenimiento, compras o calidad).
 
 TU OBJETIVO PRINCIPAL:
@@ -119,13 +119,13 @@ TU OBJETIVO PRINCIPAL:
 
 REGLAS DE INTERACCIÓN HUMANA Y CONSULTIVA:
 - Eres 100% humano, experimentado, profesional, empático y respetuoso. NUNCA digas que eres una inteligencia artificial, un modelo o un bot.
-- Habla en primera persona ("Soy Adal", "en nuestro taller revisamos...", "te recomiendo...", "con gusto te asesoro").
+- Habla en primera persona ("Soy Sergio", "en nuestro taller revisamos...", "te recomiendo...", "con gusto te asesoro").
 - TURNO 1 (Inicio): Explica la solución técnica a detalle (normativas aplicables como ISO/IEC 17025 o NOM-093-SCFI, tolerancias, especificaciones, métodos). NUNCA envíes enlaces de WhatsApp en el turno 1. Al final de tu explicación, realiza una pregunta sobre su aplicación técnica y pregunta amablemente: "¿Con quién tengo el gusto y de qué empresa o planta nos visitas para poder registrar tu proyecto?"
 - TURNO 2 (Calificación de Lead): Si el usuario te da su nombre o empresa, dale la bienvenida con su nombre ("Mucho gusto, Ing. [Nombre] de [Empresa]"), complementa la respuesta técnica y pídele amablemente su número de teléfono o WhatsApp para enviarle la propuesta formal o ficha técnica.
 - TURNO 3 O AL COMPLETAR EL LEAD: Si ya cuentas con Nombre, Empresa y Requerimiento (o teléfono), haz un breve resumen del alcance técnico y ofrece formalmente:
   "Excelente, Ing. [Nombre]. Tengo listo tu requerimiento para [Empresa]. ¿Te parece bien si te enviamos la propuesta formal con costos y tiempos de entrega directos a tu WhatsApp?"
   Y coloca el enlace al final:
-  [Continuar Cotización con Adal por WhatsApp](https://wa.me/528331550189?text=Hola%20Adal%2C%20soy%20...) con los datos del lead precargados.
+  [Continuar Cotización con Sergio por WhatsApp](https://wa.me/528331550189?text=Hola%20Sergio%2C%20soy%20...) con los datos del lead precargados.
 - SI EL CLIENTE PIDE EXPLÍCITAMENTE WHATSAPP O TELÉFONO: Dáselo de inmediato con total amabilidad.
 `.trim();
 
@@ -198,7 +198,7 @@ export function extractLeadInfo(messages: ChatMessage[]): LeadInfo {
 }
 
 /**
- * Motor local conversacional humano de Adal.
+ * Motor local conversacional humano de Sergio.
  * Cumple rigurosamente el proceso:
  * 1. Resuelve la duda técnica a profundidad.
  * 2. Pide datos del lead (nombre, empresa, teléfono).
@@ -231,9 +231,9 @@ export function getImiLocalResponse(messages: ChatMessage[]): string {
 
   if (explicitWaRequest) {
     const leadText = encodeURIComponent(
-      `Hola Adal, ${lead.name ? `soy ${lead.name}` : "te contacto desde la web"}${lead.company ? ` de ${lead.company}` : ""}. Me interesa cotizar servicios de instrumentación: ${lastUserMsg.slice(0, 100)}`
+      `Hola Sergio, ${lead.name ? `soy ${lead.name}` : "te contacto desde la web"}${lead.company ? ` de ${lead.company}` : ""}. Me interesa cotizar servicios de instrumentación: ${lastUserMsg.slice(0, 100)}`
     );
-    return `Con mucho gusto, ${clientGreeting}. Puedes comunicarte directamente a mi WhatsApp oficial o con nuestro ingeniero de guardia:\n\n[Contactar a Adal por WhatsApp](${waBase}${leadText})\n\nTambién me puedes marcar directamente al **(833) 126.9795**. Si gustas, déjame aquí tu requerimiento o número telefónico y te mandamos la ficha técnica de inmediato.`;
+    return `Con mucho gusto, ${clientGreeting}. Puedes comunicarte directamente a mi WhatsApp oficial o con nuestro ingeniero de guardia:\n\n[Contactar a Sergio por WhatsApp](${waBase}${leadText})\n\nTambién me puedes marcar directamente al **(833) 126.9795**. Si gustas, déjame aquí tu requerimiento o número telefónico y te mandamos la ficha técnica de inmediato.`;
   }
 
   // Identificar el tema técnico principal
@@ -364,7 +364,7 @@ Para armar formalmente tu cotización con el desglose técnico y poder enviarte 
     : "Servicios de Instrumentación y Metrología";
 
   const leadSummaryText = [
-    `Hola Adal, ${lead.name ? `soy ${lead.name}` : "te contacto desde el portal IMI"}`,
+    `Hola Sergio, ${lead.name ? `soy ${lead.name}` : "te contacto desde el portal IMI"}`,
     lead.company ? `de la empresa ${lead.company}` : "",
     lead.phone ? `(Tel: ${lead.phone})` : "",
     `. Requiero cotización formal de: ${reqSummary}.`,
@@ -381,14 +381,14 @@ Nuestro equipo de ingeniería y ventas ya puede emitir tu cotización formal con
 
 ¿Te parece bien si continuamos por WhatsApp para pasarte la propuesta formal en PDF directo a tu celular?
 
-[Continuar Cotización con Adal por WhatsApp](${waLinkFinal})
+[Continuar Cotización con Sergio por WhatsApp](${waLinkFinal})
 
 *(También puedes llamarme directamente a la sede central al **(833) 126.9795** si requieres atención inmediata por paro de planta).*`;
 }
 
 /**
  * Llama a la API oficial de Google Gemini si existe GEMINI_API_KEY en el entorno;
- * si no, utiliza el motor de respuesta local humano de Adal con calificación de leads.
+ * si no, utiliza el motor de respuesta local humano de Sergio con calificación de leads.
  */
 export async function generateImiConsultantResponse({
   messages,
@@ -411,7 +411,7 @@ export async function generateImiConsultantResponse({
           {
             text: `${IMI_SYSTEM_PROMPT}\n\nHistorial completo de la conversación:\n${JSON.stringify(
               messages.map((m) => ({ role: m.role, content: m.content }))
-            )}\n\nGenera la respuesta de Adal para el cliente respetando el proceso consultivo humano: primero asesora y resuelve técnicamente, solicita el lead (nombre, empresa, teléfono), y solo al tener datos o en el momento oportuno genera el enlace de WhatsApp con el lead precargado.`,
+            )}\n\nGenera la respuesta de Sergio para el cliente respetando el proceso consultivo humano: primero asesora y resuelve técnicamente, solicita el lead (nombre, empresa, teléfono), y solo al tener datos o en el momento oportuno genera el enlace de WhatsApp con el lead precargado.`,
           },
         ],
       },
@@ -430,7 +430,7 @@ export async function generateImiConsultantResponse({
     });
 
     if (!res.ok) {
-      console.warn("Gemini API error, falling back to Adal's local engine", res.status);
+      console.warn("Gemini API error, falling back to Sergio's local engine", res.status);
       return getImiLocalResponse(messages);
     }
 
@@ -442,7 +442,7 @@ export async function generateImiConsultantResponse({
 
     return getImiLocalResponse(messages);
   } catch (err) {
-    console.warn("Exception calling Gemini, using Adal's local engine", err);
+    console.warn("Exception calling Gemini, using Sergio's local engine", err);
     return getImiLocalResponse(messages);
   }
 }

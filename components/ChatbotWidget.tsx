@@ -41,7 +41,7 @@ export function ChatbotWidget() {
       id: "welcome",
       role: "assistant",
       content:
-        "¡Hola! ¿Qué tal? Soy Adal, Ingeniero Senior y consultor técnico de IMI.\n\nEstoy aquí para apoyarte directamente con cualquier especificación técnica sobre calibración acreditada ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentos o capacitaciones oficiales STPS con constancia DC-3.\n\n¿En qué proyecto o equipo de tu planta estás trabajando hoy?",
+        "¡Hola! ¿Qué tal? Soy Sergio, Director General e Ingeniero Senior de IMI.\n\nEstoy aquí para apoyarte directamente con cualquier especificación técnica sobre calibración acreditada ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentos o capacitaciones oficiales STPS con constancia DC-3.\n\n¿En qué proyecto o equipo de tu planta estás trabajando hoy?",
     },
   ]);
 
@@ -144,13 +144,13 @@ export function ChatbotWidget() {
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h3 className="text-sm font-bold text-white">Adal · Ingeniero Consultor IMI</h3>
+                  <h3 className="text-sm font-bold text-white">Sergio · Ingeniero Consultor IMI</h3>
                   <span className="rounded bg-brand-500/20 px-1.5 py-0.2 text-[9px] font-mono text-brand-200 font-semibold">
                     EN LÍNEA
                   </span>
                 </div>
                 <p className="text-[11px] text-ink-300">
-                  Asesor Técnico & Comercial
+                  Director General & Consultor Técnico
                 </p>
               </div>
             </div>
@@ -204,7 +204,7 @@ export function ChatbotWidget() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-700 transition-all shadow-sm"
                       >
-                        <span>Continuar por WhatsApp con Adal</span>
+                        <span>Continuar por WhatsApp con Sergio</span>
                         <ExternalLink className="size-3.5" />
                       </a>
                     </div>

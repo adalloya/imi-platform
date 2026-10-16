@@ -67,32 +67,52 @@ export function PowerGenerationSection({ locale }: { locale: Locale }) {
         </div>
 
         {/* Enterprise Clients Grid */}
-        <div className="mt-12 rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8 backdrop-blur-sm">
+        <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 backdrop-blur-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand-400">
-                Respaldo Institucional
-              </span>
+              <div className="inline-flex items-center gap-2">
+                <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand-400">
+                  Respaldo Institucional
+                </span>
+              </div>
               <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
                 Empresas y Operadores que Confían en IMI
               </h3>
             </div>
             <span className="text-xs font-mono text-ink-400">
-              Contratos plurianuales de calibración y mantenimiento
+              Contratos plurianuales de calibración, mantenimiento a válvulas PSV y paros de planta
             </span>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
             {powerGenerationData.clients.map((c, idx) => (
               <div
                 key={idx}
-                className="rounded-xl border border-white/10 bg-ink-900/60 p-4 flex flex-col justify-center text-center transition-all hover:border-brand-500 hover:bg-brand-950/30"
+                className="group relative rounded-xl border border-white/10 bg-ink-900/60 p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:border-brand-400/50 hover:bg-brand-950/40 hover:shadow-lg hover:shadow-brand-500/10"
               >
-                <div className="flex items-center justify-center size-8 rounded-lg bg-brand-500/10 mx-auto text-brand-400 mb-2">
-                  <Building className="size-4" />
+                <div className="w-full h-14 flex items-center justify-center px-2 py-1">
+                  {c.logo ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={c.logo}
+                      alt={c.name}
+                      className="max-h-11 max-w-[130px] w-auto object-contain opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 filter drop-shadow"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center size-8 rounded-lg bg-brand-500/10 text-brand-400">
+                      <Building className="size-4" />
+                    </div>
+                  )}
                 </div>
-                <p className="text-sm font-bold text-white leading-tight">{c.name}</p>
-                <p className="text-[11px] text-ink-400 mt-1 font-mono leading-tight">{c.scope}</p>
+                <div className="mt-2 w-full pt-2 border-t border-white/5">
+                  <p className="text-xs font-bold text-white/95 leading-tight group-hover:text-brand-300 transition-colors">
+                    {c.name}
+                  </p>
+                  <p className="text-[10px] text-ink-400 mt-1 font-mono leading-tight line-clamp-2">
+                    {c.scope}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
