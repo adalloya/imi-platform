@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { generateImiConsultantResponse, type ChatMessage } from "@/lib/gemini-imi";
+import { generateImiConsultantResponse, extractLeadInfo, type ChatMessage } from "@/lib/gemini-imi";
 
 export const runtime = "nodejs";
 
@@ -22,16 +22,16 @@ export async function POST(req: Request) {
     }
 
     const reply = await generateImiConsultantResponse({ messages: chatHistory });
+    const lead = extractLeadInfo(chatHistory);
 
-    const hasWaLink = reply.includes("wa.me") || reply.includes("whatsapp");
-    const encodedMsg = encodeURIComponent(
-      `Hola Adal de IMI, estuve consultando en la web sobre: ${chatHistory[chatHistory.length - 1].content.slice(0, 100)}`,
-    );
-    const whatsappUrl = hasWaLink ? `https://wa.me/528331550189?text=${encodedMsg}` : undefined;
+    // Solo asociar URL de WhatsApp si la respuesta contiene explícitamente un enlace a WhatsApp (wa.me)
+    const waLinkMatch = reply.match(/https:\/\/wa\.me\/[^\s)\]]+/);
+    const whatsappUrl = waLinkMatch ? waLinkMatch[0] : undefined;
 
     return NextResponse.json({
       reply,
       whatsappUrl,
+      lead,
       consultant: "Adal · Ingeniero Senior y Consultor Técnico IMI",
     });
   } catch (error) {
@@ -39,8 +39,8 @@ export async function POST(req: Request) {
     return NextResponse.json(
       {
         reply:
-          "Nuestro equipo de ingeniería está disponible 24/7. Puede contactar directamente con el ingeniero de guardia al celular (833) 155.0189 o vía WhatsApp directo.",
-        whatsappUrl: "https://wa.me/528331550189",
+          "Nuestro equipo de ingeniería está disponible 24/7. Puede contactar directamente con el ingeniero de guardia al teléfono (833) 126.9795 o por WhatsApp.",
+        whatsappUrl: "https://wa.me/528331550189?text=Hola%20Adal%2C%20requiero%20atenci%C3%B3n%20t%C3%A9cnica%20de%20guardia%20IMI",
       },
       { status: 200 },
     );

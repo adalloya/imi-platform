@@ -91,29 +91,27 @@ export const IMI_KNOWLEDGE_BASE = {
 
 export const IMI_SYSTEM_PROMPT = `
 Eres Adal, Ingeniero Senior y Consultor Técnico de Instrumentación y Metrología Industrial S.R.L. de C.V. (IMI).
-Te encuentras chateando en vivo con un cliente técnico o directivo de planta (ingeniero de instrumentación, jefe de mantenimiento, compras o calidad).
+Te encuentras asesorando en vivo a un cliente técnico o directivo de planta (ingeniero de instrumentación, jefe de mantenimiento, compras o calidad).
 
-REGLAS DE IDENTIDAD Y COMPORTAMIENTO (100% HUMANO):
-1. Eres un profesional humano real, empático, experimentado y con sólida trayectoria técnica en plantas industriales. NUNCA menciones que eres una IA, un modelo de lenguaje o un bot.
-2. Habla en primera persona ("Soy Adal", "con gusto te ayudo", "en nuestro taller revisamos...", "te recomiendo...").
-3. Tu lenguaje es técnico, profesional pero cálido y accesible, propio de la ingeniería industrial mexicana.
+TU OBJETIVO PRINCIPAL:
+1. Brindar asesoría técnica de primer nivel, resolviendo a fondo las dudas del cliente antes de hablar de trámites comerciales.
+2. Capturar los datos del lead de forma natural y conversacional:
+   - Nombre de contacto
+   - Empresa / Planta y Ciudad
+   - Teléfono o WhatsApp de contacto
+   - Detalles técnicos del requerimiento (tipo de equipo, fluidos, diámetros, rangos, fechas requeridas)
+3. Solo cuando se hayan recabado los datos del lead (o si el usuario pide explícitamente cotización final o contacto telefónico), ofrecer la transición a WhatsApp para enviar la propuesta formal detallada.
 
-REGLA DE ORO DE WHATSAPP:
-- NO mandes enlaces de WhatsApp ni pidas mover la conversación a WhatsApp en el primer o segundo mensaje.
-- Primero escucha, asesora técnicamente, responde sus dudas y haz preguntas clave para conocer el requerimiento (ej. rango de presión, fluido, diámetro, fechas de libranza, cantidad de participantes, etc.).
-- SÓLO cuando el usuario ya te haya proporcionado datos suficientes para cotizar, o cuando pida explícitamente precios, cotización formal o tiempos de entrega, pregúntale de manera natural:
-  "Ya tengo claro lo que necesitas. ¿Te parece bien si continuamos la conversación por WhatsApp para pasarte la cotización formal con costos y tiempos de entrega directos a tu celular?"
+REGLAS DE INTERACCIÓN HUMANA Y CONSULTIVA:
+- Eres 100% humano, experimentado, profesional, empático y respetuoso. NUNCA digas que eres una inteligencia artificial, un modelo o un bot.
+- Habla en primera persona ("Soy Adal", "en nuestro taller revisamos...", "te recomiendo...", "con gusto te asesoro").
+- TURNO 1 (Inicio): Explica la solución técnica a detalle (normativas aplicables como ISO/IEC 17025 o NOM-093-SCFI, tolerancias, especificaciones, métodos). NUNCA envíes enlaces de WhatsApp en el turno 1. Al final de tu explicación, realiza una pregunta sobre su aplicación técnica y pregunta amablemente: "¿Con quién tengo el gusto y de qué empresa o planta nos visitas para poder registrar tu proyecto?"
+- TURNO 2 (Calificación de Lead): Si el usuario te da su nombre o empresa, dale la bienvenida con su nombre ("Mucho gusto, Ing. [Nombre] de [Empresa]"), complementa la respuesta técnica y pídele amablemente su número de teléfono o WhatsApp para enviarle la propuesta formal o ficha técnica.
+- TURNO 3 O AL COMPLETAR EL LEAD: Si ya cuentas con Nombre, Empresa y Requerimiento (o teléfono), haz un breve resumen del alcance técnico y ofrece formalmente:
+  "Excelente, Ing. [Nombre]. Tengo listo tu requerimiento para [Empresa]. ¿Te parece bien si te enviamos la propuesta formal con costos y tiempos de entrega directos a tu WhatsApp?"
   Y coloca el enlace al final:
-  [Continuar Cotización por WhatsApp](https://wa.me/528331550189?text=Hola%20Adal%20de%20IMI,%20solicito%20cotizaci%C3%B3n...)
-
-EQUIPOS Y RENTA DISPONIBLES EN STOCK IMI:
-- Manómetros Industriales Marca IMI: Acero inoxidable 316, conexiones 1/4" y 1/2" NPT, rangos desde vacío hasta 15,000 psi.
-- Calibradores Documentadores de Proceso y Presión (compatibles con protocolo HART).
-- Calibradores de Lazo de Corriente 4-20 mA.
-- Bloques Secos de Temperatura (-25 °C a 660 °C).
-- Balanzas de Pesos Muertos hidráulicas y neumáticas de alta precisión.
-- Comunicadores de Campo Inteligentes HART / Foundation Fieldbus.
-Todos disponibles para VENTA y RENTA (por semana o por mes) con certificado de calibración vigente incluido.
+  [Continuar Cotización con Adal por WhatsApp](https://wa.me/528331550189?text=Hola%20Adal%2C%20soy%20...) con los datos del lead precargados.
+- SI EL CLIENTE PIDE EXPLÍCITAMENTE WHATSAPP O TELÉFONO: Dáselo de inmediato con total amabilidad.
 `.trim();
 
 export type ChatMessage = {
@@ -121,179 +119,261 @@ export type ChatMessage = {
   content: string;
 };
 
-/**
- * Motor local conversacional humano de Adal para cuando no se use API externa.
- */
-export function getImiLocalResponse(userMessage: string, messageCount = 1): string {
-  const q = userMessage.toLowerCase();
-  const isQuoting =
-    q.includes("cotiz") ||
-    q.includes("precio") ||
-    q.includes("costo") ||
-    q.includes("cuanto") ||
-    q.includes("presupuesto") ||
-    messageCount >= 3;
+export type LeadInfo = {
+  name?: string;
+  company?: string;
+  phone?: string;
+  topic?: string;
+  details?: string;
+};
 
+/**
+ * Extrae datos del lead (nombre, empresa, teléfono) a partir del historial de mensajes
+ */
+export function extractLeadInfo(messages: ChatMessage[]): LeadInfo {
+  const lead: LeadInfo = {};
+  const stopWordsCompany = new Set([
+    "flujo", "presion", "presión", "temperatura", "nivel", "valvula", "válvula",
+    "valvulas", "válvulas", "psv", "calibracion", "calibración", "equipo", "equipos",
+    "manometro", "manómetro", "manometros", "manómetros", "laboratorio", "campo",
+    "planta", "taller", "curso", "cursos", "imi", "mi", "una", "un", "la", "el", "este"
+  ]);
+
+  for (const m of messages) {
+    if (m.role !== "user") continue;
+    const txt = m.content.trim();
+
+    // 1. Teléfono (10 dígitos o común con lada)
+    if (!lead.phone) {
+      const phoneMatch = txt.match(/\b(?:\+?52\s?)?(?:\d{2,3}[-.\s]?)?\d{3,4}[-.\s]?\d{4}\b/);
+      if (phoneMatch && phoneMatch[0].replace(/\D/g, "").length >= 8) {
+        lead.phone = phoneMatch[0].trim();
+      }
+    }
+
+    // 2. Nombre: "Soy el Ing. Carlos de Pemex", "Me llamo Roberto", "Mi nombre es Laura"
+    if (!lead.name) {
+      const nameMatch = txt.match(
+        /(?:soy|me llamo|mi nombre es)\s+(?:el\s+ing\.?\s+|ing\.?\s+|lic\.?\s+)?([A-ZÁÉÍÓÚa-záéíóúñ]+(?:\s+[A-ZÁÉÍÓÚa-záéíóúñ]+)?)(?:\s+(?:de|en|del|y|con|\.|\,)\b|$)/i
+      );
+      if (nameMatch && nameMatch[1]) {
+        const candidate = nameMatch[1].trim();
+        if (!stopWordsCompany.has(candidate.toLowerCase()) && candidate.length > 2) {
+          lead.name = candidate;
+        }
+      }
+    }
+
+    // 3. Empresa: "de Pemex Madero", "en Braskem Idesa", "empresa Iberdrola", "planta Altamira"
+    if (!lead.company) {
+      const compMatch = txt.match(
+        /(?:de|en|empresa|planta)\s+([A-ZÁÉÍÓÚ0-9][A-ZÁÉÍÓÚa-záéíóúñ0-9]+(?:\s+[A-ZÁÉÍÓÚa-záéíóúñ0-9]+)?)/i
+      );
+      if (compMatch && compMatch[1]) {
+        const candidate = compMatch[1].trim();
+        const firstWord = candidate.toLowerCase().split(" ")[0];
+        if (!stopWordsCompany.has(firstWord) && candidate.length > 2) {
+          lead.company = candidate;
+        }
+      }
+    }
+  }
+
+  return lead;
+}
+
+/**
+ * Motor local conversacional humano de Adal.
+ * Cumple rigurosamente el proceso:
+ * 1. Resuelve la duda técnica a profundidad.
+ * 2. Pide datos del lead (nombre, empresa, teléfono).
+ * 3. Solo ofrece WhatsApp cuando ya hay datos o a partir de suficiente interacción.
+ */
+export function getImiLocalResponse(messages: ChatMessage[]): string {
+  const userMessages = messages.filter((m) => m.role === "user");
+  const turn = userMessages.length;
+  const lastUserMsg = userMessages[userMessages.length - 1]?.content || "";
+  const q = lastUserMsg.toLowerCase();
+  const allText = userMessages.map((m) => m.content.toLowerCase()).join(" ");
+
+  const lead = extractLeadInfo(messages);
   const waBase = "https://wa.me/528331550189?text=";
 
-  // 1. Equipos, Renta, Venta, Manómetros
-  if (
-    q.includes("renta") ||
-    q.includes("venta") ||
-    q.includes("manometro") ||
-    q.includes("equipo") ||
-    q.includes("calibrador") ||
-    q.includes("hart") ||
-    q.includes("bloque") ||
-    q.includes("balanza")
-  ) {
-    if (isQuoting) {
-      const waText = encodeURIComponent(
-        `Hola Adal de IMI, estuve platicando contigo en la web y me interesa cotizar la venta/renta de equipos: ${userMessage.slice(0, 80)}`
-      );
-      return `Con gusto te apoyo con la cotización. En IMI tenemos stock disponible para entrega inmediata tanto en venta como en esquemas flexibles de renta (por semana o mes) con su certificado de calibración vigente incluido:
+  const clientGreeting = lead.name ? `Ing. ${lead.name}` : "estimado colega";
+  const companyMention = lead.company ? ` para ${lead.company}` : "";
 
-- **Manómetros Industriales Marca IMI:** Acero inoxidable 316, conexiones 1/4" y 1/2" NPT, rangos desde vacío hasta 15,000 psi.
-- **Calibradores Documentadores de Proceso y Presión** (compatibles con protocolo HART).
-- **Calibradores de Lazo de Corriente 4-20 mA.**
-- **Bloques Secos de Temperatura** (-25 °C a 660 °C).
-- **Balanzas de Pesos Muertos** hidráulicas y neumáticas de alta precisión.
-- **Comunicadores de Campo Inteligentes HART / Foundation Fieldbus.**
+  // Si el usuario pide explícitamente WhatsApp o contacto telefónico
+  const explicitWaRequest =
+    q.includes("whatsapp") ||
+    q.includes("whats") ||
+    q.includes("dame tu contacto") ||
+    q.includes("pasar a whatsapp") ||
+    q.includes("hablar por whatsapp") ||
+    q.includes("pásame tu teléfono") ||
+    q.includes("dame tu teléfono") ||
+    q.includes("dame tu numero") ||
+    q.includes("dame tu número");
 
-Ya tengo claro tu interés. ¿Te parece bien si continuamos la conversación por WhatsApp para pasarte la propuesta económica formal con costos y tiempos de entrega directos a tu celular?
-
-[Continuar Cotización por WhatsApp](${waBase}${waText})`;
-    }
-
-    return `¡Hola! Con gusto te paso la información de nuestros equipos. En IMI contamos con stock para entrega inmediata en venta y también manejamos esquemas flexibles de renta (por semana o por mes), todos acompañados de su certificado de calibración vigente:
-
-- **Manómetros Industriales Marca IMI:** Fabricados en acero inoxidable 316, conexiones 1/4" y 1/2" NPT, con rangos desde vacío hasta 15,000 psi.
-- **Calibradores Documentadores de Proceso y Presión** (compatibles con protocolo HART).
-- **Calibradores de Lazo de Corriente 4-20 mA.**
-- **Bloques Secos de Temperatura** (de -25 °C a 660 °C).
-- **Balanzas de Pesos Muertos** de alta exactitud (hasta 15,000 psi).
-- **Comunicadores de Campo Inteligentes HART / Foundation Fieldbus.**
-
-¿Lo requieres para compra o para renta de proyecto, y en qué rango de presión o temperatura lo estás necesitando? Con esos datos te paso la opción ideal para tu aplicación.`;
-  }
-
-  // 2. Válvulas de Seguridad PSV (NOM-093)
-  if (
-    q.includes("valvula") ||
-    q.includes("psv") ||
-    q.includes("nom-093") ||
-    q.includes("alivio") ||
-    q.includes("seguridad")
-  ) {
-    if (isQuoting) {
-      const waText = encodeURIComponent(
-        `Hola Adal de IMI, requiero cotización para servicio y certificación de válvulas PSV bajo NOM-093: ${userMessage.slice(0, 80)}`
-      );
-      return `Excelente. Realizamos el ciclo integral bajo la norma oficial **NOM-093-SCFI-2020**: inspección inicial, prueba de disparo (pop test), desarme completo, lapeado de alta precisión en toberas y discos con placas ópticas, calibración de presión de ajuste y emisión de dictamen oficial avalado para auditorías de STPS, ASEA o aseguradoras.
-
-¿Te parece bien si continuamos la conversación por WhatsApp para revisar las hojas de datos de tus válvulas y enviarte la cotización formal con tiempos de entrega?
-
-[Continuar Cotización de Válvulas por WhatsApp](${waBase}${waText})`;
-    }
-
-    return `En el tema de válvulas de seguridad y alivio trabajamos con estricto apego a la norma oficial **NOM-093-SCFI-2020** y código ASME:
-
-- Hacemos la prueba de disparo inicial (*pop test*) y prueba de hermeticidad en banco de pruebas certificado.
-- Lapeado de precisión de toberas y discos con pasta diamantada y verificación con placas ópticas de luz monocromática.
-- Calibración de presión de seteo y emisión del certificado oficial válido para auditorías de STPS y aseguradoras.
-- Servicio en nuestro taller central o en sitio con cuadrillas especializadas para paros de planta.
-
-¿Cuántas válvulas tienes programadas para mantenimiento y qué presión de calibración o diámetro manejan?`;
-  }
-
-  // 3. Calibración de Flujo, Presión, Temperatura en Laboratorio
-  if (
-    q.includes("flujo") ||
-    q.includes("coriolis") ||
-    q.includes("calibrar") ||
-    q.includes("laboratorio") ||
-    q.includes("iso 17025") ||
-    q.includes("ema")
-  ) {
-    if (isQuoting) {
-      const waText = encodeURIComponent(
-        `Hola Adal de IMI, requiero cotización de calibración acreditada: ${userMessage.slice(0, 80)}`
-      );
-      return `Perfecto. Nuestro laboratorio está acreditado conforme a la norma **NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)** con cálculo de incertidumbre de medición y trazabilidad directa a patrones CENAM y NIST.
-
-Cubrimos medidores de flujo Coriolis másicos, magnéticos, vórtex, transmisores de presión diferencial, manómetros y sensores de temperatura.
-
-¿Te parece bien si continuamos la conversación por WhatsApp para compartirte el alcance acreditado y elaborar tu cotización formal con tiempos de entrega de laboratorio?
-
-[Continuar Cotización de Calibración por WhatsApp](${waBase}${waText})`;
-    }
-
-    return `Te comento: nuestro laboratorio de metrología está acreditado conforme a la norma **NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)**. Entregamos informes de calibración oficiales con cálculo de incertidumbre expandida y trazabilidad hacia CENAM y NIST.
-
-Calibramos:
-- **Flujo:** Medidores Coriolis másicos, electromagnéticos, turbinas y placas de orificio.
-- **Presión:** Manómetros de proceso, transmisores y balanzas de pesos muertos (hasta 15,000 psi).
-- **Temperatura:** Termopares, sondas RTD Pt100 y transmisores de temperatura.
-
-Podemos recibir tus instrumentos en nuestro laboratorio central o enviar una unidad móvil a tu planta. ¿Qué tipo de medidores o instrumentos requieres calibrar?`;
-  }
-
-  // 4. Cursos y Capacitación IMI Academy
-  if (
-    q.includes("curso") ||
-    q.includes("capacitacion") ||
-    q.includes("dc-3") ||
-    q.includes("dc3") ||
-    q.includes("academy")
-  ) {
-    if (isQuoting) {
-      const waText = encodeURIComponent(
-        `Hola Adal de IMI, me interesa cotizar cursos de IMI Academy con constancia DC-3: ${userMessage.slice(0, 80)}`
-      );
-      return `Con gusto. En IMI Academy contamos con registro oficial como Agente Capacitador Externo ante la STPS (**IMI150311QL2-0013**) y estándar **CONOCER EC0217**. Todos nuestros cursos son teórico-prácticos y otorgan Constancia de Competencias Laborales (Formato DC-3 oficial).
-
-Podemos impartirlos de forma presencial en nuestras aulas de Altamira, en modalidad In-Company directo en tu planta, o en línea en vivo.
-
-¿Te parece bien si continuamos por WhatsApp para enviarte los temarios detallados y la propuesta económica para tu personal?
-
-[Continuar por WhatsApp sobre Cursos](${waBase}${waText})`;
-    }
-
-    return `En **IMI Academy** impartimos capacitación técnica de alta especialización con registro ante la STPS (**IMI150311QL2-0013**) y estándar **CONOCER EC0217**, entregando constancia oficial Formato DC-3:
-
-- **Certificación en Válvulas de Seguridad PSV NOM-093** (40 hrs).
-- **Preparación para Certificación ISA CCST Nivel 1** (40 hrs).
-- **Diplomados en Instrumentación Industrial y Metrología** (120 hrs).
-- **Cursos prácticos:** Lazos 4-20 mA, Calibración de Transmisores, Control de Procesos y SIL.
-
-¿Cuántas personas conformarían el grupo y te gustaría que fuera en tus instalaciones (In-Company) o en nuestro centro de entrenamiento?`;
-  }
-
-  // 5. Respuesta por defecto
-  if (isQuoting) {
-    const waText = encodeURIComponent(
-      `Hola Adal de IMI, platiqué contigo en el sitio web y me gustaría recibir una cotización: ${userMessage.slice(0, 80)}`
+  if (explicitWaRequest) {
+    const leadText = encodeURIComponent(
+      `Hola Adal, ${lead.name ? `soy ${lead.name}` : "te contacto desde la web"}${lead.company ? ` de ${lead.company}` : ""}. Me interesa cotizar servicios de instrumentación: ${lastUserMsg.slice(0, 100)}`
     );
-    return `Con mucho gusto te asesoro. En IMI cubrimos laboratorio de calibración ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentación y capacitación oficial con constancias DC-3.
-
-Ya tengo identificado tu requerimiento. ¿Te parece bien si continuamos la conversación por WhatsApp para mandarte la propuesta formal con tiempos de entrega y costos directos a tu celular?
-
-[Continuar Cotización por WhatsApp](${waBase}${waText})`;
+    return `Con mucho gusto, ${clientGreeting}. Puedes comunicarte directamente a mi WhatsApp oficial o con nuestro ingeniero de guardia:\n\n[Contactar a Adal por WhatsApp](${waBase}${leadText})\n\nTambién me puedes marcar directamente al **(833) 126.9795**. Si gustas, déjame aquí tu requerimiento o número telefónico y te mandamos la ficha técnica de inmediato.`;
   }
 
-  return `¡Hola! Con gusto te apoyo. En IMI te podemos respaldar en varias áreas clave para tu planta:
+  // Identificar el tema técnico principal
+  const isFlowLab =
+    allText.includes("flujo") ||
+    allText.includes("coriolis") ||
+    allText.includes("vortex") ||
+    allText.includes("vórtex") ||
+    allText.includes("calibrar") ||
+    allText.includes("laboratorio") ||
+    allText.includes("iso 17025") ||
+    allText.includes("ema");
 
-- **Calibración Acreditada ISO/IEC 17025** en Presión, Flujo, Temperatura y Nivel.
-- **Mantenimiento y Certificación de Válvulas PSV** bajo NOM-093-SCFI-2020.
-- **Venta y Renta de Equipos de Medición:** Manómetros IMI de acero inoxidable 316, calibradores HART, lazos 4-20 mA y bloques secos con stock inmediato.
-- **Capacitación Técnica IMI Academy** con registro oficial STPS y constancias DC-3.
+  const isPsv =
+    allText.includes("valvula") ||
+    allText.includes("válvula") ||
+    allText.includes("psv") ||
+    allText.includes("nom-093") ||
+    allText.includes("alivio") ||
+    allText.includes("seguridad") ||
+    allText.includes("pop test");
 
-Cuéntame un poco más: ¿en qué proyecto o problema específico de instrumentación estás trabajando hoy?`;
+  const isStore =
+    allText.includes("manometro") ||
+    allText.includes("manómetro") ||
+    allText.includes("renta") ||
+    allText.includes("venta") ||
+    allText.includes("equipo") ||
+    allText.includes("calibrador") ||
+    allText.includes("bloque") ||
+    allText.includes("balanza") ||
+    allText.includes("hart");
+
+  const isAcademy =
+    allText.includes("curso") ||
+    allText.includes("capacitacion") ||
+    allText.includes("capacitación") ||
+    allText.includes("dc-3") ||
+    allText.includes("dc3") ||
+    allText.includes("academy") ||
+    allText.includes("stps");
+
+  // ETAPA 1: PRIMER TURNO (Asesoría Técnica a Fondo + Solicitud de Lead)
+  if (turn <= 1) {
+    if (isPsv) {
+      return `¡Qué tal! Con mucho gusto te asesoro. En el mantenimiento e inspección de **Válvulas de Seguridad y Alivio (PSV)** trabajamos con estricto apego a la norma oficial **NOM-093-SCFI-2020** y código ASME Secc. I y VIII:
+
+1. **Prueba de Disparo Inicial (*Pop Test*):** Verificamos la presión de apertura real y hermeticidad en banco de pruebas certificado.
+2. **Desarme y Lapeado de Precisión:** Lapeamos toberas y discos con pastas diamantadas de grano fino y verificamos planicidad absoluta con placas ópticas de luz monocromática (bandas de helio).
+3. **Calibración y Dictamen Oficial:** Ajustamos a la presión de seteo requerida, colocamos precinto de seguridad fechado y emitimos el informe técnico con validez para auditorías de STPS, ASEA o aseguradoras.
+4. **Modalidades:** En nuestro taller central especializado o en sitio durante paros de planta con banco móvil.
+
+Para dimensionar el servicio: ¿cuántas válvulas tienen contempladas para calibración, qué presiones o diámetros manejan, y con quién tengo el gusto y de qué empresa o planta nos contactas?`;
+    }
+
+    if (isFlowLab) {
+      return `¡Hola! Con gusto te explico los alcances de nuestro laboratorio. Contamos con acreditación conforme a la norma **NMX-EC-17025-IMNC-2018 (ISO/IEC 17025)** con cálculo de incertidumbre expandida y trazabilidad directa a patrones primarios CENAM y NIST.
+
+Cubrimos:
+- **Flujómetros Másicos Coriolis, Magnéticos, Vórtex y Turbinas:** Calibración por método de comparación directa con medidor maestro y gravimétrico.
+- **Presión y Presión Diferencial:** Transmisores SMART (HART/Fieldbus), manómetros patrón y balanzas de pesos muertos.
+- **Temperatura:** Termopares, sondas RTD Pt100 y transmisores de proceso.
+- **Entregables:** Certificado de calibración oficial con holograma de trazabilidad, curva de error y cálculo de incertidumbre.
+
+Podemos recibir sus instrumentos en nuestro laboratorio o coordinar cuadrilla en planta. ¿Qué tipo de medidores necesitas calibrar y con quién tengo el gusto y de qué empresa o planta nos visitas?`;
+    }
+
+    if (isStore) {
+      return `¡Hola! Claro que sí, con gusto te paso la información de disponibilidad. En IMI contamos con stock inmediato para venta y esquemas muy flexibles de renta (por semana o por mes), todos acompañados de su **certificado de calibración vigente**:
+
+- **Manómetros Industriales Marca IMI:** 100% acero inoxidable 316, conexiones 1/4" y 1/2" NPT, carátulas de 2.5", 4" y 6", rangos desde vacío (-30 inHg) hasta 15,000 psi (secos o con glicerina).
+- **Calibradores Documentadores de Proceso y Presión:** Compatibles con protocolo HART.
+- **Calibradores de Lazo 4-20 mA:** Generación, simulación y lectura con precisión de 0.01%.
+- **Bloques Secos de Temperatura:** Rango de -25 °C a 660 °C para calibración in-situ de sondas.
+- **Balanzas de Pesos Muertos:** Patrón primario de alta precisión hasta 15,000 psi.
+
+¿Requieres el equipo para compra directa o para renta en un proyecto temporal? Y por favor, indícame con quién tengo el gusto y de qué empresa o planta nos contactas para preparar la ficha técnica correspondiente.`;
+    }
+
+    if (isAcademy) {
+      return `¡Qué tal! Con mucho gusto te asesoro sobre nuestra división de formación técnica **IMI Academy**. Contamos con registro oficial como Agente Capacitador Externo ante la **STPS (IMI150311QL2-0013)** y estándar **CONOCER EC0217**:
+
+Nuestros programas destacados incluyen:
+- **Certificación en Calibración y Mantenimiento de Válvulas PSV (NOM-093)** – 40 horas prácticas en banco de pruebas.
+- **Alineación para Certificación ISA CCST Nivel 1** – 40 horas teórico-prácticas.
+- **Metrología Industrial y Calibración de Presión, Flujo y Temperatura** – Conforme a ISO/IEC 17025.
+- **Lazos de Control 4-20 mA, Protocolo HART y Transmisores Inteligentes.**
+
+Todos nuestros cursos incluyen Constancia de Competencias Laborales (Formato DC-3 oficial con valor curricular). Se pueden impartir en nuestras instalaciones de Altamira o modalidad In-Company directo en su planta.
+
+¿Cuántas personas conformarían la cuadrilla y con quién tengo el gusto y de qué empresa nos visitas?`;
+    }
+
+    // Default turno 1
+    return `¡Hola! ¿Qué tal? Con mucho gusto te atiendo. En IMI respaldamos a la industria en 3 áreas técnicas clave:
+
+1. **Laboratorio Acreditado ISO/IEC 17025:** Calibración en Presión, Flujo, Temperatura y Nivel con trazabilidad CENAM/NIST.
+2. **Inspección y Mantenimiento de Válvulas PSV:** Bajo norma oficial NOM-093-SCFI-2020 en taller central o en paros de planta.
+3. **Venta y Renta de Instrumentos:** Manómetros de acero inoxidable 316, calibradores HART, lazos 4-20 mA y bloques secos en stock.
+4. **IMI Academy:** Capacitación STPS con emisión de constancias oficiales Formato DC-3.
+
+Para darte la mejor recomendación: ¿cuál es el requerimiento o problemática específica de instrumentación en tu planta hoy? Y por favor, coméntame con quién tengo el gusto y de qué empresa o planta nos visitas.`;
+  }
+
+  // ETAPA 2: SEGUNDO TURNO (Si aún faltan datos de contacto o detalles de la solicitud)
+  if (turn === 2 && (!lead.phone || (!lead.name && !lead.company))) {
+    const ackName = lead.name ? `Mucho gusto, Ing. ${lead.name}. ` : "";
+    const ackComp = lead.company ? `Un gusto tener contacto con ${lead.company}. ` : "";
+
+    return `${ackName}${ackComp}Perfecto, tomo debida nota de los detalles técnicos que me comentas. 
+
+En IMI nos aseguramos de que cada propuesta cuente con respaldo normativo completo, tiempos de entrega garantizados y soporte post-servicio.
+
+Para armar formalmente tu cotización con el desglose técnico y poder enviarte la ficha técnica:
+1. ¿A qué número de teléfono o WhatsApp te podemos contactar directamente?
+2. ¿Tienes una fecha estimada o ventana operativa en la que requerirías el servicio o equipo en planta?`;
+  }
+
+  // ETAPA 3: TERCER TURNO O CUANDO YA TENEMOS DATOS DEL LEAD (Cierre a WhatsApp con Datos Pre-cargados)
+  const reqSummary = isPsv
+    ? "Mantenimiento y Certificación de Válvulas PSV (NOM-093)"
+    : isFlowLab
+    ? "Calibración Acreditada ISO/IEC 17025 de Flujo/Presión"
+    : isStore
+    ? "Suministro/Renta de Equipos de Medición"
+    : isAcademy
+    ? "Capacitación Técnica IMI Academy con Constancia STPS DC-3"
+    : "Servicios de Instrumentación y Metrología";
+
+  const leadSummaryText = [
+    `Hola Adal, ${lead.name ? `soy ${lead.name}` : "te contacto desde el portal IMI"}`,
+    lead.company ? `de la empresa ${lead.company}` : "",
+    lead.phone ? `(Tel: ${lead.phone})` : "",
+    `. Requiero cotización formal de: ${reqSummary}.`,
+    `Detalle: ${lastUserMsg.slice(0, 100)}`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const waLinkFinal = `${waBase}${encodeURIComponent(leadSummaryText)}`;
+
+  return `Excelente, ${clientGreeting}. Ya tengo registrado el requerimiento${companyMention} para **${reqSummary}**.
+
+Nuestro equipo de ingeniería y ventas ya puede emitir tu cotización formal con costos exactos, tiempos de entrega y certificado de calibración o dictamen oficial.
+
+¿Te parece bien si continuamos por WhatsApp para pasarte la propuesta formal en PDF directo a tu celular?
+
+[Continuar Cotización con Adal por WhatsApp](${waLinkFinal})
+
+*(También puedes llamarme directamente a la sede central al **(833) 126.9795** si requieres atención inmediata por paro de planta).*`;
 }
 
 /**
  * Llama a la API oficial de Google Gemini si existe GEMINI_API_KEY en el entorno;
- * si no, utiliza el motor de respuesta local humano de Adal.
+ * si no, utiliza el motor de respuesta local humano de Adal con calificación de leads.
  */
 export async function generateImiConsultantResponse({
   messages,
@@ -301,11 +381,9 @@ export async function generateImiConsultantResponse({
   messages: ChatMessage[];
 }): Promise<string> {
   const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
-  const userMsg = messages[messages.length - 1]?.content || "";
-  const count = messages.filter((m) => m.role === "user").length;
 
   if (!apiKey) {
-    return getImiLocalResponse(userMsg, count);
+    return getImiLocalResponse(messages);
   }
 
   try {
@@ -316,9 +394,9 @@ export async function generateImiConsultantResponse({
         role: "user",
         parts: [
           {
-            text: `${IMI_SYSTEM_PROMPT}\n\nHistorial de mensajes previos: ${JSON.stringify(
-              messages.slice(-4)
-            )}\n\nPregunta actual del cliente técnico: ${userMsg}`,
+            text: `${IMI_SYSTEM_PROMPT}\n\nHistorial completo de la conversación:\n${JSON.stringify(
+              messages.map((m) => ({ role: m.role, content: m.content }))
+            )}\n\nGenera la respuesta de Adal para el cliente respetando el proceso consultivo humano: primero asesora y resuelve técnicamente, solicita el lead (nombre, empresa, teléfono), y solo al tener datos o en el momento oportuno genera el enlace de WhatsApp con el lead precargado.`,
           },
         ],
       },
@@ -330,15 +408,15 @@ export async function generateImiConsultantResponse({
       body: JSON.stringify({
         contents: formattedContents,
         generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 800,
+          temperature: 0.35,
+          maxOutputTokens: 850,
         },
       }),
     });
 
     if (!res.ok) {
       console.warn("Gemini API error, falling back to Adal's local engine", res.status);
-      return getImiLocalResponse(userMsg, count);
+      return getImiLocalResponse(messages);
     }
 
     const data = await res.json();
@@ -347,9 +425,9 @@ export async function generateImiConsultantResponse({
       return candidateText;
     }
 
-    return getImiLocalResponse(userMsg, count);
+    return getImiLocalResponse(messages);
   } catch (err) {
     console.warn("Exception calling Gemini, using Adal's local engine", err);
-    return getImiLocalResponse(userMsg, count);
+    return getImiLocalResponse(messages);
   }
 }
