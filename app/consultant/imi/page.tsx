@@ -99,16 +99,30 @@ export default function ImiConsultantPage() {
               className="h-9 w-auto max-w-[140px] sm:max-w-[170px] object-contain"
             />
           </div>
-          <div className="border-l border-ink-200 pl-3">
-            <div className="flex items-center gap-1.5">
-              <span className="flex size-2 rounded-full bg-emerald-500 animate-pulse" />
-              <h1 className="text-xs sm:text-sm font-bold text-ink-900">
-                Sergio · Director General e Ingeniero Senior
-              </h1>
+          <div className="border-l border-ink-200 pl-3 flex items-center gap-3">
+            <div className="relative size-10 shrink-0 rounded-xl overflow-hidden ring-1.5 ring-brand-300 shadow-xs">
+              <Image
+                src={images.sergioAvatar}
+                alt="Sergio Blanco · Director General IMI"
+                width={40}
+                height={40}
+                className="size-full object-cover"
+              />
+              <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-emerald-500 ring-2 ring-white" />
             </div>
-            <p className="text-[11px] text-ink-500 font-mono">
-              Laboratorio Acreditado ISO/IEC 17025 · Altamira, Tamps.
-            </p>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <h1 className="text-xs sm:text-sm font-bold text-ink-900">
+                  Sergio · Director General e Ingeniero Senior
+                </h1>
+                <span className="rounded bg-brand-50 border border-brand-200 px-1.5 py-0.2 text-[9px] font-mono text-brand-700 font-bold">
+                  EN LÍNEA
+                </span>
+              </div>
+              <p className="text-[11px] text-ink-500 font-mono">
+                Laboratorio Acreditado ISO/IEC 17025 · Altamira, Tamps.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -132,8 +146,14 @@ export default function ImiConsultantPage() {
               className={`flex gap-3 max-w-3xl ${isUser ? "ml-auto justify-end" : "mr-auto justify-start"}`}
             >
               {!isUser && (
-                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-white font-extrabold text-xs shadow-md">
-                  Sergio
+                <div className="relative size-9 sm:size-10 shrink-0 rounded-xl overflow-hidden ring-1.5 ring-brand-300 shadow-md bg-brand-800">
+                  <Image
+                    src={images.sergioAvatar}
+                    alt="Sergio Blanco"
+                    width={40}
+                    height={40}
+                    className="size-full object-cover"
+                  />
                 </div>
               )}
 
@@ -170,13 +190,19 @@ export default function ImiConsultantPage() {
         })}
 
         {loading && (
-          <div className="flex items-center gap-3 text-xs text-ink-500 font-mono">
-            <div className="flex size-8 items-center justify-center rounded-lg bg-brand-700 text-white font-bold text-xs">
-              IMI
+          <div className="flex items-center gap-3 text-xs text-ink-600">
+            <div className="relative size-8 shrink-0 rounded-lg overflow-hidden ring-1 ring-brand-300 shadow-xs">
+              <Image
+                src={images.sergioAvatar}
+                alt="Sergio"
+                width={32}
+                height={32}
+                className="size-full object-cover"
+              />
             </div>
-            <div className="flex items-center gap-1.5 rounded-lg bg-white border border-ink-200 px-3 py-2 shadow-sm">
+            <div className="flex items-center gap-2 rounded-xl bg-white border border-brand-200/80 px-3.5 py-2 shadow-xs">
               <RefreshCw className="size-3.5 animate-spin text-brand-600" />
-              <span>Analizando especificaciones técnicas...</span>
+              <span className="italic">Sergio está analizando las especificaciones...</span>
             </div>
           </div>
         )}

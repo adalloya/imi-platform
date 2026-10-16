@@ -52,6 +52,8 @@ export const images = {
   unitMaintenance: "/images/unit-maintenance.jpg",
   logoInstruments: "/images/logo-instruments.png",
   unitInstruments: "/images/unit-instruments.jpg",
+  // Avatar oficial del Director General e Ingeniero Senior
+  sergioAvatar: "/images/sergio-avatar.jpg",
   // Activos oficiales extraídos del MediaKit IMI
   flowCalibrationFl55: "/images/mediakit/flow-calibration-fl55.jpg",
   pressureMetrologyLab: "/images/mediakit/pressure-metrology-lab.jpg",

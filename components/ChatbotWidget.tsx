@@ -110,22 +110,25 @@ export function ChatbotWidget() {
         <button
           id="open-chatbot-btn"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="group flex h-12 sm:h-13 items-center gap-2.5 rounded-full bg-gradient-to-r from-brand-600 via-brand-700 to-brand-800 px-4 sm:px-5 font-bold text-white shadow-[0_10px_25px_-5px_rgba(2,86,178,0.5)] ring-2 ring-white transition-all hover:scale-105 active:scale-95 cursor-pointer"
-          aria-label="Abrir Chat con Consultor IA IMI"
+          className="group flex h-12 sm:h-13 items-center gap-2.5 rounded-full bg-gradient-to-r from-brand-600 via-brand-700 to-brand-800 pl-2 pr-4 sm:pl-2.5 sm:pr-5 font-bold text-white shadow-[0_10px_25px_-5px_rgba(2,86,178,0.5)] ring-2 ring-white transition-all hover:scale-105 active:scale-95 cursor-pointer"
+          aria-label="Abrir Chat con Sergio Blanco, Director IMI"
         >
-          <div className="relative flex items-center justify-center">
-            <Bot className="size-5 sm:size-5.5 text-white" />
-            <span className="absolute -top-1 -right-1 flex size-2.5">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
-            </span>
+          <div className="relative flex size-8 sm:size-9 shrink-0 items-center justify-center rounded-full overflow-hidden ring-2 ring-white/70 shadow-sm">
+            <Image
+              src={images.sergioAvatar}
+              alt="Sergio Blanco"
+              width={36}
+              height={36}
+              className="size-full object-cover"
+            />
+            <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-emerald-400 ring-2 ring-brand-800" />
           </div>
           <div className="flex flex-col text-left">
             <span className="text-xs sm:text-sm font-extrabold tracking-wide text-white leading-none">
-              Consultor IA
+              Consultor Sergio
             </span>
             <span className="text-[10px] text-brand-200 font-mono leading-none mt-0.5">
-              Ingeniero IMI en línea
+              Director General IMI
             </span>
           </div>
           <Sparkles className="size-3.5 text-yellow-300 hidden sm:inline" />
@@ -138,8 +141,14 @@ export function ChatbotWidget() {
           {/* Header del Chat */}
           <div className="bg-gradient-to-r from-ink-950 via-brand-950 to-brand-900 text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-brand-800">
             <div className="flex items-center gap-3">
-              <div className="relative flex size-10 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/20">
-                <Bot className="size-5 text-brand-200" />
+              <div className="relative flex size-10 shrink-0 items-center justify-center rounded-xl overflow-hidden ring-1.5 ring-white/30 bg-ink-800 shadow-sm">
+                <Image
+                  src={images.sergioAvatar}
+                  alt="Sergio Blanco · Director General IMI"
+                  width={40}
+                  height={40}
+                  className="size-full object-cover"
+                />
                 <span className="absolute -bottom-0.5 -right-0.5 size-2.5 rounded-full bg-emerald-400 ring-2 ring-ink-950" />
               </div>
               <div>
@@ -182,8 +191,14 @@ export function ChatbotWidget() {
                 className={`flex gap-2.5 ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 {m.role === "assistant" && (
-                  <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-brand-700 text-white mt-0.5 shadow-sm">
-                    <Bot className="size-4" />
+                  <div className="relative size-7 shrink-0 rounded-full overflow-hidden ring-1 ring-brand-300 shadow-sm mt-0.5 bg-brand-800">
+                    <Image
+                      src={images.sergioAvatar}
+                      alt="Sergio"
+                      width={28}
+                      height={28}
+                      className="size-full object-cover"
+                    />
                   </div>
                 )}
 
@@ -220,9 +235,18 @@ export function ChatbotWidget() {
             ))}
 
             {loading && (
-              <div className="flex items-center gap-2 text-xs text-ink-500 italic bg-white p-2.5 rounded-xl border border-brand-200/80 shadow-xs w-fit">
+              <div className="flex items-center gap-2.5 text-xs text-ink-600 bg-white p-2.5 rounded-xl border border-brand-200/80 shadow-xs w-fit">
+                <div className="relative size-5 shrink-0 rounded-full overflow-hidden ring-1 ring-brand-300">
+                  <Image
+                    src={images.sergioAvatar}
+                    alt="Sergio"
+                    width={20}
+                    height={20}
+                    className="size-full object-cover"
+                  />
+                </div>
                 <RefreshCw className="size-3.5 animate-spin text-brand-600" />
-                <span>Analizando requerimiento técnico...</span>
+                <span className="italic">Sergio está analizando las especificaciones...</span>
               </div>
             )}
 
