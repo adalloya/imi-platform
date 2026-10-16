@@ -23,15 +23,16 @@ export async function POST(req: Request) {
 
     const reply = await generateImiConsultantResponse({ messages: chatHistory });
 
+    const hasWaLink = reply.includes("wa.me") || reply.includes("whatsapp");
     const encodedMsg = encodeURIComponent(
-      `Hola IMI, me comunico tras consultar con su asistente técnico: ${chatHistory[chatHistory.length - 1].content.slice(0, 120)}`,
+      `Hola Adal de IMI, estuve consultando en la web sobre: ${chatHistory[chatHistory.length - 1].content.slice(0, 100)}`,
     );
-    const whatsappUrl = `https://wa.me/528331550189?text=${encodedMsg}`;
+    const whatsappUrl = hasWaLink ? `https://wa.me/528331550189?text=${encodedMsg}` : undefined;
 
     return NextResponse.json({
       reply,
       whatsappUrl,
-      consultant: "Ingeniero Senior de Aplicaciones y Consultor Comercial IMI",
+      consultant: "Adal · Ingeniero Senior y Consultor Técnico IMI",
     });
   } catch (error) {
     console.error("Error en API /api/consultant/imi:", error);

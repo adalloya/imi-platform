@@ -2,7 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { MessageSquare, Send, Sparkles, User, ExternalLink, RefreshCw, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { MessageSquare, Send, Sparkles, User, ExternalLink, RefreshCw, CheckCircle2, Bot } from "lucide-react";
+import { MarkdownMessage } from "@/components/MarkdownMessage";
 import { images } from "@/data/company";
 
 type Msg = {
@@ -25,8 +27,7 @@ export default function ImiConsultantPage() {
       id: "welcome",
       role: "assistant",
       content:
-        "Estimado colega, soy el **Ingeniero Senior y Consultor Técnico de IMI**. Estoy a su disposición para resolver cualquier especificación técnica sobre calibración acreditada ISO/IEC 17025, inspección de válvulas de seguridad PSV bajo NOM-093, renta de instrumentos o capacitaciones oficiales STPS con formato DC-3.\n\n¿En qué requerimiento o proyecto de planta puedo asistirle el día de hoy?",
-      whatsappUrl: "https://wa.me/528331550189?text=Hola%20IMI,%20deseo%20asesoría%20con%20un%20ingeniero%20especialista",
+        "¡Hola! ¿Qué tal? Soy Adal, Ingeniero Senior y consultor técnico de IMI.\n\nEstoy a tu disposición para apoyarte directamente con cualquier duda o especificación sobre calibración acreditada ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentos o capacitaciones oficiales STPS con constancia DC-3.\n\n¿En qué proyecto o equipo de tu planta estás trabajando hoy?",
     },
   ]);
 
@@ -102,24 +103,22 @@ export default function ImiConsultantPage() {
             <div className="flex items-center gap-1.5">
               <span className="flex size-2 rounded-full bg-emerald-500 animate-pulse" />
               <h1 className="text-xs sm:text-sm font-bold text-ink-900">
-                Consultor Técnico Senior · IMI
+                Adal · Ingeniero Senior y Consultor Técnico
               </h1>
             </div>
             <p className="text-[11px] text-ink-500 font-mono">
-              Laboratorio Acreditado NMX-EC-17025-IMNC-2018
+              Laboratorio Acreditado ISO/IEC 17025 · Altamira, Tamps.
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <a
-            href="https://wa.me/528331550189?text=Hola%20IMI,%20requiero%20atención%20con%20ingeniero%20de%20guardia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary min-h-9 px-3 text-xs font-bold"
+          <Link
+            href="/"
+            className="btn btn-outline min-h-9 px-3 text-xs font-bold"
           >
-            WhatsApp Directo
-          </a>
+            Volver al Portal
+          </Link>
         </div>
       </header>
 
@@ -133,8 +132,8 @@ export default function ImiConsultantPage() {
               className={`flex gap-3 max-w-3xl ${isUser ? "ml-auto justify-end" : "mr-auto justify-start"}`}
             >
               {!isUser && (
-                <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-brand-700 text-white font-bold text-xs shadow-sm">
-                  IMI
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-brand-700 text-white font-extrabold text-xs shadow-md">
+                  Adal
                 </div>
               )}
 
@@ -142,18 +141,18 @@ export default function ImiConsultantPage() {
                 className={`rounded-2xl p-4 text-sm leading-relaxed shadow-sm ${
                   isUser
                     ? "bg-brand-600 text-white rounded-br-none"
-                    : "bg-white text-ink-800 border border-ink-200 rounded-bl-none"
+                    : "bg-white text-ink-900 border border-ink-200/90 rounded-bl-none"
                 }`}
               >
-                <div className="whitespace-pre-wrap">{m.content}</div>
+                <MarkdownMessage content={m.content} isUser={isUser} />
 
-                {!isUser && m.whatsappUrl && (
+                {!isUser && m.whatsappUrl && !m.content.includes("wa.me") && (
                   <div className="mt-3 pt-3 border-t border-ink-100 flex flex-wrap gap-2">
                     <a
                       href={m.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                      className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-700 transition-all shadow-sm"
                     >
                       <ExternalLink className="size-3.5" /> Continuar Cotización en WhatsApp
                     </a>

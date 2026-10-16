@@ -24,8 +24,8 @@ export type Product = {
 };
 
 export const products: Product[] = [
-  { id: "manometro-imi", category: "other", name: "Manómetro marca IMI", image: images.gauge, sale: true, rent: false,
-    desc: { es: "Manómetro de carátula en acero inoxidable, diversos rangos y conexiones.", en: "Stainless steel dial pressure gauge, multiple ranges and connections." } },
+  { id: "manometro-imi", category: "other", name: "Manómetro Industrial Marca IMI", image: images.gauge, sale: true, rent: false,
+    desc: { es: "Fabricados en acero inoxidable 316, conexiones 1/4\" y 1/2\" NPT, rangos desde vacío hasta 15,000 psi.", en: "316 stainless steel, 1/4\" and 1/2\" NPT connections, ranges from vacuum to 15,000 psi." } },
   { id: "calibrador-presion", category: "test-calibration", name: "Calibrador de presión multifunción", image: images.instruments, sale: true, rent: true,
     desc: { es: "Calibrador documentador de presión con módulos intercambiables y HART.", en: "Documenting pressure calibrator with interchangeable modules and HART." } },
   { id: "calibrador-lazo", category: "test-calibration", name: "Calibrador de lazo 4-20 mA", image: images.equipmentSale, sale: true, rent: true,

@@ -15,6 +15,7 @@ import {
   User,
   X,
 } from "lucide-react";
+import { MarkdownMessage } from "@/components/MarkdownMessage";
 import { images } from "@/data/company";
 
 type Msg = {
@@ -40,9 +41,7 @@ export function ChatbotWidget() {
       id: "welcome",
       role: "assistant",
       content:
-        "Estimado colega, soy el **Ingeniero Senior y Consultor Comercial de IMI**.\n\nPuedo asesorarle en especificaciones de instrumentos, calibración acreditada ISO/IEC 17025, mantenimiento de válvulas PSV, renta de equipos o cursos STPS.\n\n¿En qué requerimiento o proyecto de su planta puedo apoyarle hoy?",
-      whatsappUrl:
-        "https://wa.me/528331550189?text=Hola%20IMI,%20deseo%20asesor%C3%ADa%20t%C3%A9cnica%20con%20un%20ingeniero",
+        "¡Hola! ¿Qué tal? Soy Adal, Ingeniero Senior y consultor técnico de IMI.\n\nEstoy aquí para apoyarte directamente con cualquier especificación técnica sobre calibración acreditada ISO/IEC 17025, mantenimiento de válvulas de seguridad PSV (NOM-093), venta y renta de instrumentos o capacitaciones oficiales STPS con constancia DC-3.\n\n¿En qué proyecto o equipo de tu planta estás trabajando hoy?",
     },
   ]);
 
@@ -145,13 +144,13 @@ export function ChatbotWidget() {
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h3 className="text-sm font-bold text-white">Ingeniero Consultor IMI</h3>
+                  <h3 className="text-sm font-bold text-white">Adal · Ingeniero Consultor IMI</h3>
                   <span className="rounded bg-brand-500/20 px-1.5 py-0.2 text-[9px] font-mono text-brand-200 font-semibold">
-                    IA 24/7
+                    EN LÍNEA
                   </span>
                 </div>
                 <p className="text-[11px] text-ink-300">
-                  Asesor Técnico & Comercial Especializado
+                  Asesor Técnico & Comercial
                 </p>
               </div>
             </div>
@@ -189,24 +188,24 @@ export function ChatbotWidget() {
                 )}
 
                 <div
-                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 shadow-sm leading-relaxed ${
+                  className={`max-w-[88%] rounded-2xl px-4 py-3 shadow-sm leading-relaxed ${
                     m.role === "user"
                       ? "bg-brand-600 text-white rounded-br-xs"
-                      : "bg-white text-ink-800 border border-ink-200/80 rounded-bl-xs"
+                      : "bg-white text-ink-900 border border-ink-200/90 rounded-bl-xs"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap">{m.content}</p>
+                  <MarkdownMessage content={m.content} isUser={m.role === "user"} />
 
-                  {m.whatsappUrl && (
+                  {m.whatsappUrl && !m.content.includes("wa.me") && (
                     <div className="mt-3 pt-2.5 border-t border-ink-100 flex flex-col gap-1.5">
                       <a
                         href={m.whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-emerald-700 transition-colors shadow-sm"
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-bold text-white hover:bg-emerald-700 transition-all shadow-sm"
                       >
-                        <span>Conectar por WhatsApp con Guardia</span>
-                        <ExternalLink className="size-3" />
+                        <span>Continuar por WhatsApp con Adal</span>
+                        <ExternalLink className="size-3.5" />
                       </a>
                     </div>
                   )}
